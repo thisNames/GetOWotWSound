@@ -96,7 +96,7 @@ xml
 ## 此项目使用到的核心工具：
 1. ww2ogg.exe
 2. bnkextr.exe
-3. revorb
+3. revorb.exe
 
 ## 配置文件
 ```properties
