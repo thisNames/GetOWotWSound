@@ -1,0 +1,4 @@
+node_modules
+SoundMod
+**/soundAssetsPath
+**/*.ogg

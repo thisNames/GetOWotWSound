@@ -1,0 +1,16 @@
+{
+  "name": "getowotwsound",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "cd ./test && node index.js && cd ..",
+    "build": "cd ./src && node index.js && cd .."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.19.33"
+  }
+}

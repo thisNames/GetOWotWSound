@@ -1,0 +1,1757 @@
+{
+    "SoundBanksInfo": {
+        "Platform": "Windows",
+        "BasePlatform": "Windows",
+        "SchemaVersion": "11",
+        "SoundbankVersion": "134",
+        "RootPaths": {
+            "ProjectRoot": "C:\\mba\\ba2\\w\\a481a2d7bc3b80ed\\Wwise\\",
+            "SourceFilesRoot": "C:\\mba\\ba2\\w\\a481a2d7bc3b80ed\\Wwise\\.cache\\Windows\\",
+            "SoundBanksRoot": "C:\\mba\\ba2\\w\\a481a2d7bc3b80ed\\Assets\\StreamingAssets\\Audio\\GeneratedSoundBanks\\Windows\\",
+            "ExternalSourcesInputFile": "",
+            "ExternalSourcesOutputRoot": "C:\\mba\\ba2\\w\\a481a2d7bc3b80ed\\Wwise\\GeneratedSoundBanks\\Windows"
+        },
+        "StreamedFiles": [
+            {
+                "Id": "77404",
+                "Language": "SFX",
+                "ShortName": "characters\\npc\\grom\\wellspringGladesGromAfterMill3.wav",
+                "Path": "SFX\\characters\\npc\\grom\\wellspringGladesGromAfterMill3_7BACA535.wem"
+            },
+            {
+                "Id": "764672",
+                "Language": "SFX",
+                "ShortName": "wotw\\characters\\NPC\\gumo\\kuScaredToFly_seasonsPrologue_GumoB.wav",
+                "Path": "SFX\\wotw\\characters\\NPC\\gumo\\kuScaredToFly_seasonsPrologue_GumoB_7BACA535.wem"
+            },
+            {
+                "Id": "2002616",
+                "Language": "SFX",
+                "ShortName": "wotw\\props\\woodColumnObstructionDestroy_004.wav",
+                "Path": "SFX\\wotw\\props\\woodColumnObstructionDestroy_004_7BACA535.wem"
+            },
+            {
+                "Id": "2029440",
+                "Language": "SFX",
+                "ShortName": "characters\\npc\\lupo\\lumaPoolsFirstEncounter3Voice.wav",
+                "Path": "SFX\\characters\\npc\\lupo\\lumaPoolsFirstEncounter3Voice_7BACA535.wem"
+            },
+            {
+                "Id": "2958428",
+                "Language": "SFX",
+                "ShortName": "wotw\\characters\\ku\\kuWings_prologueSpiritTreeCloseFlight.wav",
+                "Path": "SFX\\wotw\\characters\\ku\\kuWings_prologueSpiritTreeCloseFlight_BB78E7FA.wem"
+            },
+            {
+                "Id": "3071153",
+                "Language": "SFX",
+                "ShortName": "wotw\\cinematicsVignettes\\prologue\\entranceGateOpenStop_006.wav",
+                "Path": "SFX\\wotw\\cinematicsVignettes\\prologue\\entranceGateOpenStop_006_7BACA535.wem"
+            },
+            {
+                "Id": "3455187",
+                "Language": "SFX",
+                "ShortName": "wotw\\kwolok\\kwolokIntroEmergeGroundShake.wav",
+                "Path": "SFX\\wotw\\kwolok\\kwolokIntroEmergeGroundShake_7BACA535.wem"
+            },
+            {
+                "Id": "634666707",
+                "Language": "SFX",
+                "ShortName": "wotw\\kwolok\\LUI.wav",
+                "Path": "SFX\\wotw\\kwolok\\kwolokIntroEmergeGroundShake_7BACA535.wem"
+            }
+        ],
+        "SoundBanks": [
+            {
+                "Id": "3010489697",
+                "GUID": "{71C700F9-D890-4E59-8427-60A8EEE8C6C3}",
+                "Language": "SFX",
+                "ObjectPath": "\\SoundBanks\\BanksSubdivided\\characters\\bosses\\spiderBoss",
+                "ShortName": "spiderBoss",
+                "Path": "spiderBoss.bnk",
+                "ReferencedStreamedFiles": [
+                    {
+                        "Id": "62592096"
+                    },
+                    {
+                        "Id": "174640622"
+                    },
+                    {
+                        "Id": "262993437"
+                    },
+                    {
+                        "Id": "274474459"
+                    },
+                    {
+                        "Id": "283793534"
+                    },
+                    {
+                        "Id": "353488734"
+                    },
+                    {
+                        "Id": "491325004"
+                    },
+                    {
+                        "Id": "566716203"
+                    },
+                    {
+                        "Id": "569823142"
+                    },
+                    {
+                        "Id": "619302026"
+                    },
+                    {
+                        "Id": "639933909"
+                    },
+                    {
+                        "Id": "648711039"
+                    },
+                    {
+                        "Id": "691202968"
+                    },
+                    {
+                        "Id": "844408909"
+                    },
+                    {
+                        "Id": "922220535"
+                    },
+                    {
+                        "Id": "937810041"
+                    },
+                    {
+                        "Id": "950383200"
+                    },
+                    {
+                        "Id": "978401949"
+                    },
+                    {
+                        "Id": "995114180"
+                    },
+                    {
+                        "Id": "1012331407"
+                    },
+                    {
+                        "Id": "1045982197"
+                    },
+                    {
+                        "Id": "1055209275"
+                    }
+                ],
+                "IncludedMemoryFiles": [
+                    {
+                        "Id": "5920490",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_004_525CA79F.wem"
+                    },
+                    {
+                        "Id": "9966203",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "15226806",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "15664025",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "32968061",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_008.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_008_7BACA535.wem"
+                    },
+                    {
+                        "Id": "35298979",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "38207235",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "39325088",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "43500743",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_008.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_008_7BACA535.wem"
+                    },
+                    {
+                        "Id": "44930707",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "47680060",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "50207855",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "62592096",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossSpiderBreakWallVoice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossSpiderBreakWallVoice_1975E6FA.wem",
+                        "PrefetchSize": "7218"
+                    },
+                    {
+                        "Id": "64332364",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackChargeAnticVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackChargeAnticVoice_002_47B5B677.wem"
+                    },
+                    {
+                        "Id": "66748517",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossEscapeTopTrunkClawScrabbling.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossEscapeTopTrunkClawScrabbling_7BACA535.wem"
+                    },
+                    {
+                        "Id": "70212106",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLaserAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLaserAnticVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "75612047",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "77909573",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "79049634",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "88941639",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "89188940",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "90239392",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "90895471",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "96597596",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackeForwardAttackAnticLargeVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackeForwardAttackAnticLargeVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "98914591",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_008.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_008_7BACA535.wem"
+                    },
+                    {
+                        "Id": "103014475",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_011.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_011_7BACA535.wem"
+                    },
+                    {
+                        "Id": "109529082",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "116738776",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "122863427",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "125939753",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackTalonLeapEndAttackRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackTalonLeapEndAttackRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "136258251",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "150608284",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "161250074",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "161798634",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "166899536",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "174640622",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkA3.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkA3_7BACA535.wem",
+                        "PrefetchSize": "8384"
+                    },
+                    {
+                        "Id": "180861276",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "181978379",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_006.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "183305093",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "183418781",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "188833348",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "194147127",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "194968750",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "198098751",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_007.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "202016784",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "202853302",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "203426241",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_007.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "213395203",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "218652002",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001_1BACE790.wem"
+                    },
+                    {
+                        "Id": "221687264",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "230101784",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "244675776",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "251035029",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackChargeVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackChargeVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "252760491",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "253070021",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_006.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "258744718",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser2d_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser2d_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "261618985",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "262146140",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "262993437",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeated3.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeated3_7BACA535.wem",
+                        "PrefetchSize": "7708"
+                    },
+                    {
+                        "Id": "265563935",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "268220629",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "274474459",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedB.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedB_7BACA535.wem",
+                        "PrefetchSize": "8273"
+                    },
+                    {
+                        "Id": "276437940",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "277955264",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "278452355",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "283793534",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkA4.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkA4_7BACA535.wem",
+                        "PrefetchSize": "7728"
+                    },
+                    {
+                        "Id": "285022876",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "291894851",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "296395219",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveLoop.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveLoop_FB6C3713.wem"
+                    },
+                    {
+                        "Id": "302625940",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "303655963",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "306244321",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "312823783",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "319528877",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "321645676",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "322838271",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_010.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_010_7BACA535.wem"
+                    },
+                    {
+                        "Id": "324476671",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "329019871",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "333432110",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001_C3FF897A.wem"
+                    },
+                    {
+                        "Id": "335572138",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLaserCeilingAscend_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "338526013",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "341705559",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterLong_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterLong_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "348099234",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "348512778",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_009.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_009_7BACA535.wem"
+                    },
+                    {
+                        "Id": "349108958",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "352983328",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "353488734",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedA.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedA_7BACA535.wem",
+                        "PrefetchSize": "8218"
+                    },
+                    {
+                        "Id": "364651942",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "366909282",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "368591970",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "371017902",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "372584853",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "372609007",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "374993078",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "376892870",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "384718537",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "387245749",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "387916039",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossEscapeTopHitWall.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossEscapeTopHitWall_7BACA535.wem"
+                    },
+                    {
+                        "Id": "388474633",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "393703005",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "401329975",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_012.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_012_7BACA535.wem"
+                    },
+                    {
+                        "Id": "406641899",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_012.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_012_7BACA535.wem"
+                    },
+                    {
+                        "Id": "406903692",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "408604241",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_009.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_009_7BACA535.wem"
+                    },
+                    {
+                        "Id": "409396044",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "411034867",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "413064618",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackBite_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackBite_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "414969457",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "418651187",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "421065128",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "433187716",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackBite_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackBite_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "436739207",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "438484664",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "439829255",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "442610796",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "445464231",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_003.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "446627789",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapEndAttackRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapEndAttackRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "447957663",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackChargeAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackChargeAnticVoice_001_90450FC1.wem"
+                    },
+                    {
+                        "Id": "456289494",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "458343630",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "463322601",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpactPhase1Start.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpactPhase1Start_7BACA535.wem"
+                    },
+                    {
+                        "Id": "466461625",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "473776801",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "488914659",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "489438425",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossEscapeTopTrunkClawScrabbleFall.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossEscapeTopTrunkClawScrabbleFall_7BACA535.wem"
+                    },
+                    {
+                        "Id": "491265970",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "491325004",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeated4.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeated4_7BACA535.wem",
+                        "PrefetchSize": "7792"
+                    },
+                    {
+                        "Id": "494660008",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "494704566",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser2d_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser2d_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "495645107",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "499857322",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_008.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_008_7BACA535.wem"
+                    },
+                    {
+                        "Id": "500926159",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "507331748",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "511428952",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "514340005",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "519223700",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavyWebLayer_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "519645439",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "523653523",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "527235683",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteAnticVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "528736350",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "531893682",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_010.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_010_7BACA535.wem"
+                    },
+                    {
+                        "Id": "532738255",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackBite_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackBite_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "547327486",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "547643584",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSpitVoice_001_C0B6367E.wem"
+                    },
+                    {
+                        "Id": "559494637",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "559598523",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "560361580",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushAnticVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "563454703",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_006.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "566716203",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkB1.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkB1_7BACA535.wem",
+                        "PrefetchSize": "6962"
+                    },
+                    {
+                        "Id": "569823142",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeated1.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeated1_7BACA535.wem",
+                        "PrefetchSize": "7491"
+                    },
+                    {
+                        "Id": "574466389",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "578300924",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "583711271",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "588554423",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "593122165",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "609452913",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_014.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_014_7BACA535.wem"
+                    },
+                    {
+                        "Id": "611090887",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackTurnSwipeAttackSwipeAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackTurnSwipeAttackSwipeAnticVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "617202128",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "618865014",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackTripleSlamAttackShockwaveVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackTripleSlamAttackShockwaveVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "619302026",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBossRock.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBossRock_FB6C3713.wem",
+                        "PrefetchSize": "15475"
+                    },
+                    {
+                        "Id": "620183220",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "621089394",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation2d_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "628414596",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "629301479",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementLarge_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "632384627",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "633560785",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "633745961",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "637572741",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "639933909",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeated2.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeated2_7BACA535.wem",
+                        "PrefetchSize": "6966"
+                    },
+                    {
+                        "Id": "644646515",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackChargeVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackChargeVoice_001_E3F2C4CB.wem"
+                    },
+                    {
+                        "Id": "647344822",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "648711039",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedF.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedF_7BACA535.wem",
+                        "PrefetchSize": "9040"
+                    },
+                    {
+                        "Id": "651014964",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackeForwardAttackRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackeForwardAttackRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "653165140",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepHeavy_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "655213937",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveExplo_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "663282392",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "667071438",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "668686861",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "668747982",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossSpiderTransitionToAngryAVoice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossSpiderTransitionToAngryAVoice_7BACA535.wem"
+                    },
+                    {
+                        "Id": "679823457",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterLong_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterLong_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "691202968",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedC.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedC_7BACA535.wem",
+                        "PrefetchSize": "7420"
+                    },
+                    {
+                        "Id": "696417357",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossFallBodyImpact.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossFallBodyImpact_7BACA535.wem"
+                    },
+                    {
+                        "Id": "698626199",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "699363584",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackBite_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackBite_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "702185021",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_006.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "702407480",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "702862618",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepCenter_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "711421157",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "715018542",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\mvmt\\spiderBossMovementSmall_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "716712431",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeEffect_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "719560242",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "722491683",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "723632536",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackEarthquakeSweetener_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "727698040",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionLarge_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "733885821",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "737399983",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitVoice_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitVoice_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "746115713",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreepProjectileFly_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "749388177",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_004.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "762097178",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_008.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_008_7BACA535.wem"
+                    },
+                    {
+                        "Id": "767185541",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_002_4FE829E0.wem"
+                    },
+                    {
+                        "Id": "767739929",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "778025649",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBoss.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBoss_577C8937.wem"
+                    },
+                    {
+                        "Id": "778505522",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackTripleSlamAttackRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackTripleSlamAttackRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "780174560",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_002.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "783197026",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "796432652",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "807015920",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "813051480",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_007.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "821890973",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAcidCreep_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAcidCreep_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "822203993",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLightWebLayer_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "829790235",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "844408909",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkA1.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkA1_7BACA535.wem",
+                        "PrefetchSize": "7168"
+                    },
+                    {
+                        "Id": "845786510",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "849443817",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBossWood.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\movingLaserImpactPointMatkasChamberBossWood_FB6C3713.wem"
+                    },
+                    {
+                        "Id": "855084229",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "859125239",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_007.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "870220428",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "872864725",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "874230296",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackCallMinionsVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "876770467",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_001.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "878755494",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "885767649",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser2d_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser2d_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "896247388",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackBiteVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "896950497",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushEndAttackRecoveryVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushEndAttackRecoveryVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "899710452",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_005.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "909020716",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_006.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceEffort_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "911461804",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackSmushVoice_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "913294544",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardSwipeVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "918357189",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "919049097",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSpitAttackSpitVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSpitAttackSpitVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "920389638",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "922220535",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossReachedArena2Voice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossReachedArena2Voice_7BACA535.wem",
+                        "PrefetchSize": "7416"
+                    },
+                    {
+                        "Id": "922772410",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossSpiderTransitionToAngryBVoice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossSpiderTransitionToAngryBVoice_7BACA535.wem"
+                    },
+                    {
+                        "Id": "925233768",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSpitAttackSpitAnticVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSpitAttackSpitAnticVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "935787202",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLaserVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLaserVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "937147088",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_007.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_007_7BACA535.wem"
+                    },
+                    {
+                        "Id": "937810041",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkB3.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkB3_7BACA535.wem",
+                        "PrefetchSize": "7613"
+                    },
+                    {
+                        "Id": "938578079",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "943634437",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "949500705",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveEnd_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "950383200",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkB2.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkB2_7BACA535.wem",
+                        "PrefetchSize": "7166"
+                    },
+                    {
+                        "Id": "957299272",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundSmall_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "978401949",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossSpiderEnableDarknessVoice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossSpiderEnableDarknessVoice_9F90F6AB.wem",
+                        "PrefetchSize": "7495"
+                    },
+                    {
+                        "Id": "978420341",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_013.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_013_7BACA535.wem"
+                    },
+                    {
+                        "Id": "981573198",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_002.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\footsteps\\spiderBossFootstepLight_002_7BACA535.wem"
+                    },
+                    {
+                        "Id": "985488951",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_005.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "995114180",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraRetalkA2.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraRetalkA2_7BACA535.wem",
+                        "PrefetchSize": "8201"
+                    },
+                    {
+                        "Id": "998266972",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1001214935",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\attacks\\spiderBossAttackBite_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\attacks\\spiderBossAttackBite_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1003493326",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_003.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\bodyimpacts\\spiderBossAttackBodyImpact_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1005008362",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_006.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossHitReactionSmall_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1006037109",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_011.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossShockwaveSpike_011_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1012331407",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedE.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedE_7BACA535.wem",
+                        "PrefetchSize": "7624"
+                    },
+                    {
+                        "Id": "1020329993",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_001.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1021466082",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_001.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackGroundPoundLarge_001_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1028381997",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaserAnticipation_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1029213850",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossLaser2d_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossLaser2d_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1036841413",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_005.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_005_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1043502138",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_006.wav",
+                        "Path": "SFX\\characters\\bosses\\petrifiedOwl\\petrifiedOwlImpactLFEShort_006_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1045982197",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\moraDefeatedD.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\moraDefeatedD_7BACA535.wem",
+                        "PrefetchSize": "7803"
+                    },
+                    {
+                        "Id": "1055209275",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossDeathVoice.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossDeathVoice_A158BA82.wem",
+                        "PrefetchSize": "6904"
+                    },
+                    {
+                        "Id": "1059370195",
+                        "Language": "SFX",
+                        "ShortName": "wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_004.wav",
+                        "Path": "SFX\\wotw\\spiderBoss\\voice\\spiderBossVoiceChatterShort_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1065003386",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_003.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackLongLeapVoice_003_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1065435818",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_004.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossSwipeAntic_004_7BACA535.wem"
+                    },
+                    {
+                        "Id": "1073553020",
+                        "Language": "SFX",
+                        "ShortName": "characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_002.wav",
+                        "Path": "SFX\\characters\\bosses\\spiderBoss\\spiderBossAttackForwardVoice_002_7BACA535.wem"
+                    }
+                ]
+            }
+        ]
+    }
+}
