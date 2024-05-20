@@ -28,7 +28,7 @@ function wem2oggSync()
     // wem 文件总数
     const total = rs.nodes.length;
     // 字符串长度
-    const length = total.length;
+    const length = total.toFixed().length;
 
     const buildMsg = `building total with ${total}`
     running.runSave(buildMsg).printRow(buildMsg);

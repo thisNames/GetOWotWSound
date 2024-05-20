@@ -28,7 +28,7 @@ async function wem2oggAndPromise(cMax = 20)
     // wem 文件总数
     const total = rs.nodes.length;
     // 字符串长度
-    const length = total.length;
+    const length = total.toFixed().length;
 
     // 开始运行
     const buildMsg = `building total with ${total} cMax ${cMax}`;

@@ -21,17 +21,17 @@ process.on("exit", () =>
 
 if (process.argv.includes(cmd.wem) && process.argv.includes(cmd.promise))
 {
-    // wem to ogg promise
+    // wem to ogg promise 312690 ms
     wem2oggAndPromise(namespace.config.wemCMax);
 }
 else if (process.argv.includes(cmd.wem))
 {
-    // wem to ogg
+    // wem to ogg 503772ms
     wem2oggSync();
 }
 else if (process.argv.includes(cmd.bnk))
 {
-    // bnk to ogg sync
+    // bnk to ogg sync 1248491ms
     bnkExtractSync();
 }
 else if (process.argv.includes(cmd.process))
