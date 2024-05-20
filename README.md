@@ -93,6 +93,11 @@ xml
 
 但是如果是 bnk 文件解压出来的 wem 文件，再通过工具（ww2ogg.exe）将 wem 文件转换成 ogg 文件时成功率不是 100% 的。也就是说不会生成 ogg 文件（未解决）（除非使用其他工具进行解析，但是未找到）
 
+## 此项目使用到的核心工具：
+1. ww2ogg.exe
+2. bnkextr.exe
+3. revorb
+
 ## 配置文件
 ```properties
 #  wem bnk 文件目录（游戏目录）
@@ -192,6 +197,9 @@ wemCMax = 20
 <p align="center">
  <img src="./img/mua_.png" width="330">
 </p>
+
+
+###### 觉得有用的记得点点 `Star` !!!
 
 >(脸红.jpg)
 ---
