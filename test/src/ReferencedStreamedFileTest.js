@@ -8,7 +8,7 @@ const revorb = new namespace.Revorb(config.revorb);
 const bnk2wm = new namespace.Bnkextr(config.bnk2wem);
 
 // 注意：require 函数走的是相对路径
-const soundbanksInfo = require("../SoundbanksInfo.json");
+const soundbanksInfo = namespace.SoundbanksInfoJson;
 
 // -------------------------- wem to ogg -------------------------------
 // 实例对象
@@ -127,7 +127,7 @@ function testBuildSync(test = 10)
     //     console.debug(`fix complete ${count}`);
     // });
 }
-// testBuildSync(3000); // 476157ms
+testBuildSync(10); // 476157ms
 // 100 -> 13413ms
 
 // 异步测试
@@ -275,7 +275,7 @@ async function testBuildAndPromise(test)
     running.closeFiles();
 }
 
-testBuildAndPromise(3000); // 287082ms
+// testBuildAndPromise(3000); // 287082ms
 // 100 -> 11788ms exit
 
 // --------------------------- fix ogg one ------------------------------

@@ -29,16 +29,17 @@ else if (process.argv.includes(cmd.wem))
     // wem to ogg 503772ms
     wem2oggSync();
 }
+else if (process.argv.includes(cmd.bnk) && process.argv.includes(cmd.process))
+{
+    // TODO: 多进程 bnk to ogg
+    console.log(namespace.config.bnkProcess);
+}
 else if (process.argv.includes(cmd.bnk))
 {
     // bnk to ogg sync 1248491ms
     bnkExtractSync();
 }
-else if (process.argv.includes(cmd.process))
-{
-    // TODO: 多进程 bnk to ogg
-}
 else
 {
-    console.log("命令有误！！");
+    console.log("input error !!!");
 }

@@ -38,9 +38,16 @@ class Config extends ConfigLoader
 
         /**@type {Number} */
         this.wemCMax = this._wemCMax;
+
+        /**@type {Number} */
+        this.bnkProcess = this._bnkProcess;
     }
 
     //#region get config
+    get _bnkProcess()
+    {
+        return this.checkNumber("bnkProcess");
+    }
 
     get _wemCMax()
     {

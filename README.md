@@ -10,13 +10,11 @@
 ##### 声明
 本项目不会有一行删除文件，目录的代码。只会新建目录，生成文件（放心使用）
 
-严禁将本工具用于商业用途或通过倒卖牟利。
-
 <p align="center">
   <img src="./img/1.jpg" width="330">
 </p>
 
-解压出来的所有资源都属于游戏本身的财产，不允许进行售卖等商业行为。
+解压出来的所有资源都属于游戏本身的，不允许进行售卖.
 
 ## 执行逻辑
 读取 SoundbanksInfo.xml 或者 SoundbanksInfo.json（都一样的），因为使用 nodejs，所以选择读取 json 文件，因为 nodejs 内置了 json 解析器
@@ -93,12 +91,13 @@ xml
 
 但是如果是 bnk 文件解压出来的 wem 文件，再通过工具（ww2ogg.exe）将 wem 文件转换成 ogg 文件时成功率不是 100% 的。也就是说不会生成 ogg 文件（未解决）（除非使用其他工具进行解析，但是未找到）
 
-## 此项目使用到的核心工具：
-1. ww2ogg.exe
-2. bnkextr.exe
-3. revorb.exe
+## 此项目使用到的工具：
+1. `bnkextr.exe` 将 bnk 文件解压成 wem 文件。下载：https://github.com/eXpl0it3r/bnkextr/releases
+2. SoundMod 下载：http://www.mediafire.com/file/en3m7mctkfedeju/soundMod.zip/file
+    -  `SoundMod/tools/ww2ogg.exe` 将 wem 文件转换成 ogg
+    -  `SoundMod/tools/revorb.exe` 修复 ogg 文件
 
-## 配置文件
+## 配置文件 config.properties
 ```properties
 #  wem bnk 文件目录（游戏目录）
 # {youFolder}\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows
@@ -149,7 +148,6 @@ wemCMax = 20
     - Running 运行日志
 
 6. `wemCMax` 最大异步并发数（只对 wem 命令有效）
-    - 不建议太大，不然 cpu，磁盘占用了高（不要问我怎末知道的）
     - 建议 20 ~ 30 即可
 
 
@@ -178,22 +176,8 @@ wemCMax = 20
 
 同步运行，也就是一个一个文件解析分类，只有上一个完成，才会执行下一个。虽然慢了点，毕竟文件太多了（所有的运行完毕 20000 左右文件），实测大概需要 1000000 ms 左右（bnk）。400000 ~ 500000 ms（wem）。
 
-主要的耗时任务就是将 wem 解压和将 wem 转换成 ogg 文件。
+主要的耗时任务就是将 bnk 解压和将 wem 转换成 ogg 文件。
 
-为什么项目还没有完整就上线了？因为……
-
--
--
--
-
-今天是……
-
--
--
--
-
-
-####  520 快乐！！！
 <p align="center">
  <img src="./img/mua_.png" width="330">
 </p>
