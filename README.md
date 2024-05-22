@@ -131,7 +131,7 @@ logPath = log
 wemCMax = 20
 
 ```
-##### 一些配置说明：
+##### 一些配置说明：详细教程 look wiki
 1. `soundAssetsPath` wem bnk 资源文件目录（游戏音效资源目录）
 
 2. `buildPath` 保存的路径

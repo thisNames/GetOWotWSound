@@ -19,7 +19,7 @@ const psList = [];
  *  每次并发完成时调用
  *  参数：完成的结果集
  * 
- * nextBefore: Function
+ * next: Function
  *  下一次任务开启之前调用。
  *  也就是说在上一个任务开启后，是否继续开启下一个任务
  *  参数：当前已经执行的任务数量（索引）
@@ -71,7 +71,7 @@ async function runSync(options)
  *  每次并发完成时调用
  *  参数：完成的结果集
  * 
- * nextBefore: Function
+ * next: Function
  *  下一次任务开启之前调用。
  *  也就是说在上一个任务开启后，是否继续开启下一个任务
  *  参数：当前已经执行的任务数量（索引）
@@ -131,12 +131,12 @@ async function run(options)
 // 子进程的数量，也是最大并发的数量
 const cMax = 5;
 // 模拟任务的数量 
-const taskLength = 7;
+const taskLength = 100;
 
 // 先启动所有的子进程
 function initProcess()
 {
-    for (let i = 0; i < cMax; i++) { psList.push(fork("./1.js")) }
+    for (let i = 0; i < cMax; i++) { psList.push(fork("src/TaskTest.js")) }
 }
 initProcess();
 
@@ -161,7 +161,7 @@ runSync(options).then(v =>
     console.log("sync count:", v);
 });
 
-// 100 task 5 process time is 20365ms ms
+// 100 task(1000ms) 5 process time is 20365ms ms
 // 100 task(1500ms ~ 500ms) 5 process time is（测试次数3：20403、20154、20328）ms
 run(options).then(v =>
 {

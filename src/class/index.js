@@ -19,7 +19,7 @@ const Ww2ogg = require("./class/Ww2ogg");
 const Revorb = require("./class/Revorb");
 const ReferencedStreamedFile = require("./class/ReferencedStreamedFile");
 const IncludedMemoryFile = require("./class/IncludedMemoryFile");
-const ProcessPools = require("./class/ProcessPools");
+const ProcessSet = require("./class/ProcessSet");
 
 // tools
 const MessageCollect = require("./tools/MessageCollect");
@@ -31,10 +31,11 @@ const ww2ogg = new Ww2ogg(config.ww2ogg, config.www2ogg_packed_codebooks_aoTuV_6
 const revorb = new Revorb(config.revorb);
 const bnk2wm = new Bnkextr(config.bnk2wem);
 
-// json 文件
+
+// 公共资源
 const pt = require("node:path");
 
-// 注意：require 函数走的是相对路径
+// json 文件
 const SoundbanksInfoJson = require(pt.resolve(config.soundAssetsPath, "SoundbanksInfo.json"));
 
 // 暴露数据
@@ -51,7 +52,7 @@ module.exports = {
     Revorb,
     ReferencedStreamedFile,
     IncludedMemoryFile,
-    ProcessPools,
+    ProcessSet,
     MessageCollect,
     RunningLog,
     config,
