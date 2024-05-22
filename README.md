@@ -89,92 +89,36 @@ xml
 ## 说明
 通过工具（ww2ogg.exe）将本地的 wem 文件转换成 ogg 文件时，所有文件基本全部成功。重名的文件，也想保留的话建议把 id 打开，否则直接覆盖（好像覆不覆盖都一样╰（‵□′）╯）
 
-但是如果是 bnk 文件解压出来的 wem 文件，再通过工具（ww2ogg.exe）将 wem 文件转换成 ogg 文件时成功率不是 100% 的。也就是说不会生成 ogg 文件（未解决）（除非使用其他工具进行解析，但是未找到）
+但是如果是 bnk 文件解压出来的 wem 文件，再通过工具（ww2ogg.exe）将 wem 文件转换成 ogg 文件时成功率不是 100% 的。也就是说不会生成 ogg 文件（未解决）
 
 ## 此项目使用到的工具：
 1. `bnkextr.exe` 将 bnk 文件解压成 wem 文件。下载：https://github.com/eXpl0it3r/bnkextr/releases
 2. SoundMod 下载：http://www.mediafire.com/file/en3m7mctkfedeju/soundMod.zip/file
-    -  `SoundMod/tools/ww2ogg.exe` 将 wem 文件转换成 ogg
-    -  `SoundMod/tools/revorb.exe` 修复 ogg 文件
-
-## 配置文件 config.properties
-```properties
-#  wem bnk 文件目录（游戏目录）
-# {youFolder}\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows
-soundAssetsPath = soundAssetsPath
-
-# 保存路径
-buildPath = build
-
-# 是否在文件的前面 + id
-id = true
-
-# 是否创建分类文件夹，否则直接生成在 buildPath 目录下
-newType = true
-
-# ww2ogg.exe 文件路径
-ww2ogg = ww2ogg.exe
-
-# ww2ogg.exe 的 SoundMod/packed_codebooks_aoTuV_603.bin 文件路径
-www2ogg_packed_codebooks_aoTuV_603 = packed_codebooks_aoTuV_603.bin
-
-# revorb.exe 文件路径
-revorb = revorb.exe
-
-# bnkextr.exe 文件路径
-bnk2wem = bnkextr.exe
-
-# 日志保存目录
-logPath = log
-
-# 最大异步并发数（只对 wem 命令有效）
-wemCMax = 20
-
-```
-##### 一些配置说明：详细教程 look wiki
-1. `soundAssetsPath` wem bnk 资源文件目录（游戏音效资源目录）
-
-2. `buildPath` 保存的路径
-
-3. `id` 不加 id，重名的文件会覆盖
-
-4. `newType` 新建分类目录，否则直接堆在 buildPath 下
-
-5. `logPath` 日志保存路径。会有 5 个日志文件。
-    - Success 成功的日志
-    - successDetail 成功的详细日志
-    - Failing 失败的日志
-    - FailingDetail 失败的详细日志
-    - Running 运行日志
-
-6. `wemCMax` 最大异步并发数（只对 wem 命令有效）
-    - 建议 20 ~ 30 即可
-
+    -  `SoundMod/tools/ww2ogg.exe`
+    -  `SoundMod/tools/revorb.exe` 
+    -  `SoundMod/tools/packed_codebooks_aoTuV_603.bin`
 
 
 ## 运行
-##### 获取 wem 
+##### 获取 wem（音频）
 1. 支持同步运行
 2. 支持异步运行，允许最大任务数量 20（默认）。（太多会导致 cpu、磁盘占用率高）
 3. 如果不着急可以使用同步，这样不会占用太多系统资源
 
-##### 获取 bnk
+##### 获取 bnk（音效）
 1. 支持同步运行
-3. 多进程运行（还在开发，测试中）
-3. 着急也没用，因为还未开发出来。。。
 
 ##### 命令
-1. `wem` 获取 wem 到 ogg 文件
+1. `wem` 获取 wem 到 ogg 文件（音频）
 
-2. `wem promise` 获取 wem 到 ogg 文件，异步
+2. `wem promise` 获取 wem 到 ogg 文件，异步（音频）
 
-3. `bnk` bnk 文件获取到 ogg 文件
+3. `bnk` bnk 文件获取到 ogg 文件（音效）
 
-其实写这个工具只是为了获取到这个音频 `completeQuestStinger.wav` </>
-
+#### 详细看 wiki
 ---
 
-同步运行，也就是一个一个文件解析分类，只有上一个完成，才会执行下一个。虽然慢了点，毕竟文件太多了（所有的运行完毕 20000 左右文件），实测大概需要 1000000 ms 左右（bnk）。400000 ~ 500000 ms（wem）。
+同步运行，也就是一个一个文件解析分类，只有上一个完成，才会执行下一个。虽然慢了点，毕竟文件太多了（所有的运行完毕会生成 20000 左右文件），实测大概需要 1000000 ms 左右（bnk）。400000 ~ 500000 ms（wem）。
 
 主要的耗时任务就是将 bnk 解压和将 wem 转换成 ogg 文件。
 
