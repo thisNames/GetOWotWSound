@@ -91,7 +91,7 @@ xml
 ### 运行配置说明
 数值参数都移植至命令参数，配置文件中只包含静态配置（v2.0.0）
 
-### 详细看 [wiki](wiki.md)
+### 详细看 [wiki.md](https://github.com/thisNames/GetOWotWSound/blob/master/wiki.md) 、[wiki](https://github.com/thisNames/GetOWotWSound/wiki)
 
 ---
 ## 结束 END
