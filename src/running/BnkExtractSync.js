@@ -7,8 +7,14 @@
 
 const namespace = require("../class");
 
-// 同步
-function buildSync()
+/**
+ * 同步
+ * @param {namespace.RunOption} option
+ * @deprecated 请使用 BnkExtractSyncTask.js
+ * @description 开始执行：bnk -->  wem --> ogg
+ * @version v1.0.0
+ */
+function buildSync(option)
 {
     const { SoundBanksInfo } = namespace.SoundbanksInfoJson;
 
@@ -24,8 +30,13 @@ function buildSync()
     // bnk 字符串长度
     const bnkTotalLength = bnkTotal.toFixed().length;
 
-    for (let i = 0; i < bnkTotal; i++)
+    // 控制长度
+    const originExecuter = option.executer;
+    const length = Math.min(bnkTotal, option.task === "ori" ? bnkTotal : option.task);
+
+    for (let i = 0; i < length; i++)
     {
+        option.executer = originExecuter;
         // 组装数据
 
         // 获取一个 SoundBank
@@ -78,7 +89,7 @@ function buildSync()
         wemTotal += wem.wemFilePathList.length;
 
         // log
-        const startBuildBeforeMsg = `build [${ShortName}] in ${bnkCurrentNumber} total with ${fileTotal} wem is ${wemTotal}`;
+        const startBuildBeforeMsg = `build [${ShortName}] in ${bnkCurrentNumber} total with ${fileTotal} wem is ${wemTotal}; executer ${option.executer}`;
         running.runSave(startBuildBeforeMsg).printRow(startBuildBeforeMsg);
         running.runSave(running.printLine());
 
@@ -92,7 +103,7 @@ function buildSync()
             running.logTask(value.done, line, value);
             running.printRow(line);
             value.done && wemToOggSuccess++;
-            return true;
+            return option.executer === "ori" ? true : --option.executer > 0;
         });
 
         // log

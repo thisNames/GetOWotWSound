@@ -1,4 +1,4 @@
-const Config = require("../model/Config");
+const Config = require("../option/Config");
 
 const Ww2ogg = require("../class/Ww2ogg");
 const Revorb = require("../class/Revorb");

@@ -36,22 +36,14 @@ class Config extends ConfigLoader
         /**@type {String} */
         this.logPath = this._logPath;
 
-        /**@type {Number} */
-        this.wemCMax = this._wemCMax;
-
-        /**@type {Number} */
-        this.bnkProcess = this._bnkProcess;
+        /**@type {String} */
+        this.soundbanksInfo = this._soundbanksInfo;
     }
 
     //#region get config
-    get _bnkProcess()
+    get _soundbanksInfo()
     {
-        return this.checkNumber("bnkProcess");
-    }
-
-    get _wemCMax()
-    {
-        return this.checkNumber("wemCMax");
+        return this.toAbsPath(this.checkKey("soundbanksInfo"));
     }
 
     get _logPath()

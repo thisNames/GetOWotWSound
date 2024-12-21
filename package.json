@@ -1,16 +1,26 @@
 {
   "name": "getowotwsound",
-  "version": "1.0.0",
-  "description": "",
-  "main": "config.js",
+  "version": "2.0.0",
+  "description": "批量获取 Ori and the Will of the Wisps 游戏内的音频资源文件",
+  "main": "src/index.js",
+  "module": "CommonJS",
   "scripts": {
-    "test": "cd ./test && node index.js && cd ..",
-    "build": "cd ./src && node index.js && cd .."
+    "test": "node ./test/index.js",
+    "start": "node ./src/index.js",
+    "build": "node ./build/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ori",
+    "批处理",
+    "Ori and the Will of the Wisps",
+    "nodejs",
+    "javascripts"
+  ],
+  "author": "一只橙叙原、立秋枫林晚",
+  "authorBilibiliSpaces": "https://space.bilibili.com/1684627521、https://space.bilibili.com/701443748",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.19.33"
+    "@types/node": "^18.19.33",
+    "@vercel/ncc": "^0.38.1"
   }
 }

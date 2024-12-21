@@ -37,10 +37,10 @@ class ConfigLoader
     }
 
     /**
-   * 检测 key
-   * @param {String} key key
-   * @returns {String} 
-   */
+    * 检测 key
+    * @param {String} key key
+    * @returns {String} 
+    */
     checkKey(key)
     {
         if (this.#config[key] === undefined || this.#config[key] === "")

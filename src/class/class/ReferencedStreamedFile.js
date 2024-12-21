@@ -1,4 +1,4 @@
-const Config = require("../model/Config");
+const Config = require("../option/Config");
 const AudioItem = require("../model/AudioItem");
 
 const FileItem = require("../lib/FileItems");

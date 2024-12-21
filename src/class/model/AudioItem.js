@@ -5,6 +5,21 @@ const pt = require("node:path");
  */
 class AudioItem
 {
+    // 值为 FID 的种子
+    static FID_GEN = 10000;
+    // 长度为 FID 的长度
+    static __FID_LENGTH = AudioItem.FID_GEN.toFixed().length;
+
+    /**
+    *  获取一个 id
+    *  @returns {String}
+    */
+    static buildFID()
+    {
+        const sid = Math.trunc(Math.random() * AudioItem.FID_GEN).toString(16);
+        return sid.padEnd(AudioItem.__FID_LENGTH, "f") + Date.now();
+    }
+
     /**
      * @param {String} Id 
      * @param {String} Language 
@@ -13,7 +28,8 @@ class AudioItem
      */
     constructor(Id, Language, ShortName, Path)
     {
-        this.Id = Id;
+        this.Id = AudioItem.buildFID().concat("_", Id);
+        // this.Id = Id;
         this.Language = Language;
         this.ShortName = ShortName;
         this.Path = Path;

@@ -3,7 +3,13 @@
  */
 const namespace = require("../class");
 
-async function wem2oggAndPromise(cMax = 20)
+/**
+ * 执行（单线程，异步）
+ * @description 开始执行：wem -> ogg
+ * @param {namespace.AsyncRunOption} option
+ * @version v1.0.0
+ */
+async function wem2oggAndPromise(option)
 {
     // -------------------------- wem to ogg -------------------------------
     // 实例对象
@@ -11,7 +17,7 @@ async function wem2oggAndPromise(cMax = 20)
     rs.setTools(namespace.ww2ogg, namespace.revorb, namespace.bnk2wm);
 
     // 运行日志类
-    const running = new namespace.RunningLog("wem_to_ogg", namespace.config.logPath);
+    const running = new namespace.RunningLog("wem_to_ogg_async", namespace.config.logPath);
 
     // ogg 成功数
     let oggSuccess = 0;
@@ -31,14 +37,14 @@ async function wem2oggAndPromise(cMax = 20)
     const length = total.toFixed().length;
 
     // 开始运行
-    const buildMsg = `building total with ${total} cMax ${cMax}`;
+    const buildMsg = `building total with ${total}; executer ${option.executer}; cMax ${option.aMax}`;
     running.runSave(buildMsg).printRow(buildMsg);
 
     // 解析 wem to ogg（异步）
-    await rs.buildAndPromise(cMax, {
+    await rs.buildAndPromise(option.aMax, {
         next(value)
         {
-            return true;
+            return option.executer === "ori" ? true : (--option.executer > 0);
         },
         taskList(tasks)
         {

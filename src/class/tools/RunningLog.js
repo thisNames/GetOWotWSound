@@ -1,5 +1,5 @@
 const MessageCollect = require("./MessageCollect");
-const Config = require("../model/Config");
+const Config = require("../option/Config");
 const pt = require("node:path");
 const fs = require("node:fs");
 

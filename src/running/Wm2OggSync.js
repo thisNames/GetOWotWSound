@@ -3,7 +3,13 @@
  */
 const namespace = require("../class");
 
-function wem2oggSync()
+/**
+ * 执行（单线程，同步）
+ * @param {namespace.RunOption} option
+ * @description 开始执行：wem -> ogg
+ * @version v1.0.0
+ */
+function wem2oggSync(option)
 {
     // -------------------------- wem to ogg -------------------------------
     // 实例对象
@@ -30,7 +36,8 @@ function wem2oggSync()
     // 字符串长度
     const length = total.toFixed().length;
 
-    const buildMsg = `building total with ${total}`
+    // 开始运行
+    const buildMsg = `build total with ${total}; executer ${option.executer}`
     running.runSave(buildMsg).printRow(buildMsg);
 
     // 解析 wem to ogg（同步）
@@ -46,7 +53,7 @@ function wem2oggSync()
         running.logTask(value.done, line, value);
         running.printRow(line);
 
-        return true;
+        return option.executer === "ori" ? true : (--option.executer > 0);
     });
 
     const fixMsg = `fixing total with ${total}`;
@@ -91,7 +98,7 @@ function wem2oggSync()
     const fixCr = (fixSuccess / total * 100).toFixed(2) + "%";
 
     const oggCrateMsg = "".concat("oggCrate: " + oggCr);
-    const fixCrateMsg = "".concat("FixCrate: " + fixCr);
+    const fixCrateMsg = "".concat("fixCrate: " + fixCr);
 
     running.runSave(oggCrateMsg).printRow(oggCrateMsg);
     running.runSave(fixCrateMsg).printRow(fixCrateMsg);

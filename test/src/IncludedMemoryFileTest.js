@@ -7,7 +7,6 @@ const revorb = new namespace.Revorb(config.revorb);
 const bnk2wm = new namespace.Bnkextr(config.bnk2wem);
 
 // 注意：require 函数走的是相对路径 __filename
-const { SoundBanksInfo } = require("../SoundbanksInfo.json");
 
 function testBnkToWem()
 {
@@ -198,17 +197,87 @@ function testBuildSync(test)
     }
 }
 
-function testBuild(max)
+// 多进程测试
+function testBuildProcess(test)
 {
-    const length = SoundBanksInfo.SoundBanks.length;
-    for (let i = 0; i < length; i++)
+    const { SoundBanksInfo } = namespace.SoundbanksInfoJson;
+
+    const running = new namespace.RunningLog("wem_process_log", namespace.config.logPath);
+    const ps = new namespace.ProcessSet(3, "../src/BnkTask.js");
+
+    // bnk 文件总数
+    const bnkTotal = SoundBanksInfo.SoundBanks.length;
+
+    // wem 文件总数
+    let wemTotal = 0;
+
+    // wem to ogg 成功的
+    let wemToOggSuccess = 0;
+
+    // log
+    const bnkTotalMsg = `bnk with ${bnkTotal}`;
+    running.runSave(bnkTotalMsg).printRow(bnkTotalMsg);
+
+    // 启动子进程
+    ps.initProcess(function (pid)
     {
-        let bnkCurrentNumber = `${length}/${i + 1}`;
+        const cpMsg = `cp ${pid} init`;
+        running.runSave(cpMsg).printRow(cpMsg);
+    });
 
-        if (i > max) break;
+    // 组装任务数据
+    ps.taskList = SoundBanksInfo.SoundBanks.map((soundBank, index) => new namespace.BnkSendData(bnkTotal, soundBank, index));
 
-        const ss = SoundBanksInfo.SoundBanks[i];
+    const callbacks = {
+        next(value)
+        {
+            const taskMsg = `current task is ${value}`;
+            running.runSave(taskMsg).printRow(taskMsg);
+            return --test > 0;
+        },
+        complete(_value)
+        {
+            /** @type {namespace.BnkAcceptData} */
+            const value = _value;
+            wemTotal += value.wemTotal;
+            wemToOggSuccess += value.wemToOggSuccess;
+
+            const o = `current wem count: ${wemTotal}; wem to ogg success: ${wemToOggSuccess}`;
+            running.runSave(o).printRow(o);
+
+        }
     }
+
+    // 同步 61074ms
+    // 异步 50565ms
+    ps.running(callbacks, false).then(count =>
+    {
+        // 统计数据
+
+        // 执行的数量
+        const countMsg = `count: ${count}`;
+        running.runSave(countMsg).printRow(countMsg);
+
+        running.runSave(running.printLine());
+        // 子进程 kill
+        const killSMsg = `kills: ${ps.kills().toString()}`;
+        running.runSave(killSMsg).printRow(killSMsg);
+
+        running.runSave(running.printLine());
+        // 完成率 wem to ogg
+        const w2o = (wemToOggSuccess / wemTotal * 100).toFixed() + "%";
+        const w2oMsg = "crate: ".concat(w2o);
+        const wemTotalMsg = "wem total: ".concat(wemTotal);
+        const wemToOggSuccessMsg = "wem to ogg success: ".concat(wemToOggSuccess);
+
+        running.runSave(wemTotalMsg).printRow(wemTotalMsg);
+        running.runSave(wemToOggSuccessMsg).printRow(wemToOggSuccessMsg);
+        running.runSave(w2oMsg).printRow(w2oMsg);
+
+        running.runSave(running.printLine());
+
+        running.closeFiles();
+    });
 }
 
 /**
@@ -217,6 +286,8 @@ function testBuild(max)
  *  处理所有的 bnk （123 - 3），>1w 个 wem      用时：856849ms exit
  */
 // testBuildSync(1); // 211023ms
-testBuildSync(125); // 1027960ms exit
+// testBuildSync(125); // 1027960ms exit
 
 // testBuild(124); // 28463ms exit
+
+testBuildProcess(10);

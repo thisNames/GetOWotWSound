@@ -1,4 +1,4 @@
-const Config = require("./Config");
+const Config = require("../option/Config");
 const SoundBank = require("./SoundBank");
 const FileItem = require("../lib/FileItems");
 
