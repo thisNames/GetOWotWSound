@@ -7,7 +7,7 @@
   "scripts": {
     "test": "node ./test/index.js",
     "start": "node ./src/index.js",
-    "build": "node ./build/index.js"
+    "build": "node ./build/index.js -f -d -s"
   },
   "keywords": [
     "ori",

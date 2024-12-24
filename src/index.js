@@ -19,7 +19,7 @@ let help = `commands:
     wem executer <n/ori> async <n>      # 获取音频资源 .wem（异步、同步并发）
     wem list                            # 获取 wem 文件的数量
     bnk executer <n/ori> task <n/ori>                            # 获取音效资源 .bnk（单进程、同步）
-    bnk executer <n/ori> task <n/ori> cps <n> async <true/false> # 获取音效资源 .bnk（多进程、异步）beta
+    bnk executer <n/ori> task <n/ori> cps <n> async <true/false> # 获取音效资源 .bnk（多进程、同步、异步）beta
     bnk list                                                     # 获取 bnk 文件的数量
     ori     # 打印一个 ori
     help    # 帮助
