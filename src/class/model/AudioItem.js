@@ -28,8 +28,8 @@ class AudioItem
      */
     constructor(Id, Language, ShortName, Path)
     {
-        this.Id = AudioItem.buildFID().concat("_", Id);
-        // this.Id = Id;
+        this.FID = AudioItem.buildFID().concat("_", Id);
+        this.Id = Id;
         this.Language = Language;
         this.ShortName = ShortName;
         this.Path = Path;

@@ -22,7 +22,8 @@ class IncludedMemoryFile extends FileItem
         super(config, SoundBank);
         this.SoundBank = SoundBank;
 
-        const folderName = "".concat(this.config.id ? this.SoundBank.Id + "_" : "", this.SoundBank.ShortName, "_wem");
+        // const folderName = "".concat(this.config.id ? this.SoundBank.Id + "_" : "", this.SoundBank.ShortName, "_wem");
+        const folderName = "".concat(this.config.id ? this.SoundBank.FID + "_" : "", this.SoundBank.ShortName, "_wem");
 
         /**
          * bnk 文件解压后生成得路径

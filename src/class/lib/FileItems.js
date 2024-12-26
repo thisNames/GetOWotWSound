@@ -85,7 +85,8 @@ class FileItem
         let targetDir = null;
         if (this.config.id)
         {
-            const idBfName = audioItem.Id.concat("_", audioItem.baseShortName());
+            // const idBfName = audioItem.Id.concat("_", audioItem.baseShortName());
+            const idBfName = audioItem.FID.concat("_", audioItem.baseShortName());
             targetDir = audioItem.appendExtName(pt.join(audioItem.getShortNameToTypeName(), idBfName));
         } else
         {
