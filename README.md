@@ -92,6 +92,7 @@ xml
 数值参数都移植至命令参数，配置文件中只包含静态配置（v2.0.0）
 
 ### 详细看 [wiki.md](https://github.com/thisNames/GetOWotWSound/blob/master/wiki.md) 、[wiki](https://github.com/thisNames/GetOWotWSound/wiki)
+### 简单使用教程视频：https://www.bilibili.com/video/BV1RSCxY2Euj
 
 ---
 ## 结束 END
