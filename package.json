@@ -2,7 +2,7 @@
   "name": "getowotwsound",
   "version": "2.0.0",
   "description": "批量获取 Ori and the Will of the Wisps 游戏内的音频资源文件",
-  "main": "src/index.js",
+  "main": "index.js",
   "module": "CommonJS",
   "scripts": {
     "test": "node ./test/index.js",
