@@ -222,7 +222,7 @@ function printExamples(meta, params, Logger)
  */
 function main(params, meta, __this, taskName)
 {
-    const Logger = new LoggerSaver(taskName, meta.cwd, meta.singleMap.isSaveLog.include);
+    const Logger = new LoggerSaver(taskName, meta.cwd, false);
 
     let hIndex = process.argv.findIndex(key => key == meta.key);
     let __params = [...new Set(process.argv.slice(hIndex + 1, process.argv.length))];
