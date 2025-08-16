@@ -7,10 +7,16 @@ const ori = require("./ori/command");
 // 显示可选项
 const options = require("./options/command");
 
+// 搜索
+const search = require("./search/command");
+
+// 树摇
+const treeShake = require("./tree_shake/command");
+
 // 提取 StreamedFiles 文件
 const wemExtract = require("./streamed_files/command");
 
 // 提取 SoundBanks 文件
 const bnkExtract = require("./sound_banks/command");
 
-module.exports = [config, options, wemExtract, bnkExtract, ori];
+module.exports = [config, options, search, wemExtract, bnkExtract, treeShake, ori];

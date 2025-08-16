@@ -30,11 +30,14 @@ class DefaultOptions
         /** @type {String} 启用 多线程 */
         this.enableThread = false;
 
+        /** @type {Boolean} 启用 检索忽略大小写 */
+        this.enIgnoreCase = false;
+
         /** @type {String} 启用 生成 ID */
         this.enableId = true;
 
         /** @type {String} 启用 分类文件夹 */
-        this.enableenableCreateTypeDir = true;
+        this.enableCreateTypeDir = true;
         //#endregion
     }
 }

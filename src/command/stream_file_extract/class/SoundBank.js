@@ -19,7 +19,7 @@ class SoundBank
         this.Path = Path;
 
         /** @type {Array<StreamedFile>} SoundBank 资源列表 */
-        this.StreamedFiles = [];
+        this.IncludedMemoryFiles = [];
     }
 
     /**

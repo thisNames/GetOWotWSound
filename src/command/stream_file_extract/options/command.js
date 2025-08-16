@@ -25,7 +25,7 @@ const setLogPath = new ParamsMapping("log", {
 /** 设置异步并发的数量 */
 const setAsyncNumber = new ParamsMapping("an", {
     key: "asyncNumber",
-    description: "设置异步并发数量 asyncNumber = <[2, 1024]>",
+    description: "设置异步并发数量 asyncNumber = <[2, 200]>",
     defaults: [8],
     ...template
 });
@@ -42,7 +42,7 @@ const setThreadNumber = new ParamsMapping("tn", {
 const enableAsync = new ParamsMapping("ea", {
     key: "enableAsync",
     description: "启用异步 enAsync = <[true, t]>",
-    defaults: ["t"],
+    defaults: ["f"],
     ...template
 });
 
@@ -50,7 +50,7 @@ const enableAsync = new ParamsMapping("ea", {
 const enableThread = new ParamsMapping("et", {
     key: "enableThread",
     description: "启用多线程 enableThread = <[true, t]>",
-    defaults: ["t"],
+    defaults: ["f"],
     ...template
 });
 
@@ -63,10 +63,18 @@ const enableId = new ParamsMapping("eid", {
 });
 
 /** 启用分类文件夹 */
-const enableenableCreateTypeDir = new ParamsMapping("etp", {
-    key: "enableenableCreateTypeDir",
-    description: "创建分类文件夹 enableenableCreateTypeDir = <[true, t]>",
+const enableCreateTypeDir = new ParamsMapping("etp", {
+    key: "enableCreateTypeDir",
+    description: "创建分类文件夹 enableCreateTypeDir = <[true, t]>",
     defaults: ["t"],
+    ...template
+});
+
+/** 启用 检索忽略大小写 */
+const enIgnoreCase = new ParamsMapping("eic", {
+    key: "enIgnoreCase",
+    description: "检索忽略大小写 enIgnoreCase = <[true, t]>",
+    defaults: ["f"],
     ...template
 });
 
@@ -84,7 +92,8 @@ const options = new ParamsMapping("opt", {
         enableAsync,
         enableThread,
         enableId,
-        enableenableCreateTypeDir
+        enableCreateTypeDir,
+        enIgnoreCase
     ]
 });
 
@@ -102,7 +111,7 @@ options.addTask("options", () => require("./index").printOptions());
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setNumber(e.key, params[0])));
 
 // 设置布尔值
-[enableAsync, enableThread, enableId, enableenableCreateTypeDir]
+[enableAsync, enableThread, enableId, enableCreateTypeDir, enIgnoreCase]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setBoolean(e.key, params[0])));
 

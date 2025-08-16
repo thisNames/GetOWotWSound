@@ -47,41 +47,51 @@ function totalDefWemFiles()
     }
 }
 
-totalWemFiles();
-totalDefWemFiles();
 
-console.log(wemFiles.length, defWemFiles.length);
-console.log("并集:", sumSet.size);
+function init()
+{
+    totalWemFiles();
+    totalDefWemFiles();
 
-const defWemFilesSet = new Set(defWemFiles);
-const diff1 = wemFiles.filter(id => !defWemFilesSet.has(id));
+    console.log(wemFiles.length, defWemFiles.length);
+    console.log("并集:", sumSet.size);
 
-const wemFilesSet = new Set(wemFiles);
+    const defWemFilesSet = new Set(defWemFiles);
+    const diff1 = wemFiles.filter(id => !defWemFilesSet.has(id));
 
-const diff2 = defWemFiles.filter(id => !wemFilesSet.has(id));
+    const wemFilesSet = new Set(wemFiles);
 
-console.log("差集1:", diff1.length);
-console.log("差集2:", diff2.length);
+    const diff2 = defWemFiles.filter(id => !wemFilesSet.has(id));
 
-
-const interSet1 = wemFiles.filter((value) => defWemFilesSet.has(value));
-const interSet2 = defWemFiles.filter((value) => wemFilesSet.has(value));
-
-console.log("交集1:", interSet1.length);
-console.log("交集2:", interSet2.length);
+    console.log("差集1:", diff1.length);
+    console.log("差集2:", diff2.length);
 
 
-/**
- *  2425 2272
- *  并集: 2425
- *  差集1: 153
- *  差集2: 0
- *  交集1: 2272
- *  交集2: 2272
- *  51 ms
- */
+    const interSet1 = wemFiles.filter((value) => defWemFilesSet.has(value));
+    const interSet2 = defWemFiles.filter((value) => wemFilesSet.has(value));
 
-diff1.forEach(id => console.log(id));
+    console.log("交集1:", interSet1.length);
+    console.log("交集2:", interSet2.length);
+
+
+    /**
+     *  2425 2272
+     *  并集: 2425
+     *  差集1: 153
+     *  差集2: 0
+     *  交集1: 2272
+     *  交集2: 2272
+     *  51 ms
+     */
+
+    diff1.forEach(id => console.log(id));
+}
+
+
+const json = require("F:\\Games\\SteamF\\steamapps\\common\\Ori and the Will of the Wisps\\oriwotw_Data\\StreamingAssets\\Audio\\GeneratedSoundBanks\\Windows\\SoundbanksInfo.json");
+
+console.log(json.SoundBanksInfo.StreamedFiles.length);
+console.log(json.SoundBanksInfo.SoundBanks.length);
 
 
 console.log(Date.now() - s, "ms");

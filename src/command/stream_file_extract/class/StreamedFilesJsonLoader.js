@@ -12,17 +12,38 @@ class SoundBanksInfoJsonLoader
     /**
      *  @param {String}  soundBanksInfoJsonFilePath  SoundBanksInfo.json 文件路径
      */
-    constructor(soundBanksInfoJsonFilePath)
+    constructor(soundBanksInfoJsonFilePath = "")
     {
         /** @type {String} SoundBanksInfo.json 文件路径 */
-        this.soundBanksInfoJsonFilePath = soundBanksInfoJsonFilePath;
+        this.soundBanksInfoJsonFilePath = "";
 
+        /** @type {Number} StreamedFile 文件个数 */
+        this.streamedFileCount = 0;
 
-        /** @type {String} 加载器名称 */
-        this.__loaderName = "SoundBanksInfoJsonLoader";
+        /** @type {Number} SoundBank 文件个数 */
+        this.soundBankCount = 0;
 
-        /** @type {String} 读取 SoundBanksInfo.json 文件后的名字 */
-        this.__sbiJsonName = pt.basename(this.soundBanksInfoJsonFilePath);
+        /** @type {Number} SoundBank 中的 SoundBankStreamedFile 文件个数 */
+        this.soundBankStreamedFileCount = 0;
+
+        /** @type {Object} 缓存 */
+        this.__cache = null;
+
+        this.setSoundBanksInfoJsonFilePath(soundBanksInfoJsonFilePath);
+    }
+
+    /**
+     *  设置 SoundBanksInfo.json 文件路径
+     *  @param {String} path
+     *  @returns {void}
+     */
+    setSoundBanksInfoJsonFilePath(path)
+    {
+        if (this.soundBanksInfoJsonFilePath === path) return;
+
+        this.soundBanksInfoJsonFilePath = path;
+
+        this.clearCache();
     }
 
     /**
@@ -43,20 +64,25 @@ class SoundBanksInfoJsonLoader
     __loaderSoundBanksInfo()
     {
         // 没用这样的文件
-        if (!this.__checkFileExists()) throw new Error(`${this.__loaderName}: No such file => ${this.__sbiJsonName}`);
+        if (!this.__checkFileExists()) throw new Error(`Exists: No such file [${this.soundBanksInfoJsonFilePath}]`);
 
         try
         {
-            return require(this.soundBanksInfoJsonFilePath);
+            if (this.__cache) return this.__cache;
+
+            this.__cache = require(this.soundBanksInfoJsonFilePath);
+
+            return this.__cache;
         } catch (error)
         {
             // 读取错误
-            throw new Error(`${this.__loaderName}: Error while reading: ${this.__sbiJsonName} => ${error.message || "Unknown error"}`);
+            throw new Error(`Require: ${error.message || "Error"} [${this.soundBanksInfoJsonFilePath}]`);
         }
     }
 
     /**
      *  加载 SoundBanksInfo.json 文件中的 StreamedFiles 配置
+     *  @description json?.SoundBanksInfo?.StreamedFiles;
      *  @returns {Array<StreamedFile>} 读取后的 StreamedFile 集合
      *  @throws { Error }  文件结构错误
      */
@@ -66,7 +92,7 @@ class SoundBanksInfoJsonLoader
         let streamedFiles = json?.SoundBanksInfo?.StreamedFiles;
 
         // 数据结构错误
-        if (!Array.isArray(streamedFiles)) throw new Error(`${this.__loaderName}: ${this.__sbiJsonName} -> [SoundBanksInfo.StreamedFiles] field is not an array`);
+        if (!Array.isArray(streamedFiles)) throw new Error(`loaderStreamedFiles: [SoundBanksInfo.StreamedFiles] field is not an array`);
 
         const listStreamedFile = [];
 
@@ -79,6 +105,7 @@ class SoundBanksInfoJsonLoader
             if (!item.Id || !item.ShortName) continue;
 
             listStreamedFile.push(new StreamedFile(item.Id, item.ShortName, "StreamedFiles"));
+            this.streamedFileCount++;
         }
 
         // 释放内存
@@ -90,7 +117,8 @@ class SoundBanksInfoJsonLoader
 
     /**
      *  加载 SoundBanksInfo.json 文件中的 SoundBanks 配置
-     *  @returns {Array<StreamedFile>} 读取后的 SoundBank 集合
+     *  @description json?.SoundBanksInfo?.SoundBanks
+     *  @returns {Array<SoundBank>} 读取后的 SoundBank 集合
      *  @throws { Error }  文件结构错误
      */
     loaderSoundBanks()
@@ -99,7 +127,7 @@ class SoundBanksInfoJsonLoader
         let soundBanks = json?.SoundBanksInfo?.SoundBanks;
 
         // 数据结构错误
-        if (!Array.isArray(soundBanks)) throw new Error(`${this.__loaderName}: SoundBanksInfo.json -> [SoundBanksInfo.SoundBanks] field is not an array`);
+        if (!Array.isArray(soundBanks)) throw new Error(`loaderSoundBanks: [SoundBanksInfo.SoundBanks] field is not an array`);
 
         const listSoundBank = [];
 
@@ -110,8 +138,7 @@ class SoundBanksInfoJsonLoader
             const soundBank = new SoundBank(item.Id, item.Path);
 
             // 获取子项
-            const includedMemoryFiles = item?.IncludedMemoryFiles;
-
+            const includedMemoryFiles = item?.IncludedMemoryFiles || item?.ExcludedMemoryFiles;
             // 不是数组
             if (!Array.isArray(includedMemoryFiles)) continue;
 
@@ -123,10 +150,12 @@ class SoundBanksInfoJsonLoader
                 // 排除空值
                 if (!item2.Id || !item2.ShortName) continue;
 
-                soundBank.StreamedFiles.push(new StreamedFile(item2.Id, item2.ShortName, "SoundBanks"));
+                soundBank.IncludedMemoryFiles.push(new StreamedFile(item2.Id, item2.ShortName, "SoundBanks"));
+                this.soundBankStreamedFileCount++;
             }
 
             listSoundBank.push(soundBank);
+            this.soundBankCount++;
         }
 
         // 释放内存
@@ -134,6 +163,19 @@ class SoundBanksInfoJsonLoader
         soundBanks = null;
 
         return listSoundBank;
+    }
+
+    /**
+     *  清除缓存
+     *  @returns {void}
+     */
+    clearCache()
+    {
+        if (this.__cache)
+        {
+            require.cache[this.__cache];
+            this.__cache = null;
+        }
     }
 }
 

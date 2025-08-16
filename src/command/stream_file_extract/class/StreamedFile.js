@@ -14,7 +14,7 @@ class StreamedFile
     constructor(Id, ShortName, Type)
     {
         /** @type {String} 文件的 ID */
-        this.FileID = Id;
+        this.Id = Id;
 
         /** @type {String} 空间名称 */
         this.ShortName = ShortName;

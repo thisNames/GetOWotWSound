@@ -10,9 +10,6 @@ const oriBody = new ParamsMapping("ori", {
 
 
 // 注册任务
-oriBody.addTask("ori", () =>
-{
-    require("./index").randomPrintOri();
-});
+oriBody.addTask("ori", () => require("./index")());
 
 module.exports = oriBody;

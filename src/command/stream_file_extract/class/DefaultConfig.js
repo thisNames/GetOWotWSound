@@ -8,6 +8,15 @@ class DefaultConfig
     /** @type {String} 本地配置文件名称 */
     static LOCAL_CONFIG = "config.json";
 
+    /** @type {String} SoundBanksInfo.StreamedFiles 缓存文件名称 */
+    static cacheStreamedFilesName = "SoundBanksInfo_StreamedFiles_cache.json";
+
+    /** @type {String} SoundBanksInfo.SoundBanks 缓存文件名称 */
+    static cacheSoundBanksName = "SoundBanksInfo_SoundBanks_cache.json";
+
+    /** @type {String} SoundBanksInfo.json 文件名称 */
+    static soundBnkInfoName = "SoundBanksInfo.json";
+
     constructor()
     {
         /** @type {String} 资源目录 */
