@@ -18,8 +18,11 @@ class Utils
      */
     static getProjectRoot()
     {
-        const dirname = process.argv[1] || process.cwd();
-        return pt.dirname(dirname + "");
+        let indexPath = process.argv[1];
+
+        if (indexPath) return pt.dirname(indexPath);
+
+        return process.cwd();
     }
 
     /**
@@ -131,6 +134,47 @@ class Utils
         if (Number.isFinite(value)) return value;
 
         return 0;
+    }
+
+    /**
+     *  为对象中每个 key 格式化
+     *  @param {Object} obj 
+     *  @param {"l" | "r"} alignment 对齐方式 left, right
+     *  @param {String} spaceStr 空字符内容
+     *  @returns {Array< {key: String, fKey: String, value: Object} >}
+     */
+    static formatOutputObject(obj, alignment = "l", spaceStr = " ")
+    {
+        let len = 0;
+        let keys = Object.keys(obj);
+        let result = [];
+
+        keys.forEach(key =>
+        {
+            if (len < key.length) len = key.length;
+        });
+
+        keys.forEach(key =>
+        {
+            let value = Reflect.get(obj, key);
+            let fKey = null;
+
+            fKey = alignment == "l" ? key.padEnd(len, spaceStr) : key.padStart(len, spaceStr);
+
+            result.push({ key: key, fKey: fKey, value: value });
+        });
+
+        return result;
+    }
+
+    /**
+     *  去掉首尾空字符
+     *  @param {String} str 字符串
+     *  @returns {String}
+     */
+    static trim(str)
+    {
+        return (str + "").trim();
     }
 }
 

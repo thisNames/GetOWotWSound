@@ -5,6 +5,8 @@ const pt = require("node:path");
 const LoggerSaver = require("../../../class/LoggerSaver");
 const Tools = require("../../../class/Tools");
 
+const Utils = require("../class/Utils");
+
 const OPT = require("./options");
 const MaxThreadCount = Math.trunc(os.cpus().length * 2);
 const MaxAsyncCount = 200;
@@ -17,14 +19,7 @@ function printOptions()
 {
     const logger = new LoggerSaver();
 
-    for (const key in OPT)
-    {
-        if (Object.prototype.hasOwnProperty.call(OPT, key))
-        {
-            const value = OPT[key];
-            logger.heighLight(`${key} = ${value}`, [key + " ="], LoggerSaver.GREEN);
-        }
-    }
+    Utils.formatOutputObject(OPT).forEach(item => logger.heighLight(`${item.fKey} = ${item.value}`, [item.fKey]));
 }
 
 /**
@@ -37,7 +32,7 @@ function setPath(key, value)
 {
     if (!Object.hasOwnProperty.call(OPT, key)) return;
 
-    let __value = (value + "").trim();
+    let __value = Utils.trim(value);
 
     // 是否是绝对路径
     let path = pt.isAbsolute(__value) ? __value : pt.join(process.cwd(), __value);
@@ -75,8 +70,6 @@ function setPath(key, value)
  */
 function setNumber(key, value)
 {
-    console.log(key, value);
-
     // 没用这样的属性
     if (!Object.hasOwnProperty.call(OPT, key)) return;
 
@@ -103,7 +96,7 @@ function setBoolean(key, value)
     // 没用这样的属性
     if (!Object.hasOwnProperty.call(OPT, key)) return;
 
-    const __value = (value + "").trim().toLowerCase();
+    const __value = Utils.trim(value).toLowerCase();
     const __trues = ["true", "t"];
 
     Reflect.set(OPT, key, __trues.includes(__value));
@@ -123,10 +116,26 @@ function setEnum(key, value)
     Reflect.set(OPT, key, value);
 }
 
+/**
+ *  设置字符串相关配置
+ *  @param {String} key 属性名称
+ *  @param {String} value 属性值
+ *  @returns {void}
+ */
+function setString(key, value)
+{
+    // 没用这样的属性
+    if (!Object.hasOwnProperty.call(OPT, key)) return;
+
+    let __value = Utils.trim(value);
+    Reflect.set(OPT, key, __value);
+}
+
 module.exports = {
     printOptions,
     setPath,
     setNumber,
     setBoolean,
-    setEnum
+    setEnum,
+    setString
 };

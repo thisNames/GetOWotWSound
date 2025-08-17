@@ -1,5 +1,4 @@
 const fs = require("node:fs");
-const pt = require("node:path");
 
 const StreamedFile = require("./StreamedFile");
 const SoundBank = require("./SoundBank");
@@ -104,7 +103,7 @@ class SoundBanksInfoJsonLoader
             // 排除空值
             if (!item.Id || !item.ShortName) continue;
 
-            listStreamedFile.push(new StreamedFile(item.Id, item.ShortName, "StreamedFiles"));
+            listStreamedFile.push(new StreamedFile(item.Id, item.ShortName, "StreamedFiles", ""));
             this.streamedFileCount++;
         }
 
@@ -150,7 +149,7 @@ class SoundBanksInfoJsonLoader
                 // 排除空值
                 if (!item2.Id || !item2.ShortName) continue;
 
-                soundBank.IncludedMemoryFiles.push(new StreamedFile(item2.Id, item2.ShortName, "SoundBanks"));
+                soundBank.IncludedMemoryFiles.push(new StreamedFile(item2.Id, item2.ShortName, "SoundBanks", item.Path));
                 this.soundBankStreamedFileCount++;
             }
 

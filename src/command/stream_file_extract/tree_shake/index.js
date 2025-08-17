@@ -92,7 +92,7 @@ function cacheGenerator(params, meta, __this, taskName)
  */
 function clearCacheFile()
 {
-    const delSymbol = Date.now() + "_" + Tools.generateHashId(8) + ".temp";
+    const delSymbol = Tools.generateHashId(8) + ".temp";
     const logger = new LoggerSaver();
     const cachePath = pt.join(Utils.getResourcePath(), "cache");
 
@@ -112,18 +112,86 @@ function clearCacheFile()
         }
 
         logger
-            .success("ClearCacheSuccess")
-            .tip("Cache FolderPath =>", cachePath);
+            .success("Clear success")
+            .info("Cache Folder =>", cachePath);
 
     } catch (error)
     {
         logger
-            .error("ClearCacheFileError =>", error.message || "error")
-            .tip("Cache FolderPath =>", cachePath);
+            .error("Clear cache file =>", error.message || "error")
+            .tip("Cache folder path =>", cachePath);
     }
+}
+
+/**
+ *  删除缓存文件
+ *  @returns {void}
+ */
+async function deleteCacheFile()
+{
+    const cacheFolder = pt.join(Utils.getResourcePath(), "cache");
+    const logger = new LoggerSaver();
+    const listDelItem = [];
+
+    try
+    {
+        const listDirent = fs.readdirSync(cacheFolder, { encoding: "utf-8", withFileTypes: true });
+        for (let i = 0; i < listDirent.length; i++)
+        {
+            const dirent = listDirent[i];
+            if (dirent.isFile() && pt.extname(dirent.name) === ".temp") listDelItem.push(pt.join(cacheFolder, dirent.name));
+        }
+    } catch (error)
+    {
+        logger
+            .error("deleteCacheFile =>", error.message || "error")
+            .error("Try read cache folder =>", cacheFolder);
+    }
+
+    // 空
+    if (listDelItem.length < 1)
+    {
+        logger.info("Delete cache folder is empty");
+        return;
+    }
+
+    // 列表
+    logger.warn("是否要删除这些临时缓存文件");
+    listDelItem.forEach(filePath => logger.info(filePath));
+    logger.info("确定：[y]");
+
+    const input = await Tools.terminalInput().catch(m => m = "");
+
+    // 取消删除
+    if (input != "y")
+    {
+        logger.warn("取消删除");
+        return;
+    }
+
+    // 删除
+    let su = 0;;
+    for (let i = 0; i < listDelItem.length; i++)
+    {
+        const filePath = listDelItem[i];
+
+        try
+        {
+            fs.rmSync(filePath);
+            logger.success("Delete", i + 1, "=>", filePath);
+            su++;
+        } catch (error)
+        {
+            logger.error("Delete", error.message || "error");
+        }
+    }
+
+    // 统计
+    logger.light("Delete Total:", su);
 }
 
 module.exports = {
     cacheGenerator,
-    clearCacheFile
+    clearCacheFile,
+    deleteCacheFile
 };

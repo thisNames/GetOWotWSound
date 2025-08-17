@@ -88,10 +88,14 @@ function init()
 }
 
 
-const json = require("F:\\Games\\SteamF\\steamapps\\common\\Ori and the Will of the Wisps\\oriwotw_Data\\StreamingAssets\\Audio\\GeneratedSoundBanks\\Windows\\SoundbanksInfo.json");
+// const json = require("F:\\Games\\SteamF\\steamapps\\common\\Ori and the Will of the Wisps\\oriwotw_Data\\StreamingAssets\\Audio\\GeneratedSoundBanks\\Windows\\SoundbanksInfo.json");
 
-console.log(json.SoundBanksInfo.StreamedFiles.length);
-console.log(json.SoundBanksInfo.SoundBanks.length);
+// console.log(json.SoundBanksInfo.StreamedFiles.length);
+// console.log(json.SoundBanksInfo.SoundBanks.length);
+
+
+
+console.log(process.argv);
 
 
 console.log(Date.now() - s, "ms");

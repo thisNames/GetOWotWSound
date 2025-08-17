@@ -6,7 +6,7 @@
   "main": "index.js",
   "module": "CommonJS",
   "scripts": {
-    "test": "node ./test/index.js",
+    "test": "node ./test/3.js",
     "start": "node ./src/index.js",
     "build": "node ./build/index.js -f -d -s"
   },

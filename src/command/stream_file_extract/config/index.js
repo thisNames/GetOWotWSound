@@ -4,6 +4,7 @@ const pt = require("node:path");
 const LoggerSaver = require("../../../class/LoggerSaver");
 
 const DefaultConfig = require("../class/DefaultConfig");
+const Utils = require("../class/Utils");
 
 const CFG = require("./default_config");
 
@@ -15,16 +16,11 @@ function printConfig()
 {
     const logger = new LoggerSaver();
 
-    for (const key in CFG)
+    Utils.formatOutputObject(CFG).forEach(item =>
     {
-        if (Object.prototype.hasOwnProperty.call(CFG, key))
-        {
-            const value = CFG[key];
-            const color = value ? LoggerSaver.GREEN : LoggerSaver.RED;
-
-            logger.heighLight(`${key} = ${value}`, [key + " ="], color);
-        }
-    }
+        const color = item.value ? LoggerSaver.GREEN : LoggerSaver.RED;
+        logger.heighLight(`${item.fKey} = ${item.value}`, [item.fKey], color);
+    });
 }
 
 /**
@@ -63,7 +59,7 @@ function saverConfig()
 function setConfig(key, value)
 {
     const logger = new LoggerSaver();
-    let __value = (value + "").trim();
+    let __value = Utils.trim(value);
 
     // 如果为空，设置失败
     if (!Object.hasOwnProperty.call(CFG, key))

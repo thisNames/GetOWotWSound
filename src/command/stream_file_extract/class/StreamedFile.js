@@ -11,7 +11,7 @@ class StreamedFile
      * @param {String} ShortName 空间名称
      * @param {"StreamedFiles" | "SoundBanks"} Type 资源类型
      */
-    constructor(Id, ShortName, Type)
+    constructor(Id, ShortName, Type, BnkFile)
     {
         /** @type {String} 文件的 ID */
         this.Id = Id;
@@ -21,6 +21,9 @@ class StreamedFile
 
         /** @type {"StreamedFiles" | "SoundBanks"} 资源类型 资源类型 */
         this.Type = Type;
+
+        /** @type {String} 资源类型路径 bnk */
+        this.BnkFile = BnkFile;
     }
 
     /**
