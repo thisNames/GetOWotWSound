@@ -6,7 +6,7 @@ const template = {
     accordingLevelRepeat: false
 };
 
-/** 设置输出路径 */
+/** 设置 输出路径 */
 const setOutputPath = new ParamsMapping("out", {
     key: "outputPath",
     description: "设置输出路径 outputPath = <path>",
@@ -14,7 +14,7 @@ const setOutputPath = new ParamsMapping("out", {
     ...template
 });
 
-/** 设置日志保存路径 */
+/** 设置 日志保存路径 */
 const setLogPath = new ParamsMapping("log", {
     key: "logPath",
     description: "设置日志保存路径 logPath = <path>",
@@ -22,7 +22,7 @@ const setLogPath = new ParamsMapping("log", {
     ...template
 });
 
-/** 设置异步并发的数量 */
+/** 设置 异步并发的数量 */
 const setAsyncNumber = new ParamsMapping("an", {
     key: "asyncNumber",
     description: "设置异步并发数量 asyncNumber = <[2, 200]>",
@@ -30,7 +30,7 @@ const setAsyncNumber = new ParamsMapping("an", {
     ...template
 });
 
-/** 设置线程数量数量 */
+/** 设置 线程数量数量 */
 const setThreadNumber = new ParamsMapping("tn", {
     key: "threadNumber",
     description: "设置线程数量 threadNumber = <[2, max_thread * 2]>",
@@ -38,7 +38,7 @@ const setThreadNumber = new ParamsMapping("tn", {
     ...template
 });
 
-/** 启用异步 */
+/** 启用 异步 */
 const enableAsync = new ParamsMapping("ea", {
     key: "enableAsync",
     description: "启用异步 enAsync = <[true, t]>",
@@ -46,7 +46,7 @@ const enableAsync = new ParamsMapping("ea", {
     ...template
 });
 
-/** 启用多线程 */
+/** 启用 多线程 */
 const enableThread = new ParamsMapping("et", {
     key: "enableThread",
     description: "启用多线程 enableThread = <[true, t]>",
@@ -54,7 +54,7 @@ const enableThread = new ParamsMapping("et", {
     ...template
 });
 
-/** 启用生成 ID */
+/** 启用 生成 ID */
 const enableId = new ParamsMapping("eid", {
     key: "enableId",
     description: "生成ID enableId = <[true, t]>",
@@ -62,7 +62,7 @@ const enableId = new ParamsMapping("eid", {
     ...template
 });
 
-/** 启用分类文件夹 */
+/** 启用 分类文件夹 */
 const enableCreateTypeDir = new ParamsMapping("etp", {
     key: "enableCreateTypeDir",
     description: "创建分类文件夹 enableCreateTypeDir = <[true, t]>",
@@ -71,11 +71,29 @@ const enableCreateTypeDir = new ParamsMapping("etp", {
 });
 
 /** 启用 检索忽略大小写 */
-const enIgnoreCase = new ParamsMapping("eic", {
-    key: "enIgnoreCase",
-    description: "检索忽略大小写 enIgnoreCase = <[true, t]>",
+const enableIgnoreCase = new ParamsMapping("eic", {
+    key: "enableIgnoreCase",
+    description: "检索忽略大小写 enableIgnoreCase = <[true, t]>",
     defaults: ["f"],
     ...template
+});
+
+/** 枚举 只搜索 StreamedFiles */
+const enumStreamedFile = new ParamsMapping("sw", {
+    key: "sstreamfile",
+    description: "只搜索 StreamedFiles  searchEnum = 0",
+    count: 0,
+    defaults: [],
+    accordingLevelRepeat: false
+});
+
+/** 枚举 只搜索 SoundBanks */
+const enumSoundBank = new ParamsMapping("sb", {
+    key: "sboundfile",
+    description: "只搜索 SoundBanks searchEnum= 1",
+    count: 0,
+    defaults: [],
+    accordingLevelRepeat: false
 });
 
 /** 显示可选项 */
@@ -93,12 +111,18 @@ const options = new ParamsMapping("opt", {
         enableThread,
         enableId,
         enableCreateTypeDir,
-        enIgnoreCase
+        enableIgnoreCase,
+        enumStreamedFile,
+        enumSoundBank
     ]
 });
 
 // 注册任务
 options.addTask("options", () => require("./index").printOptions());
+
+// 设置枚举
+enumStreamedFile.addTask(options.key + "." + enumStreamedFile.key, () => require("./index").setEnum("searchEnum", 0));
+enumSoundBank.addTask(options.key + "." + enumSoundBank.key, () => require("./index").setEnum("searchEnum", 1));
 
 // 设置路径
 [setOutputPath, setLogPath]
@@ -111,7 +135,7 @@ options.addTask("options", () => require("./index").printOptions());
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setNumber(e.key, params[0])));
 
 // 设置布尔值
-[enableAsync, enableThread, enableId, enableCreateTypeDir, enIgnoreCase]
+[enableAsync, enableThread, enableId, enableCreateTypeDir, enableIgnoreCase]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setBoolean(e.key, params[0])));
 

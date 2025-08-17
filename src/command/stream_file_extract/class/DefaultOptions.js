@@ -31,13 +31,19 @@ class DefaultOptions
         this.enableThread = false;
 
         /** @type {Boolean} 启用 检索忽略大小写 */
-        this.enIgnoreCase = false;
+        this.enableIgnoreCase = false;
 
         /** @type {String} 启用 生成 ID */
         this.enableId = true;
 
         /** @type {String} 启用 分类文件夹 */
         this.enableCreateTypeDir = true;
+        //#endregion
+
+
+        //#region 枚举设置
+        /** @type {Number} [0 - StreamedFiles, 1 - SoundBanks, n - StreamedFiles & SoundBanks] */
+        this.searchEnum = 2;
         //#endregion
     }
 }

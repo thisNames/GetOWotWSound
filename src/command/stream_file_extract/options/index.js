@@ -75,6 +75,8 @@ function setPath(key, value)
  */
 function setNumber(key, value)
 {
+    console.log(key, value);
+
     // 没用这样的属性
     if (!Object.hasOwnProperty.call(OPT, key)) return;
 
@@ -107,9 +109,24 @@ function setBoolean(key, value)
     Reflect.set(OPT, key, __trues.includes(__value));
 }
 
+/**
+ *  设置枚举相关配置
+ *  @param {String} key 属性名称
+ *  @param {String | Number} value 属性值
+ *  @returns {void}
+ */
+function setEnum(key, value)
+{
+    // 没用这样的属性
+    if (!Object.hasOwnProperty.call(OPT, key)) return;
+
+    Reflect.set(OPT, key, value);
+}
+
 module.exports = {
     printOptions,
     setPath,
     setNumber,
-    setBoolean
+    setBoolean,
+    setEnum
 };
