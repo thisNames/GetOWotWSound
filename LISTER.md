@@ -6,6 +6,7 @@
 - 所有的定义都在 [SoundbanksInfo](#soundbanksinfojson) 中
 #### 数量
 - 2425
+- SoundBnkInfo.StreamedFiles 实际定义的数量是 2272
 
 #### 类型
 - StreamedFile
@@ -20,13 +21,18 @@
 - 音乐文件（一般）
 
 #### 操作
-1. wem => ww2ogg => ogg
+0. wem => ww2ogg => ogg
 2. ogg => revorb => ogg
 
 ### bnk
 - [有自己单独的定义文件](#struct-files)
 #### 数量
 - 124
+- 实际可用的 122
+- act2grolsPlunge.bnk
+    - No WEM files discovered to be extracted
+- persistent_eventsOnly.bnk
+    - No WEM files discovered to be extracted
 
 #### 类型
 - SoundBank
@@ -36,7 +42,8 @@
     <Path>SFX\wotw\howlsOrigin\props\portalExitHowlsOrigin_002_A02A9068.wem</Path>
 </File>
 ```
-- 音效文件（一般）
+- 音效音乐文件（主要是）
+- SoundBank 包含 StreamedFile
 
 #### 操作
 1. bnk => bnkextr => wem

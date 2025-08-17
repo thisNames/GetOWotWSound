@@ -2,9 +2,6 @@ const fs = require("node:fs");
 const pt = require("node:path");
 
 const LoggerSaver = require("../../../class/LoggerSaver");
-const Params = require("../../../class/Params");
-const MainRunningMeta = require("../../../class/MainRunningMeta");
-const Loading = require("../../../class/Loading");
 const Tools = require("../../../class/Tools");
 
 const DefaultConfig = require("../class/DefaultConfig");
@@ -18,7 +15,7 @@ const CFG = require("../config/default_config");
 const OPT = require("../options/options");
 
 const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
-const SaverFilename = "SearchResult_" + Tools.generateHashId(8);
+const SaverFilename = "SearchSession_" + Tools.generateHashId(8);
 
 /**
  *  保存搜索结果为 json
@@ -110,12 +107,9 @@ async function search(searchName, logger)
 {
     /** @type {SoundBanksInfoData} */
     let soundBnkInfoData = null;
-
-    const loading = new Loading();
     const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
 
     // 枚举
-    loading.start("s");
     if (OPT.searchEnum == 0)
     {
         // 搜索 StreamedFile
@@ -142,15 +136,14 @@ async function search(searchName, logger)
     if (soundBnkInfoData instanceof Error)
     {
         logger.error("Search =>" + soundBnkInfoData.message || "error");
-        loading.stop(false, "Error");
         return Promise.resolve([]);
     }
 
     // 开始搜索
     let result = null;
 
-    const listStreamedFile = soundBnkInfoData.searchStreamedFile(searchName, OPT.enableIgnoreCase);
-    const listSoundBank = soundBnkInfoData.searchSoundBank(searchName, OPT.enableIgnoreCase);
+    const listStreamedFile = soundBnkInfoData.searchStreamedFile(searchName, OPT.enableSIgnoreCase);
+    const listSoundBank = soundBnkInfoData.searchSoundBank(searchName, OPT.enableSIgnoreCase);
 
     result = listSoundBank;
     if (listStreamedFile.length > 0) result.push(...listStreamedFile);
@@ -159,12 +152,8 @@ async function search(searchName, logger)
     if (result.length < 1)
     {
         logger.info("什么也没用找到，试试别的吧~");
-        loading.stop(false, "Empty");
         return Promise.resolve([]);
     }
-
-    // 成功
-    loading.stop(true, `Total: ${result.length} Times:`);
 
     const pp = new PagePrinter(result, 2);
 
@@ -182,23 +171,19 @@ async function search(searchName, logger)
 }
 
 /**
- *  搜索全部
+ *  搜索内容
  *  @param {Array<String>} params 参数集合
- *  @param {MainRunningMeta} meta meta
- *  @param {Params} __this 当前参数命令对象
- *  @param {String} taskName 任务名称
  *  @returns {void}
  */
-async function main(params, meta, __this, taskName)
+async function main(params)
 {
     const logger = new LoggerSaver();
     const searchName = Utils.trim(params[0]);
-    const loading = new Loading();
 
     // 检查搜索的名称不为空
     if (searchName === "")
     {
-        logger.error(taskName + " 语法错误，必须有一个搜索名");
+        logger.error("Search =>", " 语法错误，必须有一个搜索名");
         return;
     }
 
@@ -206,7 +191,6 @@ async function main(params, meta, __this, taskName)
     const result = await search(searchName, logger);
 
     // 保存到 json
-    if (OPT.enableSScsv || OPT.enableSSjson || OPT.enableSSlog) loading.start("SearchSaver");
     if (OPT.enableSSjson)
     {
         try
@@ -248,7 +232,6 @@ async function main(params, meta, __this, taskName)
             logger.error("saverToCsv =>", error.message || "error");
         }
     }
-    loading.stop(true, "SaverTimes:");
 }
 
 module.exports = main;

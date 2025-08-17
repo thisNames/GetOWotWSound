@@ -2,10 +2,6 @@ const fs = require("node:fs");
 const pt = require("node:path");
 
 const LoggerSaver = require("../../../class/LoggerSaver");
-const Params = require("../../../class/Params");
-const MainRunningMeta = require("../../../class/MainRunningMeta");
-const FormatNumber = require("../../../class/FormatNumber");
-const Loading = require("../../../class/Loading");
 const Tools = require("../../../class/Tools");
 
 const StreamedFilesJsonLoader = require("../class/StreamedFilesJsonLoader");
@@ -20,23 +16,18 @@ const ListSoundBankSavePath = pt.join(Utils.getResourcePath(), "cache", DefaultC
 
 /**
  *  生成缓存文件
- *  @param {Array<String>} params 参数集合
- *  @param {MainRunningMeta} meta meta
- *  @param {Params} __this 当前参数命令对象
- *  @param {String} taskName 任务名称
+ *  @returns {void}
  */
-function cacheGenerator(params, meta, __this, taskName)
+function cacheGenerator()
 {
     const logger = new LoggerSaver();
     const gameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
     const loader = new StreamedFilesJsonLoader(gameSoundBnkInfo);
-    const loading = new Loading();
 
     // 读取 SoundBnkInfo 文件信息
     let listStreamedFile = null, listSoundBank = null;
 
     // 加载条
-    loading.start("cache...");
     try
     {
         listStreamedFile = loader.loaderStreamedFiles();
@@ -44,8 +35,7 @@ function cacheGenerator(params, meta, __this, taskName)
         loader.clearCache();
     } catch (error)
     {
-        logger.error(`LoaderError: ${taskName} => ${error.message || "error"}`);
-        loading.stop(false, "");
+        logger.error("cacheGenerator =>", error.message || "error");
         return;
     }
 
@@ -58,21 +48,18 @@ function cacheGenerator(params, meta, __this, taskName)
 
         fs.writeFileSync(ListStreamedFileSavePath, d1, { encoding: "utf-8", flag: "w" });
         fs.writeFileSync(ListSoundBankSavePath, d2, { encoding: "utf-8", flag: "w" });
-
-        // 成功
-        loading.stop(true, "CacheSuccess");
     } catch (error)
     {
-        logger.error(`WriteERROR: ${taskName} => ${error.message || "error"}`);
-        loading.stop(false, "");
+        logger
+            .error("cacheGenerator =>", error.message || "error")
+            .error("Cache Folder: ", pt.dirname(ListStreamedFileSavePath));
+
         return;
     }
-    loading.stop(true, "");
 
     // 统计大小
-    const fn = new FormatNumber();
-    const originSize = fn.formatBytes(fs.statSync(gameSoundBnkInfo).size);
-    const cacheSize = fn.formatBytes(Buffer.byteLength(d1, "binary") + Buffer.byteLength(d2, "binary"));
+    const originSize = Tools.formatBytes(fs.statSync(gameSoundBnkInfo).size);
+    const cacheSize = Tools.formatBytes(Buffer.byteLength(d1, "binary") + Buffer.byteLength(d2, "binary"));
 
     // 统计输出
     logger
@@ -81,9 +68,7 @@ function cacheGenerator(params, meta, __this, taskName)
         .success("StreamedFiles:", loader.streamedFileCount)
         .success("SoundBanks:", loader.soundBankCount)
         .success("SoundBanks>StreamedFiles:", loader.soundBankStreamedFileCount)
-        .light("Total:", loader.streamedFileCount + loader.soundBankStreamedFileCount)
-        .info("StreamedFiles[cache]:", ListStreamedFileSavePath)
-        .info("SoundBanks[cache]:", ListSoundBankSavePath);
+        .light("Total:", loader.streamedFileCount + loader.soundBankStreamedFileCount);
 }
 
 /**
@@ -111,15 +96,13 @@ function clearCacheFile()
             fs.renameSync(ListSoundBankSavePath, l2);
         }
 
-        logger
-            .success("Clear success")
-            .info("Cache Folder =>", cachePath);
+        logger.success("Clear success");
 
     } catch (error)
     {
         logger
-            .error("Clear cache file =>", error.message || "error")
-            .tip("Cache folder path =>", cachePath);
+            .error("clearCacheFile =>", error.message || "error")
+            .error("Cache Folder: ", cachePath);
     }
 }
 
@@ -145,13 +128,15 @@ async function deleteCacheFile()
     {
         logger
             .error("deleteCacheFile =>", error.message || "error")
-            .error("Try read cache folder =>", cacheFolder);
+            .error("Cache Folder: ", pt.dirname(ListStreamedFileSavePath));
+
+        return;
     }
 
     // 空
     if (listDelItem.length < 1)
     {
-        logger.info("Delete cache folder is empty");
+        logger.info("Cache is empty");
         return;
     }
 

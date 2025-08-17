@@ -24,7 +24,7 @@ class FormatString
             .sort((a, b) => b.length - a.length);
 
         const escaped = sorted.map(c => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
-        const regex = new RegExp(`(${escaped})`, "g");
+        const regex = new RegExp(`(${escaped})`, "gi");
 
         // 替换为高亮格式
         const highlighted = message.replace(regex, `${left}$1${right}`);

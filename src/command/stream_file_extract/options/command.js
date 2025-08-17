@@ -9,7 +9,7 @@ const template = {
 /** 字符串 设置生成的文件拓展名 */
 const setExtname = new ParamsMapping("ext", {
     key: "extname",
-    description: "设置生成的文件拓展名 ext = <.ogg>",
+    description: "设置生成的文件拓展名 extname = <.ogg>",
     defaults: [".ogg"],
     ...template
 });
@@ -33,15 +33,7 @@ const setLogPath = new ParamsMapping("log", {
 /** 设置 异步并发的数量 */
 const setAsyncNumber = new ParamsMapping("an", {
     key: "asyncNumber",
-    description: "设置异步并发数量 asyncNumber = <[2, 200]>",
-    defaults: [8],
-    ...template
-});
-
-/** 设置 线程数量数量 */
-const setThreadNumber = new ParamsMapping("tn", {
-    key: "threadNumber",
-    description: "设置线程数量 threadNumber = <[2, max_thread * 2]>",
+    description: "设置异步并发数量 asyncNumber = <[2, max_thread]>",
     defaults: [2],
     ...template
 });
@@ -50,14 +42,6 @@ const setThreadNumber = new ParamsMapping("tn", {
 const enableAsync = new ParamsMapping("ea", {
     key: "enableAsync",
     description: "启用异步 enAsync = <[true, t]>",
-    defaults: ["f"],
-    ...template
-});
-
-/** 启用 多线程 */
-const enableThread = new ParamsMapping("et", {
-    key: "enableThread",
-    description: "启用多线程 enableThread = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -71,7 +55,7 @@ const enableId = new ParamsMapping("eid", {
 });
 
 /** 启用 分类文件夹 */
-const enableCreateTypeDir = new ParamsMapping("etp", {
+const enableCreateTypeDir = new ParamsMapping("ectd", {
     key: "enableCreateTypeDir",
     description: "启用创建分类文件夹 enableCreateTypeDir = <[true, t]>",
     defaults: ["t"],
@@ -79,9 +63,9 @@ const enableCreateTypeDir = new ParamsMapping("etp", {
 });
 
 /** 启用 检索忽略大小写 */
-const enableIgnoreCase = new ParamsMapping("eic", {
-    key: "enableIgnoreCase",
-    description: "启用检索忽略大小写 enableIgnoreCase = <[true, t]>",
+const enableSIgnoreCase = new ParamsMapping("esic", {
+    key: "enableSIgnoreCase",
+    description: "启用检索忽略大小写 enableSIgnoreCase = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -113,7 +97,7 @@ const enableSScsv = new ParamsMapping("esscsv", {
 /** 枚举 只搜索 StreamedFiles */
 const enumStreamedFile = new ParamsMapping("sw", {
     key: "sstreamfile",
-    description: "只搜索 StreamedFiles",
+    description: "只搜索 StreamedFiles searchEnum = 0",
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
@@ -122,7 +106,7 @@ const enumStreamedFile = new ParamsMapping("sw", {
 /** 枚举 只搜索 SoundBanks */
 const enumSoundBank = new ParamsMapping("sb", {
     key: "sboundfile",
-    description: "只搜索 SoundBanks",
+    description: "只搜索 SoundBanks searchEnum = 1",
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
@@ -138,13 +122,11 @@ const options = new ParamsMapping("opt", {
         setOutputPath,
         setLogPath,
         setAsyncNumber,
-        setThreadNumber,
         setExtname,
         enableAsync,
-        enableThread,
         enableId,
         enableCreateTypeDir,
-        enableIgnoreCase,
+        enableSIgnoreCase,
         enableSSjson,
         enableSSlog,
         enableSScsv,
@@ -166,12 +148,12 @@ enumSoundBank.addTask(options.key + "." + enumSoundBank.key, () => require("./in
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setPath(e.key, params[0])));
 
 // 设置数值
-[setAsyncNumber, setThreadNumber]
+[setAsyncNumber]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setNumber(e.key, params[0])));
 
 // 设置布尔值
-[enableAsync, enableThread, enableId, enableCreateTypeDir, enableIgnoreCase, enableSSjson, enableSSlog, enableSScsv]
+[enableAsync, enableId, enableCreateTypeDir, enableSIgnoreCase, enableSSjson, enableSSlog, enableSScsv]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setBoolean(e.key, params[0])));
 

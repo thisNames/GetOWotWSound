@@ -17,8 +17,8 @@ class StreamedFilesWorker
      */
     constructor(listStreamedFile, config, options)
     {
-        /** @type {Array<StreamedFile>} */
-        this.listStreamedFile = [];
+        /** @type {Array<StreamedFile>} 数据集合 */
+        this.listStreamedFile = listStreamedFile;
 
         /** @type {DefaultConfig} 配置项 */
         this.config = config;

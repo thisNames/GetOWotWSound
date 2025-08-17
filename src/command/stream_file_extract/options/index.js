@@ -8,8 +8,7 @@ const Tools = require("../../../class/Tools");
 const Utils = require("../class/Utils");
 
 const OPT = require("./options");
-const MaxThreadCount = Math.trunc(os.cpus().length * 2);
-const MaxAsyncCount = 200;
+const MaxAsyncCount = os.cpus().length;
 
 /**
  *  显示可选项
@@ -79,8 +78,7 @@ function setNumber(key, value)
     if (!Number.isFinite(__value) || __value < 2) return;
 
     // 特殊处理
-    if (key === "threadNumber") __value = Math.min(__value, MaxThreadCount);
-    else if (key === "asyncNumber") __value = Math.min(__value, MaxAsyncCount);
+    if (key === "asyncNumber") __value = Math.min(__value, MaxAsyncCount);
 
     Reflect.set(OPT, key, __value);
 }

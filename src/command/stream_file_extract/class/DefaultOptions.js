@@ -1,3 +1,5 @@
+const pt = require("node:path");
+
 /**
  *  默认选项类
  */
@@ -13,19 +15,16 @@ class DefaultOptions
 
         //#region 路径配置
         /** @type {String} 输出路径 */
-        this.outputPath = process.cwd();
+        this.outputPath = pt.join(process.cwd(), "builds");
 
         /** @type {String} 日志保存路径 */
-        this.logPath = process.cwd();
+        this.logPath = pt.join(process.cwd(), "logs");
         //#endregion
 
 
         //#region 数值配置
-        /** @type {Number} 异步并发的数量 [2, 1024] */
-        this.asyncNumber = 10;
-
-        /** @type {Number} 线程数量 [2, max_thread * 2] */
-        this.threadNumber = 4;
+        /** @type {Number} 异步并发的数量 [2, max_thread] */
+        this.asyncNumber = 4;
         //#endregion
 
 
@@ -33,11 +32,8 @@ class DefaultOptions
         /** @type {boolean} 启用 异步 */
         this.enableAsync = false;
 
-        /** @type {String} 启用 多线程 */
-        this.enableThread = false;
-
         /** @type {Boolean} 启用 检索忽略大小写 */
-        this.enableIgnoreCase = false;
+        this.enableSIgnoreCase = false;
 
         /** @type {Boolean} 启用 保存搜索结果为 json */
         this.enableSSjson = false;
