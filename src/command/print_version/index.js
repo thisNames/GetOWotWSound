@@ -1,28 +1,21 @@
-const LoggerSaver = require("../../class/LoggerSaver");
-const Params = require("../../class/Params");
-const MainRunningMeta = require("../../class/MainRunningMeta");
+const Logger = require("../../class/Logger");
 
 /**
- *  @param {Array<String>} params 参数集合
- *  @param {MainRunningMeta} meta meta
- *  @param {Params} __this 当前参数命令对象
- *  @param {String} taskName 任务名称
+ *  打印版本
+ *  @returns {void}
  */
-module.exports = function (param, meta, __this, taskName)
+function main()
 {
-    const Logger = new LoggerSaver(taskName, meta.cwd, false);
-    let package = {};
-    let version = "";
-
     try
     {
-        package = require("../../../package.json");
-        version = package.version;
+        const package = require("../../../package.json");
+        const version = package.version || "unknown";
+
+        Logger.info("v" + version);
     } catch (error)
     {
-        version = "unknown";
+        Logger.error("Get version error");
     }
+}
 
-    Logger.info("v" + version);
-    Logger.close();
-};
+module.exports = main;

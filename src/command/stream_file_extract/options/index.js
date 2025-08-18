@@ -47,26 +47,7 @@ function setPath(key, value)
 {
     if (!optionsHashKeyPrompt(key)) return;
 
-    let __value = Utils.trim(value);
-
-    // 是否是绝对路径
-    let path = pt.isAbsolute(__value) ? __value : pt.join(process.cwd(), __value);
-    let isExist = fs.existsSync(path);
-
-    // 存在是目录
-    if (isExist && fs.statSync(path).isDirectory())
-    {
-        Reflect.set(OPT, key, path);
-        return;
-    }
-
-    // 路径被占用了
-    if (isExist && !fs.statSync(path).isDirectory())
-    {
-        path = path + "_" + Tools.generateHashId(16);
-    }
-
-    Reflect.set(OPT, key, path);
+    Reflect.set(OPT, key, Utils.folderHandler(Utils.trim(value)));
 }
 
 /**

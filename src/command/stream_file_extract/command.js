@@ -19,4 +19,7 @@ const wemExtract = require("./streamed_files/command");
 // 提取 SoundBanks 文件
 const bnkExtract = require("./sound_banks/command");
 
-module.exports = [config, options, wemExtract, bnkExtract, treeShake, search, ori];
+// 显示项目所在的目录
+const getProject = require("./get_project/command");
+
+module.exports = [getProject, config, options, wemExtract, bnkExtract, treeShake, search, ori];
