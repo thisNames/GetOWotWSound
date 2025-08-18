@@ -1,27 +1,49 @@
 {
-  "name": "getowotwsound",
-  "version": "2.0.0",
-  "lksVersion": "0.0.7",
-  "description": "批量获取 Ori and the Will of the Wisps 游戏内的音频资源文件",
-  "main": "index.js",
-  "module": "CommonJS",
-  "scripts": {
-    "test": "node ./test/3.js",
-    "start": "node ./src/index.js",
-    "build": "node ./build/index.js -f -d -s"
-  },
-  "keywords": [
-    "ori",
-    "批处理",
-    "Ori and the Will of the Wisps",
-    "nodejs",
-    "javascripts"
-  ],
-  "author": "一只橙叙原、立秋枫林晚",
-  "authorBilibiliSpaces": "https://space.bilibili.com/1684627521、https://space.bilibili.com/701443748",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^18.19.33",
-    "@vercel/ncc": "^0.38.1"
-  }
+    "name": "getowotwsound",
+    "version": "3.0.7",
+    "lksVersion": "0.0.7",
+    "description": "批量获取 Ori and the Will of the Wisps 游戏内的音频资源文件",
+    "main": "index.js",
+    "module": "CommonJS",
+    "scripts": {},
+    "keywords": [
+        "ori",
+        "批处理",
+        "Ori and the Will of the Wisps",
+        "nodejs",
+        "javascript"
+    ],
+    "author": "一只橙叙原、立秋枫林晚",
+    "authorBilibiliSpaces": "https://space.bilibili.com/1684627521、https://space.bilibili.com/701443748",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^18.19.33",
+        "@vercel/ncc": "^0.38.1"
+    },
+    "repository": {
+        "url": "https://github.com/thisNames/GetOWotWSound",
+        "type": "Github"
+    },
+    "listRepository": [
+        {
+            "url": "https://github.com/thisNames/GetOWotWSound",
+            "type": "owo Github"
+        },
+        {
+            "url": "https://gitee.com/nextall/GetOWotWSound",
+            "type": "owo Gitee"
+        },
+        {
+            "url": "https://github.com/thisNames/lks",
+            "type": "lks Github"
+        },
+        {
+            "url": "https://gitee.com/nextall/lks",
+            "type": "lks Gitee"
+        },
+        {
+            "url": "2226531799@qq.com",
+            "type": "Email"
+        }
+    ]
 }

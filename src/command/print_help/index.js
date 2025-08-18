@@ -27,7 +27,12 @@ function printPackages()
         if (!Array.isArray(listRepository)) return;
 
         Logger.prompt("[获取更多]");
-        listRepository.forEach(lr => lr && Logger.info("\t", lr.url, lr.type));
+        listRepository.forEach(lr =>
+        {
+            if (!lr.url) return;
+            const line = `\t${lr.url} (${lr.type})`;
+            Logger.info(line);
+        });
     } catch (error)
     {
         return;
@@ -76,7 +81,9 @@ function printDescriptions(meta)
     for (let key in meta.singleMap)
     {
         let single = meta.singleMap[key];
-        Logger.info(single.key, single.description);
+        let line = `[${single.key}]: ${single.description}`;
+
+        Logger.info(line);
     }
     Logger.line();
 

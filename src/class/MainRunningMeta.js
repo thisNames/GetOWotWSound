@@ -1,6 +1,5 @@
 const GlobalSingle = require("../config/GlobalSingle");
 const Params = require("./Params");
-const Single = require("./Single");
 
 /**
  *  @description 运行命令时的元数据信息对象，由入口文件定义数据
