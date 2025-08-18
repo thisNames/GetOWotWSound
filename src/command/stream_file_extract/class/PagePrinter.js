@@ -132,7 +132,7 @@ class PagePrinter
 
     /**
      *  @param {String} input 检测输入
-     *  @returns {void} 是否结束循环
+     *  @returns {void}
      */
     __onKeyboardInput(input)
     {

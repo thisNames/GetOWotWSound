@@ -94,8 +94,23 @@ function init()
 // console.log(json.SoundBanksInfo.SoundBanks.length);
 
 
+class BBB
+{
+    constructor()
+    {
 
-console.log(process.argv);
+    }
+
+    aaa()
+    {
+        console.log(BBB.name);
+
+    }
+
+}
+
+// console.log(process.argv);
+new BBB().aaa()
 
 
 console.log(Date.now() - s, "ms");

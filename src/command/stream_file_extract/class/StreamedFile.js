@@ -10,6 +10,7 @@ class StreamedFile
      * @param {String} Id 文件的 ID
      * @param {String} ShortName 空间名称
      * @param {"StreamedFiles" | "SoundBanks"} Type 资源类型
+     * @param {String} BnkFile 资源类型路径 bnk
      */
     constructor(Id, ShortName, Type, BnkFile)
     {

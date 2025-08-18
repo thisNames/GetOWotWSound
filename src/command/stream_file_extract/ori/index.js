@@ -1,4 +1,4 @@
-const LoggerSaver = require("../../../class/LoggerSaver");
+const Logger = require("../../../class/Logger");
 
 const Ori = require("../class/Ori");
 
@@ -8,10 +8,9 @@ const Ori = require("../class/Ori");
  */
 function main()
 {
-    const logger = new LoggerSaver();
     const ori = new Ori();
 
-    logger.__log(ori.oriColor(), ori.ori());
+    Logger.log(ori.oriColor(), ori.ori());
 }
 
 module.exports = main;

@@ -3,12 +3,14 @@ const os = require("node:os");
 const pt = require("node:path");
 
 const LoggerSaver = require("../../../class/LoggerSaver");
+const Logger = require("../../../class/Logger");
 const Tools = require("../../../class/Tools");
 
 const Utils = require("../class/Utils");
 
 const OPT = require("./options");
 const MaxAsyncCount = os.cpus().length;
+const MinAsyncCount = 2;
 
 /**
  *  显示可选项
@@ -22,6 +24,20 @@ function printOptions()
 }
 
 /**
+ *  检查 options 配置 key 是否被定义
+ *  @param {String} key 属性名称
+ *  @returns {Boolean}
+ */
+function optionsHashKeyPrompt(key)
+{
+    if (Object.hasOwnProperty.call(OPT, key)) return true;
+
+    Logger.error(key, "属性不存在");
+
+    return false;
+}
+
+/**
  *  设置路径相关配置
  *  @param {String} key 属性名称
  *  @param {String} value 属性值
@@ -29,7 +45,7 @@ function printOptions()
  */
 function setPath(key, value)
 {
-    if (!Object.hasOwnProperty.call(OPT, key)) return;
+    if (!optionsHashKeyPrompt(key)) return;
 
     let __value = Utils.trim(value);
 
@@ -50,15 +66,7 @@ function setPath(key, value)
         path = path + "_" + Tools.generateHashId(16);
     }
 
-    try
-    {
-        fs.mkdirSync(path, { recursive: true });
-        Reflect.set(OPT, key, path);
-    } catch (error)
-    {
-        Reflect.set(OPT, key, process.cwd());
-    }
-
+    Reflect.set(OPT, key, path);
 }
 
 /**
@@ -69,16 +77,15 @@ function setPath(key, value)
  */
 function setNumber(key, value)
 {
-    // 没用这样的属性
-    if (!Object.hasOwnProperty.call(OPT, key)) return;
+    if (!optionsHashKeyPrompt(key)) return;
 
     let __value = Number.parseInt(value, 10);
 
-    // 不是数字或者不是 > 2 数
-    if (!Number.isFinite(__value) || __value < 2) return;
+    // 不是数字
+    if (!Number.isFinite(__value)) return;
 
     // 特殊处理
-    if (key === "asyncNumber") __value = Math.min(__value, MaxAsyncCount);
+    if (key == "asyncNumber") __value = Math.min(Math.max(MinAsyncCount, __value), MaxAsyncCount);
 
     Reflect.set(OPT, key, __value);
 }
@@ -91,8 +98,7 @@ function setNumber(key, value)
  */
 function setBoolean(key, value)
 {
-    // 没用这样的属性
-    if (!Object.hasOwnProperty.call(OPT, key)) return;
+    if (!optionsHashKeyPrompt(key)) return;
 
     const __value = Utils.trim(value).toLowerCase();
     const __trues = ["true", "t"];
@@ -103,13 +109,12 @@ function setBoolean(key, value)
 /**
  *  设置枚举相关配置
  *  @param {String} key 属性名称
- *  @param {String | Number} value 属性值
+ *  @param {Number} value 属性值
  *  @returns {void}
  */
 function setEnum(key, value)
 {
-    // 没用这样的属性
-    if (!Object.hasOwnProperty.call(OPT, key)) return;
+    if (!optionsHashKeyPrompt(key)) return;
 
     Reflect.set(OPT, key, value);
 }
@@ -123,10 +128,9 @@ function setEnum(key, value)
 function setString(key, value)
 {
     // 没用这样的属性
-    if (!Object.hasOwnProperty.call(OPT, key)) return;
+    if (!optionsHashKeyPrompt(key)) return;
 
-    let __value = Utils.trim(value);
-    Reflect.set(OPT, key, __value);
+    Reflect.set(OPT, key, Utils.trim(value));
 }
 
 module.exports = {

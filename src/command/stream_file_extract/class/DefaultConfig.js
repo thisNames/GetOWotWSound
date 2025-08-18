@@ -1,5 +1,7 @@
 const pt = require("node:path");
 
+const Utils = require("./Utils");
+
 /**
  *  默认配置
  */
@@ -42,10 +44,7 @@ class DefaultConfig
      */
     __getSoundModToolPath()
     {
-        const indexJs = process.argv[1] + "";
-        const dirName = pt.dirname(indexJs);
-
-        return pt.join(dirName, "SoundMod");
+        return pt.join(Utils.getProjectRoot(), "SoundMod");
     }
 }
 

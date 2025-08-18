@@ -18,9 +18,16 @@ const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfo
 const SaverFilename = "SearchSession_" + Tools.generateHashId(8);
 
 /**
+ * @description 保存结果
+ * @typedef SaverResult
+ * @property {Number} size 大小
+ * @property {String} path 路径
+ */
+
+/**
  *  保存搜索结果为 json
  *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {{ size: String, path: String}}
+ *  @returns {SaverResult}
  */
 function saverToJson(listStreamedFile)
 {
@@ -36,7 +43,7 @@ function saverToJson(listStreamedFile)
 /**
  *  保存搜索结果为 log
  *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {{ size: String, path: String}}
+ *  @returns {SaverResult}
  */
 function saverToLog(listStreamedFile)
 {
@@ -66,7 +73,7 @@ function saverToLog(listStreamedFile)
 /**
  *  保存搜索结果为 csv
  *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {{ size: String, path: String}}
+ *  @returns {SaverResult}
  */
 function saverToCsv(listStreamedFile)
 {
@@ -98,6 +105,23 @@ function saverToCsv(listStreamedFile)
 }
 
 /**
+ *  委托保存
+ *  @param {Array<StreamedFile>} result 流文件对象
+ *  @param {(result: Array<StreamedFile>) => SaverResult} saver 
+ *  @returns {SaverResult | Error} 
+ */
+function saverDelegate(result, saver)
+{
+    try
+    {
+        return saver(result);
+    } catch (error)
+    {
+        return new Error("SaverDelegate => " + error.message);
+    }
+}
+
+/**
  *  搜索
  *  @param {String} searchName 搜索名称
  *  @param {LoggerSaver} logger 日志记录器
@@ -113,19 +137,19 @@ async function search(searchName, logger)
     if (OPT.searchEnum == 0)
     {
         // 搜索 StreamedFile
-        logger.light("Search->StreamedFile");
+        logger.light("Search >> StreamedFile");
         soundBnkInfoData = cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
     }
     else if (OPT.searchEnum == 1)
     {
         // 搜索 SoundBank
-        logger.light("Search->SoundBank");
+        logger.light("Search >> SoundBank");
         soundBnkInfoData = cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
     }
     else
     {
         // 搜索全部
-        logger.light("Search->All");
+        logger.light("Search >> All");
         soundBnkInfoData = cacheLoaders.loaders(DefaultConfig.cacheStreamedFilesName, DefaultConfig.cacheSoundBanksName);
     }
 
@@ -135,7 +159,7 @@ async function search(searchName, logger)
     // 加载所有失败
     if (soundBnkInfoData instanceof Error)
     {
-        logger.error("Search =>" + soundBnkInfoData.message || "error");
+        logger.error(soundBnkInfoData.message);
         return Promise.resolve([]);
     }
 
@@ -151,7 +175,7 @@ async function search(searchName, logger)
     // 空集合
     if (result.length < 1)
     {
-        logger.info("什么也没用找到，试试别的吧~");
+        logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
         return Promise.resolve([]);
     }
 
@@ -183,55 +207,29 @@ async function main(params)
     // 检查搜索的名称不为空
     if (searchName === "")
     {
-        logger.error("Search =>", " 语法错误，必须有一个搜索名");
+        logger.error("必须有一个有效的搜索名");
         return;
     }
 
     // 等待退出
     const result = await search(searchName, logger);
 
+    /** @type {{name: String, result: SaverResult | Error}[]} 保存委托结果 */
+    const delegateResults = [];
+
     // 保存到 json
-    if (OPT.enableSSjson)
-    {
-        try
-        {
-            const o = saverToJson(result, logger);
-            logger
-                .success("saverToJson:", o.path)
-                .light("Size:", o.size);
-        } catch (error)
-        {
-            logger.error("saverToJson =>", error.message || "error");
-        }
-    }
+    OPT.enableSSjson && delegateResults.push({ name: "json", result: saverDelegate(result, saverToJson) });
     // 保存到 log
-    if (OPT.enableSSlog)
-    {
-        try
-        {
-            const o = saverToLog(result);
-            logger
-                .success("saverToLog:", o.path)
-                .light("Size:", o.size);
-        } catch (error)
-        {
-            logger.error("saverToLog =>", error.message || "error");
-        }
-    }
+    OPT.enableSSlog && delegateResults.push({ name: "log", result: saverDelegate(result, saverToLog) });
     // 保存到 csv
-    if (OPT.enableSScsv)
+    OPT.enableSScsv && delegateResults.push({ name: "csv", result: saverDelegate(result, saverToCsv) });
+
+    // 格式化输出
+    delegateResults.forEach(item =>
     {
-        try
-        {
-            const o = saverToCsv(result);
-            logger
-                .success("saverToCsv:", o.path)
-                .light("Size:", o.size);
-        } catch (error)
-        {
-            logger.error("saverToCsv =>", error.message || "error");
-        }
-    }
+        if (item.result instanceof Error) return logger.error(item.name, item.result.message);
+        Utils.formatOutputObject(item.result).forEach(line => logger.info(item.name, line.fKey, "=>", line.value));
+    });
 }
 
 module.exports = main;

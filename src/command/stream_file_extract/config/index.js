@@ -2,11 +2,26 @@ const fs = require("node:fs");
 const pt = require("node:path");
 
 const LoggerSaver = require("../../../class/LoggerSaver");
+const Logger = require("../../../class/Logger");
 
 const DefaultConfig = require("../class/DefaultConfig");
 const Utils = require("../class/Utils");
 
 const CFG = require("./default_config");
+
+/**
+ *  检查 config 配置 key 是否被定义
+ *  @param {String} key 属性名称
+ *  @returns {Boolean}
+ */
+function configHashKeyPrompt(key)
+{
+    if (Object.hasOwnProperty.call(CFG, key)) return true;
+
+    Logger.error(key, "属性不存在");
+
+    return false;
+}
 
 /**
  *  显示配置
@@ -25,28 +40,19 @@ function printConfig()
 
 /**
  *  保存配置
- *  @returns {{ done: Boolean, msg: String }} 保存路径 | 错误信息
+ *  @returns {void}
  */
 function saverConfig()
 {
-    const savePath = pt.join(__dirname, DefaultConfig.LOCAL_CONFIG);
+    const path = pt.join(__dirname, DefaultConfig.LOCAL_CONFIG);
 
     try
     {
-        const configData = JSON.stringify(CFG);
-
-        fs.writeFileSync(savePath, configData, { encoding: "utf-8", flag: "w" });
-
-        return {
-            done: true,
-            msg: savePath
-        };
+        fs.writeFileSync(path, JSON.stringify(CFG), { encoding: "utf-8", flag: "w" });
+        Logger.success("Saver success", path);
     } catch (error)
     {
-        return {
-            done: false,
-            msg: error.message || "保存配置出错"
-        };
+        Logger.error("Saver failure", error.message);
     }
 }
 
@@ -58,37 +64,21 @@ function saverConfig()
  */
 function setConfig(key, value)
 {
-    const logger = new LoggerSaver();
-    let __value = Utils.trim(value);
+    if (!configHashKeyPrompt(key)) return;
 
-    // 如果为空，设置失败
-    if (!Object.hasOwnProperty.call(CFG, key))
-    {
-        logger.error(`[${key}] 没用这样的配置`);
-        return;
-    }
+    let __value = Utils.trim(value);
 
     // 没用有变化，默认使用原来的配置
     if (Reflect.get(CFG, key) === __value)
     {
-        logger.light(`[${key}] 已经是最新的配置啦`);
+        Logger.prompt(key, "No change");
         return;
     }
 
     // 更新
     Reflect.set(CFG, key, __value);
-
-    const res = saverConfig(CFG);
-
-    // 保存成功 | 失败
-    if (res.done)
-    {
-        logger.success(`[${key}] 已保存 => ${res.msg}`);
-    }
-    else
-    {
-        logger.error(`[${key}] 保存失败 => ${res.msg}`);
-    }
+    Logger.info(key, "=", __value);
+    saverConfig(CFG);
 }
 
 /**
@@ -97,6 +87,8 @@ function setConfig(key, value)
  */
 function resetConfig()
 {
+    Logger.prompt("resetConfig");
+
     const def = new DefaultConfig();
 
     for (const key in def)
@@ -108,7 +100,7 @@ function resetConfig()
         }
     }
 
-    saverConfig();
+    saverConfig(CFG);
 }
 
 module.exports = {

@@ -75,7 +75,7 @@ class SoundBanksInfoJsonLoader
         } catch (error)
         {
             // 读取错误
-            throw new Error(`Require: ${error.message || "Error"} [${this.soundBanksInfoJsonFilePath}]`);
+            throw new Error("Require:" + error.message);
         }
     }
 
@@ -106,10 +106,6 @@ class SoundBanksInfoJsonLoader
             listStreamedFile.push(new StreamedFile(item.Id, item.ShortName, "StreamedFiles", ""));
             this.streamedFileCount++;
         }
-
-        // 释放内存
-        json = null;
-        streamedFiles = null;
 
         return listStreamedFile;
     }
@@ -156,10 +152,6 @@ class SoundBanksInfoJsonLoader
             listSoundBank.push(soundBank);
             this.soundBankCount++;
         }
-
-        // 释放内存
-        json = null;
-        soundBanks = null;
 
         return listSoundBank;
     }

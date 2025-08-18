@@ -11,8 +11,10 @@ const Utils = require("../class/Utils");
 const CFG = require("../config/default_config");
 
 // 保存文件
-const ListStreamedFileSavePath = pt.join(Utils.getResourcePath(), "cache", DefaultConfig.cacheStreamedFilesName);
-const ListSoundBankSavePath = pt.join(Utils.getResourcePath(), "cache", DefaultConfig.cacheSoundBanksName);
+const CacheFolder = pt.join(Utils.getResourcePath(), "cache");
+const ListStreamedFileSavePath = pt.join(CacheFolder, DefaultConfig.cacheStreamedFilesName);
+const ListSoundBankSavePath = pt.join(CacheFolder, DefaultConfig.cacheSoundBanksName);
+const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
 
 /**
  *  生成缓存文件
@@ -20,14 +22,12 @@ const ListSoundBankSavePath = pt.join(Utils.getResourcePath(), "cache", DefaultC
  */
 function cacheGenerator()
 {
-    const logger = new LoggerSaver();
-    const gameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
-    const loader = new StreamedFilesJsonLoader(gameSoundBnkInfo);
+    const logger = new LoggerSaver().info("cacheGenerator");
+    const loader = new StreamedFilesJsonLoader(GameSoundBnkInfo);
+    const startTime = Date.now();
 
     // 读取 SoundBnkInfo 文件信息
     let listStreamedFile = null, listSoundBank = null;
-
-    // 加载条
     try
     {
         listStreamedFile = loader.loaderStreamedFiles();
@@ -35,7 +35,7 @@ function cacheGenerator()
         loader.clearCache();
     } catch (error)
     {
-        logger.error("cacheGenerator =>", error.message || "error");
+        logger.error(error.message);
         return;
     }
 
@@ -50,25 +50,24 @@ function cacheGenerator()
         fs.writeFileSync(ListSoundBankSavePath, d2, { encoding: "utf-8", flag: "w" });
     } catch (error)
     {
-        logger
-            .error("cacheGenerator =>", error.message || "error")
-            .error("Cache Folder: ", pt.dirname(ListStreamedFileSavePath));
-
+        logger.error(error.message);
         return;
     }
 
     // 统计大小
-    const originSize = Tools.formatBytes(fs.statSync(gameSoundBnkInfo).size);
+    const originSize = Tools.formatBytes(fs.statSync(GameSoundBnkInfo).size);
     const cacheSize = Tools.formatBytes(Buffer.byteLength(d1, "binary") + Buffer.byteLength(d2, "binary"));
 
-    // 统计输出
-    logger
-        .prompt("OriginSize:", originSize.value + originSize.type)
-        .light("CacheSize:", cacheSize.value + cacheSize.type)
-        .success("StreamedFiles:", loader.streamedFileCount)
-        .success("SoundBanks:", loader.soundBankCount)
-        .success("SoundBanks>StreamedFiles:", loader.soundBankStreamedFileCount)
-        .light("Total:", loader.streamedFileCount + loader.soundBankStreamedFileCount);
+    // 格式化输出
+    Utils.formatOutputObject({
+        originSize: originSize.value + originSize.type,
+        cacheSize: cacheSize.value + cacheSize.type,
+        listStreamedFile: loader.streamedFileCount,
+        bnk: loader.soundBankCount,
+        listSoundBank: loader.soundBankStreamedFileCount,
+        totalStreamedFile: loader.streamedFileCount + loader.soundBankStreamedFileCount,
+        timeMS: Date.now() - startTime
+    }).forEach(line => logger.info(line.fKey, "=>", line.value));
 }
 
 /**
@@ -77,33 +76,37 @@ function cacheGenerator()
  */
 function clearCacheFile()
 {
-    const delSymbol = Tools.generateHashId(8) + ".temp";
-    const logger = new LoggerSaver();
-    const cachePath = pt.join(Utils.getResourcePath(), "cache");
+    const logger = new LoggerSaver().info("clearCacheFile");
+    const delHash = Tools.generateHashId(8);
+    const delExtname = ".temp";
+
+    let ddc = 0;
 
     try
     {
         // 并不会删除
         if (fs.existsSync(ListStreamedFileSavePath))
         {
-            const l1 = ListStreamedFileSavePath + "." + delSymbol;
-            fs.renameSync(ListStreamedFileSavePath, l1);
+            fs.renameSync(ListStreamedFileSavePath, ListStreamedFileSavePath + "." + delHash + delExtname);
+            ddc++;
         }
-
         if (fs.existsSync(ListSoundBankSavePath))
         {
-            const l2 = ListSoundBankSavePath + "." + delSymbol;
-            fs.renameSync(ListSoundBankSavePath, l2);
+            fs.renameSync(ListSoundBankSavePath, ListSoundBankSavePath + "." + delHash + delExtname);
+            ddc++;
         }
-
-        logger.success("Clear success");
-
     } catch (error)
     {
-        logger
-            .error("clearCacheFile =>", error.message || "error")
-            .error("Cache Folder: ", cachePath);
+        logger.error(error.message);
+        return;
     }
+
+    // 格式化输出
+    Utils.formatOutputObject({
+        hash: delHash,
+        ext: delExtname,
+        clearTotal: ddc
+    }).forEach(line => logger.info(line.fKey, "=>", line.value));
 }
 
 /**
@@ -112,50 +115,44 @@ function clearCacheFile()
  */
 async function deleteCacheFile()
 {
-    const cacheFolder = pt.join(Utils.getResourcePath(), "cache");
-    const logger = new LoggerSaver();
+    const logger = new LoggerSaver().info("deleteCacheFile");
     const listDelItem = [];
+    const delExtname = ".temp";
+    const oks = ["y", "yes"];
 
+    // 读取目录
     try
     {
-        const listDirent = fs.readdirSync(cacheFolder, { encoding: "utf-8", withFileTypes: true });
-        for (let i = 0; i < listDirent.length; i++)
-        {
-            const dirent = listDirent[i];
-            if (dirent.isFile() && pt.extname(dirent.name) === ".temp") listDelItem.push(pt.join(cacheFolder, dirent.name));
-        }
+        const listDirent = fs.readdirSync(CacheFolder, { encoding: "utf-8", withFileTypes: true });
+        listDirent.forEach(dirent => dirent.isFile() && pt.extname(dirent.name) == delExtname && listDelItem.push(pt.join(CacheFolder, dirent.name)));
     } catch (error)
     {
-        logger
-            .error("deleteCacheFile =>", error.message || "error")
-            .error("Cache Folder: ", pt.dirname(ListStreamedFileSavePath));
-
+        logger.error(error.message)
         return;
     }
 
     // 空
     if (listDelItem.length < 1)
     {
-        logger.info("Cache is empty");
+        logger.warn("Cache is empty");
         return;
     }
 
     // 列表
-    logger.warn("是否要删除这些临时缓存文件");
     listDelItem.forEach(filePath => logger.info(filePath));
-    logger.info("确定：[y]");
+    logger.info("Del?:", oks.join("/"));
 
-    const input = await Tools.terminalInput().catch(m => m = "");
+    // 等待输入
+    const input = await Tools.terminalInput().catch(m => m + "");
 
     // 取消删除
-    if (input != "y")
+    if (!oks.includes(input))
     {
-        logger.warn("取消删除");
+        logger.warn("Cancel");
         return;
     }
 
     // 删除
-    let su = 0;;
     for (let i = 0; i < listDelItem.length; i++)
     {
         const filePath = listDelItem[i];
@@ -163,16 +160,12 @@ async function deleteCacheFile()
         try
         {
             fs.rmSync(filePath);
-            logger.success("Delete", i + 1, "=>", filePath);
-            su++;
+            logger.info("Del", i + 1, filePath);
         } catch (error)
         {
-            logger.error("Delete", error.message || "error");
+            logger.error(error.message);
         }
     }
-
-    // 统计
-    logger.light("Delete Total:", su);
 }
 
 module.exports = {
