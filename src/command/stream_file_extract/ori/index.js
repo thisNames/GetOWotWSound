@@ -8,9 +8,7 @@ const Ori = require("../class/Ori");
  */
 function main()
 {
-    const ori = new Ori();
-
-    Logger.log(ori.oriColor(), ori.ori());
+    new Ori().printer();
 }
 
 module.exports = main;

@@ -1,5 +1,7 @@
 const ParamsMapping = require("../../../class/ParamsMapping");
 
+const DefaultOptions = require("../class/DefaultOptions");
+
 // 默认配置模板
 const template = {
     count: 1,
@@ -14,11 +16,20 @@ const setExtname = new ParamsMapping("ext", {
     ...template
 });
 
+/** 字符串 生成过滤器 */
+const setFilter = new ParamsMapping("fr", {
+    key: "filter",
+    description: "生成过滤器 filter = <[shortNameORId, wotw\\characters]>",
+    defaults: [""],
+    ...template
+});
+
+
 /** 设置 输出路径 */
 const setOutputPath = new ParamsMapping("out", {
     key: "outputPath",
     description: "设置输出路径 outputPath = <path>",
-    defaults: [process.cwd()],
+    defaults: [DefaultOptions.defOutputPath],
     ...template
 });
 
@@ -26,7 +37,15 @@ const setOutputPath = new ParamsMapping("out", {
 const setLogPath = new ParamsMapping("log", {
     key: "logPath",
     description: "设置日志保存路径 logPath = <path>",
-    defaults: [process.cwd()],
+    defaults: [DefaultOptions.defLogPath],
+    ...template
+});
+
+/** 设置 临时文件保存路径 */
+const setTempPath = new ParamsMapping("tmp", {
+    key: "tempPath",
+    description: "临时文件保存路径 tempPath = <path>",
+    defaults: [DefaultOptions.defTempPath],
     ...template
 });
 
@@ -121,8 +140,10 @@ const options = new ParamsMapping("opt", {
     children: [
         setOutputPath,
         setLogPath,
+        setTempPath,
         setAsyncNumber,
         setExtname,
+        setFilter,
         enableAsync,
         enableId,
         enableCreateTypeDir,
@@ -143,7 +164,7 @@ enumStreamedFile.addTask(options.key + "." + enumStreamedFile.key, () => require
 enumSoundBank.addTask(options.key + "." + enumSoundBank.key, () => require("./index").setEnum("searchEnum", 1));
 
 // 设置路径
-[setOutputPath, setLogPath]
+[setOutputPath, setLogPath, setTempPath]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setPath(e.key, params[0])));
 
@@ -158,7 +179,7 @@ enumSoundBank.addTask(options.key + "." + enumSoundBank.key, () => require("./in
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setBoolean(e.key, params[0])));
 
 // 设置字符串
-[setExtname]
+[setExtname, setFilter]
     .map(e => ({ key: e.key, pmg: e }))
     .forEach(e => e.pmg.addTask(options.key + "." + e.key, params => require("./index").setString(e.key, params[0])));
 

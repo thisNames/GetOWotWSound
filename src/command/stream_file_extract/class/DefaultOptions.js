@@ -5,20 +5,35 @@ const pt = require("node:path");
  */
 class DefaultOptions
 {
+    /** @type {String} 默认输出路径 */
+    static defOutputPath = pt.join(process.cwd(), "build");
+
+    /** @type {String} 默认日志保存路径 */
+    static defLogPath = pt.join(process.cwd(), "build", "log");
+
+    /** @type {String} 默认临时文件保存路径 */
+    static defTempPath = pt.join(process.cwd(), "build", "temp");
+
     constructor()
     {
         //#region 字符串配置
         /** @type {String} 生成的文件名称后缀 */
         this.extname = ".ogg";
+
+        /** @type {String} 生成过滤器 */
+        this.filter = "";
         //#endregion
 
 
         //#region 路径配置
         /** @type {String} 输出路径 */
-        this.outputPath = pt.join(process.cwd(), "builds");
+        this.outputPath = DefaultOptions.defOutputPath;
 
         /** @type {String} 日志保存路径 */
-        this.logPath = pt.join(process.cwd(), "logs");
+        this.logPath = DefaultOptions.defLogPath;
+
+        /** @type {String} 临时文件保存路径 */
+        this.tempPath = DefaultOptions.defTempPath;
         //#endregion
 
 
@@ -44,10 +59,10 @@ class DefaultOptions
         /** @type {Boolean} 启用 保存搜索结果为 csv */
         this.enableSScsv = false;
 
-        /** @type {String} 启用 生成 ID */
+        /** @type {Boolean} 启用 生成 ID */
         this.enableId = true;
 
-        /** @type {String} 启用 分类文件夹 */
+        /** @type {Boolean} 启用 分类文件夹 */
         this.enableCreateTypeDir = true;
         //#endregion
 

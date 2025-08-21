@@ -2,6 +2,7 @@ const s = Date.now();
 
 const fs = require("node:fs");
 const pt = require("node:path");
+const Exeecutor = require("../src/class/cp/Executor")
 
 // 并集
 const sumSet = new Set();
@@ -94,23 +95,33 @@ function init()
 // console.log(json.SoundBanksInfo.SoundBanks.length);
 
 
-class BBB
+async function ays()
 {
-    constructor()
+    let promise1 = new Promise((resolve, reject) =>
     {
-
-    }
-
-    aaa()
+        setTimeout(() =>
+        {
+            resolve('Promise1 resolved');
+        }, 1000);
+    }).then(res =>
     {
-        console.log(BBB.name);
+        return { res: res, i: 9 }
+    });
 
-    }
+    let promise2 = new Promise((resolve, reject) =>
+    {
+        setTimeout(() =>
+        {
+            resolve('Promise2 resolved');
+        }, 2000);
+    });
+
+    const res = await Promise.race([promise1, promise2]);
+
+    console.log(res);
 
 }
 
-// console.log(process.argv);
-new BBB().aaa()
-
+ays()
 
 console.log(Date.now() - s, "ms");

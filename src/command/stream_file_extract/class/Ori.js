@@ -70,6 +70,19 @@ class Ori
 
         return color;
     }
+
+    /**
+     *  打印 ori
+     *  @returns {void}
+     */
+    printer()
+    {
+        const logger = new LoggerSaver();
+        const color = this.oriColor();
+        const ori = this.ori();
+
+        logger.__log(color, ori);
+    }
 }
 
 module.exports = Ori;

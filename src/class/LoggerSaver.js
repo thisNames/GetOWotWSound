@@ -51,13 +51,14 @@ class LoggerSaver extends Logger
      */
     __log(color, ...args)
     {
-        Logger.log(color, ...args);
+        let message = args.join(" ");
+
+        Logger.log(color, message);
 
         // 如果启用保存日志
         if (this.__logFile)
         {
             // 保存日志
-            let message = args.join(" ");
             this.__logFile.collect(this.filename, message);
         }
 

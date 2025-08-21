@@ -107,7 +107,7 @@ class Executor
         } catch (error)
         {
             ert.done = false;
-            ert.errorMessage = `Sync: ${this.exe} => ${error.message || "sync executor error"}`;
+            ert.errorMessage = error.message;
         }
 
         return ert;
@@ -128,7 +128,7 @@ class Executor
             {
                 if (error)
                 {
-                    ert.errorMessage = `Async: ${this.exe} => ${error.message || "async executor error"}`;
+                    ert.errorMessage = error.message;
                     ert.stderr = stderr;
                 }
 

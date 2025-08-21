@@ -1,0 +1,86 @@
+const pt = require("node:path");
+
+const Logger = require("../../../class/Logger");
+const Tools = require("../../../class/Tools");
+const FormatNumber = require("../../../class/FormatNumber");
+
+const DefaultConfig = require("../class/DefaultConfig");
+const StreamedFilesWorker = require("../class/StreamedFilesWorker");
+const Utils = require("../class/Utils");
+const SoundBnkInfoCacheLoader = require("../class/SoundBnkInfoCacheLoader");
+const Ori = require("../class/Ori");
+
+const CFG = require("../config/default_config");
+const OPT = require("../options/options");
+const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
+
+/**
+ *  转换 wem
+ *  @returns {void}
+ */
+async function converter()
+{
+    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
+    const sbInfoData = cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
+    const worker = new StreamedFilesWorker(CFG, OPT);
+    const ori = new Ori();
+    const fn = new FormatNumber();
+
+    const prompts = ["y", "yes"];
+    const filter = Utils.trim(OPT.filter);
+
+    // 加载所有失败
+    if (sbInfoData instanceof Error) return Logger.prompt(sbInfoData.message);
+
+    // 使用过滤器
+    const listStreamedFile = filter === "" ? sbInfoData.listStreamedFile : sbInfoData.searchStreamedFile(filter, OPT.enableSIgnoreCase);
+
+    // 格式化输出配置
+    Utils.formatOutputObject({
+        operate: "StreamedFiles",
+        total: listStreamedFile.length,
+        ...OPT,
+        executor: prompts.join("/")
+    }).forEach(line => Logger.info(line.fKey, "=>", line.value))
+
+    // 输出
+    const input = await Tools.terminalInput().catch(m => m + "");
+    if (!prompts.includes(input)) return Logger.warn("Cancel");
+
+    // 开始执行
+    const startTime = Date.now();
+    const title = OPT.enableAsync ? "AsyncSF" : "SyncSF";
+
+    ori.printer();
+    Logger.info(title);
+
+    try
+    {
+        // 初始化
+        worker.init(title);
+
+        // 执行
+        if (OPT.enableAsync)
+        {
+            await worker.executor(listStreamedFile);
+        }
+        else
+        {
+            worker.executorSync(listStreamedFile);
+        }
+    } catch (error)
+    {
+        Logger.error(error.message);
+    }
+
+    // 格式换输出统计
+    const time = fn.formatTimeMinute(Date.now() - startTime);
+    Utils.formatOutputObject({
+        ...worker.counter,
+        bankExtractRate: worker.counter.SoundBankExtractRate(),
+        wemConversionRate: worker.counter.StreamedFileConversionRate(),
+        useTime: time.value + time.type
+    }).forEach(line => Logger.info(line.fKey, "=>", line.value));
+}
+
+module.exports = converter;

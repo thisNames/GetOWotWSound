@@ -1,8 +1,6 @@
 const fs = require("node:fs");
 const pt = require("node:path");
 
-const Tools = require("./Tools");
-
 /**
  *  日志收集类
  *  @version 0.0.2
@@ -36,7 +34,7 @@ class MessageCollect
             this.path = fs.mkdirSync(this.path, { recursive: true });
         }
 
-        this.filename = this.name.concat("_", Tools.getDate(), "_", Date.now(), ".log");
+        this.filename = this.name.concat("_", Date.now(), ".log");
         this.filePath = filePath || pt.resolve(this.path, this.filename);
 
         this.fr = fs.openSync(this.filePath, "a+");
@@ -70,11 +68,11 @@ class MessageCollect
     {
         if (this.__errorCount < 0) return this.close();
 
-        const m = `[${Tools.getRealTime()}] ${you}: ${message}\r\n`;
+        const m = `${you}: ${message}\r\n`;
 
         try
         {
-            fs.writeSync(this.fr, m, null, "utf8");
+            fs.writeSync(this.fr, m, null, "utf-8");
         } catch (error)
         {
             this.__errorCount--;

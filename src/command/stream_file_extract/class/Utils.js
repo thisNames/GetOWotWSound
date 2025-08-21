@@ -176,6 +176,31 @@ class Utils
     {
         return (str + "").trim();
     }
+
+    /**
+     *  检测是否是一个可执行问价
+     *  @param {String} path 路径
+     *  @returns {Boolean} 是否存在
+     */
+    static isExeLiteSync(filePath)
+    {
+        if (!fs.existsSync(filePath)) return false;
+        if (!fs.statSync(filePath).isFile()) return false;
+
+        try
+        {
+            const fd = fs.openSync(filePath, "r");
+            const buf = Buffer.alloc(2);
+
+            fs.readSync(fd, buf, 0, 2, 0);
+            fs.closeSync(fd);
+
+            return buf[0] === 0x4D && buf[1] === 0x5A;
+        } catch
+        {
+            return false;
+        }
+    }
 }
 
 module.exports = Utils;

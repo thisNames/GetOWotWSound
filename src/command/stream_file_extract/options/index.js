@@ -17,7 +17,11 @@ function printOptions()
 {
     const logger = new LoggerSaver();
 
-    Utils.formatOutputObject(OPT).forEach(item => logger.heighLight(`${item.fKey} = ${item.value}`, [item.fKey]));
+    Utils.formatOutputObject(OPT).forEach(item =>
+    {
+        let color = Utils.trim(item.value) === "" ? LoggerSaver.RED : LoggerSaver.LIGHT_YELLOW;
+        logger.heighLight(`${item.fKey} = ${item.value}`, [item.fKey], color);
+    });
 }
 
 /**

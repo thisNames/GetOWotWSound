@@ -47,20 +47,8 @@ class StreamedFile
      */
     GetFileName()
     {
-        return pt.basename(this.ShortName);
-    }
-
-    /**
-     * 指定后缀名称
-     * @param {String} ext 拓展名，默认 .ogg
-     * @returns {String}
-     * @example
-     * 源名称：wellspringGladesGromAfterMill3.wav
-     * 最佳后：wellspringGladesGromAfterMill3.wav.ogg
-     */
-    AppendExtName(ext = ".ogg")
-    {
-        return this.GetFileName() + ext;
+        const on = pt.basename(this.ShortName).replace(/[\\/]+/g, "-");
+        return on.split(".")[0] || on;
     }
 
     /**
@@ -73,8 +61,16 @@ class StreamedFile
      */
     GetTypeName()
     {
-        const type = pt.dirname(this.ShortName);
-        return pt.join(this.Type, type);
+        return pt.dirname(this.ShortName);
+    }
+
+    /**
+     * 重写 toString
+     * @returns {String}
+     */
+    toString()
+    {
+        return "#" + this.Id + " " + this.ShortName;
     }
 }
 
