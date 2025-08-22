@@ -60,7 +60,14 @@ async function extractor()
         worker.init(title);
 
         // 执行
-        worker.bnkExtractorSync(listSoundBank);
+        if (OPT.enableAsync)
+        {
+            await worker.bnkExtractor(listSoundBank);
+        }
+        else
+        {
+            worker.bnkExtractorSync(listSoundBank);
+        }
     } catch (error)
     {
         Logger.error(error.message);

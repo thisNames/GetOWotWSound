@@ -52,12 +52,7 @@ class SoundBanksWorker extends StreamedFilesWorker
         result.tinput = pt.join(extractPath, sbk.Path);
         result.output = pt.join(extractPath, sbk.GetBnkFileName());
 
-        if (fs.existsSync(result.tinput) && fs.statSync(result.tinput).isFile())
-        {
-            console.log("oo");
-
-            return result;
-        }
+        if (fs.existsSync(result.tinput) && fs.statSync(result.tinput).isFile()) return result;
 
         // 将源 .bnk 拷贝至 temp 目录
         fs.copyFileSync(result.oinput, result.tinput);
@@ -95,7 +90,7 @@ class SoundBanksWorker extends StreamedFilesWorker
         // bnkextr 提取成功
         if (extract.done)
         {
-            this.slr.success(et);
+            this.slr.light(et);
             this.smc.collect(et, extract.stdout || extract.command);
 
             this.counter.bnkExtractSuccess++;
@@ -122,10 +117,40 @@ class SoundBanksWorker extends StreamedFilesWorker
         {
             const item = listSoundBank[i];
             const bhp = this.bnkHandlerPath(item);
-
             const result = this.extractor(bhp);
 
+            // 日志记录
             this.bnkLogger((i + 1).toString().padStart(pad, "0"), item, result);
+
+            // 同步执行
+            this.executorSync(item.IncludedMemoryFiles, bhp.output);
+        }
+
+        this.counter.totalSoundBank += listSoundBank.length;
+    }
+
+    /**
+     *  异步执行 提取 bnk 文件
+     *  @param {Array<SoundBank>} listSoundBank 要处理的 SoundBank 数据集合
+     *  @returns {Promise<void>}
+     */
+    async bnkExtractor(listSoundBank)
+    {
+        const pad = listSoundBank.length.toString().length;
+
+        let current = 0;
+
+        for (let i = 0; i < listSoundBank.length; i++)
+        {
+            const item = listSoundBank[i];
+            const bhp = this.bnkHandlerPath(item);
+            const result = this.extractor(bhp);
+            current++;
+
+            // 日志记录
+            this.bnkLogger(current.toString().padStart(pad, "0"), item, result);
+
+            await this.executor(item.IncludedMemoryFiles, bhp.output);
         }
 
         this.counter.totalSoundBank += listSoundBank.length;
