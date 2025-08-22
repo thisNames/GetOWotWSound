@@ -30,6 +30,28 @@ class SoundBank
     {
         return this.Id + "." + this.Path;
     }
+
+    /**
+     *  获取 bnk 文件的名称
+     *  @returns {String}
+     *  @example
+     *  源路径：corruptSpiderling.bnk
+     *  类名称：corruptSpiderling
+     */
+    GetBnkFileName()
+    {
+        const bnkName = this.Path.split(".")[0];
+        return bnkName ? bnkName : this.Path;
+    }
+
+    /**
+     *  获取 bnk 文件信息
+     *  @returns {String}
+     */
+    toString()
+    {
+        return "#" + this.Id + " [" + this.Path + "]";
+    }
 }
 
 module.exports = SoundBank;

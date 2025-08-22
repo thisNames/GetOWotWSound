@@ -5,7 +5,7 @@ const Tools = require("../../../class/Tools");
 const FormatNumber = require("../../../class/FormatNumber");
 
 const DefaultConfig = require("../class/DefaultConfig");
-const StreamedFilesWorker = require("../class/StreamedFilesWorker");
+const SoundBanksWorker = require("../class/SoundBanksWorker");
 const Utils = require("../class/Utils");
 const SoundBnkInfoCacheLoader = require("../class/SoundBnkInfoCacheLoader");
 const Ori = require("../class/Ori");
@@ -15,14 +15,14 @@ const OPT = require("../options/options");
 const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
 
 /**
- *  转换 wem
+ *  提取 bnk
  *  @returns {void}
  */
-async function converter()
+async function extractor()
 {
     const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
-    const sbInfoData = cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
-    const worker = new StreamedFilesWorker(CFG, OPT);
+    const sbInfoData = cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
+    const worker = new SoundBanksWorker(CFG, OPT);
     const ori = new Ori();
     const fn = new FormatNumber();
 
@@ -33,12 +33,13 @@ async function converter()
     if (sbInfoData instanceof Error) return Logger.error(sbInfoData.message);
 
     // 使用过滤器
-    const listStreamedFile = filter === "" ? sbInfoData.listStreamedFile : sbInfoData.searchStreamedFile(filter, OPT.enableSIgnoreCase);
+    const listSoundBank = filter === "" ? sbInfoData.listSoundBank : sbInfoData.filterSoundBank(filter, OPT.enableSIgnoreCase);
 
     // 格式化输出配置
     Utils.formatOutputObject({
-        operate: "StreamedFiles",
-        total: listStreamedFile.length,
+        operate: "SoundBanks",
+        total: sbInfoData.counterListSoundBank(listSoundBank),
+        bnkTotal: listSoundBank.length,
         ...OPT,
         executor: prompts.join("/")
     }).forEach(line => Logger.info(line.fKey, "=>", line.value));
@@ -49,25 +50,17 @@ async function converter()
 
     // 开始执行
     const startTime = Date.now();
-    const title = OPT.enableAsync ? "AsyncSF" : "SyncSF";
+    const title = OPT.enableAsync ? "AsyncSBK" : "SyncSBK";
 
     ori.printer();
     Logger.info(title);
 
     try
     {
-        // 初始化
         worker.init(title);
 
         // 执行
-        if (OPT.enableAsync)
-        {
-            await worker.executor(listStreamedFile);
-        }
-        else
-        {
-            worker.executorSync(listStreamedFile);
-        }
+        worker.bnkExtractorSync(listSoundBank);
     } catch (error)
     {
         Logger.error(error.message);
@@ -83,4 +76,4 @@ async function converter()
     }).forEach(line => Logger.info(line.fKey, "=>", line.value));
 }
 
-module.exports = converter;
+module.exports = extractor;
