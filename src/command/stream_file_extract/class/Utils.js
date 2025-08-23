@@ -201,6 +201,22 @@ class Utils
             return false;
         }
     }
+
+    /**
+     *  计算文件大小
+     *  @param {String} filename 文件路径
+     *  @returns {String}
+     */
+    static filesize(filename)
+    {
+        if (fs.existsSync(filename) && fs.statSync(filename).isFile())
+        {
+            const size = Tools.formatBytes(fs.statSync(filename).size);
+            return size.value + size.type;
+        }
+
+        return "0";
+    }
 }
 
 module.exports = Utils;

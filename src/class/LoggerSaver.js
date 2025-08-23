@@ -25,10 +25,7 @@ class LoggerSaver extends Logger
         this.__logFile = null;
 
         // 启用保存日志
-        if (this.isSave)
-        {
-            this.__logFile = new MessageCollect(this.filename, this.saveFolder);
-        }
+        if (this.isSave) this.__logFile = new MessageCollect(this.filename, this.saveFolder);
     }
 
     /** 
@@ -37,11 +34,7 @@ class LoggerSaver extends Logger
      */
     close()
     {
-        if (this.__logFile)
-        {
-            this.line().tip(`LoggerSaver [${this.filename}] => ` + this.saveFolder);
-            this.__logFile.close();
-        }
+        if (this.__logFile) this.__logFile.close();
     }
 
     /** 
@@ -56,11 +49,7 @@ class LoggerSaver extends Logger
         Logger.log(color, message);
 
         // 如果启用保存日志
-        if (this.__logFile)
-        {
-            // 保存日志
-            this.__logFile.collect(this.filename, message);
-        }
+        if (this.__logFile) this.__logFile.collect("", message);
 
         return this;
     }

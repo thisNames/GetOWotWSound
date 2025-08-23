@@ -34,11 +34,12 @@ async function extractor()
 
     // 使用过滤器
     const listSoundBank = filter === "" ? sbInfoData.listSoundBank : sbInfoData.filterSoundBank(filter, OPT.enableSIgnoreCase);
+    const total = sbInfoData.counterListSoundBank(listSoundBank);
 
     // 格式化输出配置
     Utils.formatOutputObject({
         operate: "SoundBanks",
-        total: sbInfoData.counterListSoundBank(listSoundBank),
+        total: total,
         bnkTotal: listSoundBank.length,
         ...OPT,
         executor: prompts.join("/")
@@ -58,16 +59,13 @@ async function extractor()
     try
     {
         worker.init(title);
+        worker.setPreTotal(total);
 
         // 执行
-        if (OPT.enableAsync)
-        {
-            await worker.bnkExtractor(listSoundBank);
-        }
-        else
-        {
-            worker.bnkExtractorSync(listSoundBank);
-        }
+        await worker.bnkExtractor(listSoundBank);
+
+        // 关闭
+        worker.loggerEnd();
     } catch (error)
     {
         Logger.error(error.message);

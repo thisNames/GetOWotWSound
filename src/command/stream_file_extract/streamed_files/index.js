@@ -58,16 +58,13 @@ async function converter()
     {
         // 初始化
         worker.init(title);
+        worker.setPreTotal(listStreamedFile.length);
 
         // 执行
-        if (OPT.enableAsync)
-        {
-            await worker.executor(listStreamedFile);
-        }
-        else
-        {
-            worker.executorSync(listStreamedFile);
-        }
+        OPT.enableAsync ? await worker.executor(listStreamedFile) : worker.executorSync(listStreamedFile);
+
+        // 关闭
+        worker.loggerEnd();
     } catch (error)
     {
         Logger.error(error.message);

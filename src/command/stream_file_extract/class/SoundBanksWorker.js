@@ -8,6 +8,7 @@ const StreamedFilesWorker = require("./StreamedFilesWorker");
 const DefaultConfig = require("./DefaultConfig");
 const DefaultOptions = require("./DefaultOptions");
 const SoundBank = require("./SoundBank");
+const Utils = require("./Utils");
 
 /**
  *  @description 处理路径函数返回值
@@ -105,52 +106,27 @@ class SoundBanksWorker extends StreamedFilesWorker
     }
 
     /**
-     *  同步执行 提取 bnk 文件
-     *  @param {Array<SoundBank>} listSoundBank 要处理的 SoundBank 数据集合
-     *  @returns {void}
-     */
-    bnkExtractorSync(listSoundBank)
-    {
-        const pad = listSoundBank.length.toString().length;
-
-        for (let i = 0; i < listSoundBank.length; i++)
-        {
-            const item = listSoundBank[i];
-            const bhp = this.bnkHandlerPath(item);
-            const result = this.extractor(bhp);
-
-            // 日志记录
-            this.bnkLogger((i + 1).toString().padStart(pad, "0"), item, result);
-
-            // 同步执行
-            this.executorSync(item.IncludedMemoryFiles, bhp.output);
-        }
-
-        this.counter.totalSoundBank += listSoundBank.length;
-    }
-
-    /**
-     *  异步执行 提取 bnk 文件
+     *  提取 bnk 文件
      *  @param {Array<SoundBank>} listSoundBank 要处理的 SoundBank 数据集合
      *  @returns {Promise<void>}
      */
     async bnkExtractor(listSoundBank)
     {
         const pad = listSoundBank.length.toString().length;
-
         let current = 0;
 
         for (let i = 0; i < listSoundBank.length; i++)
         {
+            current++;
             const item = listSoundBank[i];
             const bhp = this.bnkHandlerPath(item);
+            const is = `[${current.toString().padStart(pad, "0")}/${listSoundBank.length}][${Utils.filesize(bhp.oinput)}]`;
             const result = this.extractor(bhp);
-            current++;
 
             // 日志记录
-            this.bnkLogger(current.toString().padStart(pad, "0"), item, result);
+            this.bnkLogger(is, item, result);
 
-            await this.executor(item.IncludedMemoryFiles, bhp.output);
+            this.options.enableAsync ? await this.executor(item.IncludedMemoryFiles, bhp.output) : this.executorSync(item.IncludedMemoryFiles, bhp.output);
         }
 
         this.counter.totalSoundBank += listSoundBank.length;

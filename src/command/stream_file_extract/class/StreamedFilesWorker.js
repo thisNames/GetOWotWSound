@@ -58,6 +58,27 @@ class StreamedFilesWorker
 
         /** @type {Counter} 统计对象 */
         this.counter = new Counter();
+
+
+        /** @type {Number} 预处理的总数 */
+        this.__total = 0;
+
+        /** @type {Number} 预处理的当前数 */
+        this.__totalCurrent = 0;
+
+        /** @type {Number} 对其长度 */
+        this.__totalPad = 0;
+    }
+
+    /**
+     *  预处理的总数
+     *  @param {Number} value 数量
+     *  @returns {void}
+     */
+    setPreTotal(value)
+    {
+        this.__total = value;
+        this.__totalPad = this.__total.toString().length;
     }
 
     /**
@@ -83,10 +104,15 @@ class StreamedFilesWorker
         if (!fs.existsSync(this.options.tempPath)) fs.mkdirSync(this.options.tempPath, { recursive: true });
 
         // 初始化日志记录器
-        this.slr = new LoggerSaver(workerName + ".Success", this.options.logPath, true);
-        this.flr = new LoggerSaver(workerName + ".Failed", this.options.logPath, true);
-        this.smc = new MessageCollect(workerName + ".Success.Stdout", this.options.logPath);
-        this.fmc = new MessageCollect(workerName + ".Failed.Stdout", this.options.logPath);
+        let wn = workerName.toLocaleLowerCase();
+        let su = wn + "_success";
+        let fa = wn + "_failed";
+        let sd = "_stdout";
+
+        this.slr = new LoggerSaver(su, this.options.logPath, true);
+        this.flr = new LoggerSaver(fa, this.options.logPath, true);
+        this.smc = new MessageCollect(su + sd, this.options.logPath);
+        this.fmc = new MessageCollect(fa + sd, this.options.logPath);
     }
 
     /**
@@ -236,6 +262,7 @@ class StreamedFilesWorker
     executorSync(listStreamedFile, bnkExtDir = "")
     {
         const pad = listStreamedFile.length.toString().length;
+        let current = 0;
 
         // 执行
         for (let i = 0; i < listStreamedFile.length; i++)
@@ -243,8 +270,12 @@ class StreamedFilesWorker
             const item = listStreamedFile[i];
             const result = this.converterSync(item, bnkExtDir);
 
+            current++;
+            this.__totalCurrent++;
+
             // 记录日志
-            this.logger((i + 1).toString().padStart(pad, "0"), item, result);
+            let is = `[${this.__totalCurrent.toString().padStart(this.__totalPad, "0")}/${this.__total}][${current.toString().padStart(pad, "0")}]`;
+            this.logger(is, item, result);
         }
 
         this.counter.totalStreamedFile += listStreamedFile.length;
@@ -261,7 +292,6 @@ class StreamedFilesWorker
         /** @type {Array<Promise<{index: Number, stf: StreamedFile, result: ConverterResult}>>} 异步队列 */
         const asyncQueue = new Array(this.options.asyncNumber).fill(null);
         const pad = listStreamedFile.length.toString().length;
-
         let current = 0;
 
         // 主队列
@@ -276,9 +306,13 @@ class StreamedFilesWorker
                 const result = await Promise.race(asyncQueue);
                 asyncQueue[result.index] = null;
                 index = result.index;
-                current++;
 
-                this.logger(current.toString().padStart(pad, "0"), result.stf, result.result);
+                current++;
+                this.__totalCurrent++;
+
+                // 记录日志
+                let is = `[${this.__totalCurrent.toString().padStart(this.__totalPad, "0")}/${this.__total}][${current.toString().padStart(pad, "0")}]`;
+                this.logger(is, result.stf, result.result);
             }
 
             const asyncItem = this.converter(item, bnkExtDir).then(crt => ({ index: index, stf: item, result: crt }));
@@ -291,11 +325,27 @@ class StreamedFilesWorker
         for (let i = 0; i < tails.length; i++)
         {
             const result = tails[i];
+
             current++;
-            this.logger(current.toString().padStart(pad, "0"), result.stf, result.result);
+            this.__totalCurrent++;
+
+            let is = `[${this.__totalCurrent.toString().padStart(this.__totalPad, "0")}/${this.__total}][${current.toString().padStart(pad, "0")}]`;
+            this.logger(is, result.stf, result.result);
         }
 
         this.counter.totalStreamedFile += listStreamedFile.length;
+    }
+
+    /**
+     *  关闭日志流
+     *  @returns {void}
+     */
+    loggerEnd()
+    {
+        this.slr.close();
+        this.flr.close();
+        this.smc.close();
+        this.fmc.close();
     }
 }
 
