@@ -10,22 +10,27 @@ class LoggerSaver extends Logger
 {
     /**
      *  @param {String} filename 日志文件名
-     *  @param {String} saveFolder 日志文件保存目录
+     *  @param {String} folder 日志文件保存目录
      *  @param {Boolean} isSave 是否保存日志
      */
-    constructor(filename, saveFolder, isSave)
+    constructor(filename, folder, isSave)
     {
         super();
 
-        this.saveFolder = saveFolder || process.cwd();
-        this.filename = filename || "default.log";
+        /** @type {String} 日志保存目录 */
+        this.folder = folder || process.cwd();
+
+        /** @type {String} 日志文件名 */
+        this.filename = filename || "logger.log";
+
+        /** @type {Boolean} 是否保存日志 */
         this.isSave = isSave;
 
         /** @type {MessageCollect} 消息收集器 */
-        this.__logFile = null;
+        this.__mct = null;
 
         // 启用保存日志
-        if (this.isSave) this.__logFile = new MessageCollect(this.filename, this.saveFolder);
+        if (this.isSave) this.__mct = new MessageCollect(this.filename, this.folder);
     }
 
     /** 
@@ -34,7 +39,7 @@ class LoggerSaver extends Logger
      */
     close()
     {
-        if (this.__logFile) this.__logFile.close();
+        if (this.__mct) this.__mct.close();
     }
 
     /** 
@@ -49,7 +54,7 @@ class LoggerSaver extends Logger
         Logger.log(color, message);
 
         // 如果启用保存日志
-        if (this.__logFile) this.__logFile.collect("", message);
+        if (this.__mct) this.__mct.collect("", message);
 
         return this;
     }

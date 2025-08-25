@@ -1,24 +1,36 @@
 const fs = require("node:fs");
 const pt = require("node:path");
 
+const Tools = require("./Tools");
+
 /**
  *  日志收集类
  *  @version 0.0.2
  */
 class MessageCollect
 {
+    /** @type {String} 日志文件 ID */
+    static hashID = Tools.generateHashId(8);
+
     /**
-     * @param {String} path 日志保存路径
-     * @param {String} name 日志名称，默认 log
+     * @param {String} filename 日志名称
+     * @param {String} folder 日志目录
      */
-    constructor(name, path = "log")
+    constructor(filename, folder = "log")
     {
-        this.fr = null;
-        this.name = name;
-        this.path = path;
+        /** @type {fs.WriteStream} 日志文件写入流 */
+        this.fw = null;
 
-        this.__errorCount = 3;
+        /** @type {String} 日志文件名称 */
+        this.filename = filename;
 
+        /** @type {String} 日志文件目录 */
+        this.folder = folder;
+
+        /** @type {String} 日志文件路径*/
+        this.filePath = "";
+
+        // 初始化日志
         this.init();
     }
 
@@ -29,15 +41,12 @@ class MessageCollect
      */
     init(filePath = "")
     {
-        if (!fs.existsSync(this.path))
-        {
-            this.path = fs.mkdirSync(this.path, { recursive: true });
-        }
+        if (!fs.existsSync(this.folder)) fs.mkdirSync(this.folder, { recursive: true });
 
-        this.filename = this.name.concat("_", Date.now(), ".log");
-        this.filePath = filePath || pt.resolve(this.path, this.filename);
+        this.filename = this.filename + "_" + MessageCollect.hashID + ".log";
+        this.filePath = filePath || pt.resolve(this.folder, this.filename);
 
-        this.fr = fs.openSync(this.filePath, "a+");
+        this.fw = fs.createWriteStream(this.filePath, { flags: "w", encoding: "utf-8" });
 
         return this;
     }
@@ -51,7 +60,10 @@ class MessageCollect
     {
         if (this.fr === null) return this;
 
-        fs.closeSync(this.fr);
+        try
+        {
+            this.fw.close();
+        } catch (error) { }
 
         this.fr = null;
 
@@ -66,20 +78,16 @@ class MessageCollect
      */
     collect(you, message)
     {
-        if (this.__errorCount < 0) return this.close();
+        if (this.fw === null) return this;
 
-        const m = `${you}: ${message}\r\n`;
+        const m = you + ": " + message + "\r\n";
 
         try
         {
-            fs.writeSync(this.fr, m, null, "utf-8");
+            this.fw.write(m);
         } catch (error)
         {
-            this.__errorCount--;
-
             this.close();
-            this.init(this.filePath);
-            this.collect(you, message);
         }
 
         return this;

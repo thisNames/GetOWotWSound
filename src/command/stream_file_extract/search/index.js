@@ -125,9 +125,9 @@ function saverDelegate(result, saver)
  *  搜索
  *  @param {String} searchName 搜索名称
  *  @param {LoggerSaver} logger 日志记录器
- *  @returns {Promise<Array<StreamedFile>>}
+ *  @returns {Array<StreamedFile>}
  */
-async function search(searchName, logger)
+function search(searchName, logger)
 {
     /** @type {SoundBanksInfoData} */
     let soundBnkInfoData = null;
@@ -160,7 +160,7 @@ async function search(searchName, logger)
     if (soundBnkInfoData instanceof Error)
     {
         logger.error(soundBnkInfoData.message);
-        return Promise.resolve([]);
+        return [];
     }
 
     // 开始搜索
@@ -176,22 +176,10 @@ async function search(searchName, logger)
     if (result.length < 1)
     {
         logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
-        return Promise.resolve([]);
+        return [];
     }
 
-    const pp = new PagePrinter(result, 2);
-
-    await pp.printer((item, i) =>
-    {
-        const title = `${i + 1}: [${item.Type}] [${item.BnkFile}] #${item.Id}`;
-        const content = "\t-> " + item.ShortName;
-
-        logger
-            .heighLight(title, [searchName], LoggerSaver.LIGHT_YELLOW, LoggerSaver.GREEN)
-            .heighLight(content, [searchName], LoggerSaver.LIGHT_YELLOW, LoggerSaver.GRAY);
-    });
-
-    return Promise.resolve(result);
+    return result;
 }
 
 /**
@@ -203,6 +191,8 @@ async function main(params)
 {
     const logger = new LoggerSaver();
     const searchName = Utils.trim(params[0]);
+    /** @type {{name: String, result: SaverResult | Error}[]} 保存委托结果 */
+    const delegateResults = [];
 
     // 检查搜索的名称不为空
     if (searchName === "")
@@ -211,11 +201,20 @@ async function main(params)
         return;
     }
 
-    // 等待退出
-    const result = await search(searchName, logger);
+    // 搜索
+    const result = search(searchName, logger);
 
-    /** @type {{name: String, result: SaverResult | Error}[]} 保存委托结果 */
-    const delegateResults = [];
+    // 等待退出
+    const pp = new PagePrinter(result, 2);
+    await pp.printer((item, i) =>
+    {
+        const title = `${i + 1}: [${item.Type}] [${item.BnkFile}] #${item.Id}`;
+        const content = "\t-> " + item.ShortName;
+
+        logger
+            .heighLight(title, [searchName], LoggerSaver.LIGHT_YELLOW, LoggerSaver.GREEN)
+            .heighLight(content, [searchName], LoggerSaver.LIGHT_YELLOW, LoggerSaver.GRAY);
+    });
 
     // 保存到 json
     OPT.enableSSjson && delegateResults.push({ name: "json", result: saverDelegate(result, saverToJson) });
