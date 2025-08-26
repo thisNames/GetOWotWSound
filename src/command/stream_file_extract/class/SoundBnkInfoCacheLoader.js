@@ -91,6 +91,43 @@ class SoundBnkInfoCacheLoader
             return new Error(`SoundBnkInfoCacheLoader.loaderSoundBanks => ${error.message || "error"}`);
         }
     }
+
+    /**
+     *  从缓存中加载 SoundBankInfo 数据
+     *  @param {String} gameSoundBnkInfo 游戏资源目录里的 SoundBankInfo.json 文件路径
+     *  @param {String} cacheStreamedFilesName SoundBanksInfo.StreamedFiles 缓存文件名称
+     *  @param {String} cacheSoundBanksName SoundBanksInfo.SoundBanks 缓存文件名称
+     *  @param {Number} searchEnum 搜索枚举 [0 - StreamedFiles, 1 - SoundBanks, n - StreamedFiles & SoundBanks]
+     *  @returns {SoundBanksInfoData | Error}
+     */
+    static loader(gameSoundBnkInfo, cacheStreamedFilesName, cacheSoundBanksName, searchEnum)
+    {
+        /** @type {SoundBanksInfoData} */
+        let soundBnkInfoData = null;
+        const cacheLoaders = new SoundBnkInfoCacheLoader(gameSoundBnkInfo);
+
+        // 枚举
+        if (searchEnum == 0)
+        {
+            // 搜索 StreamedFile
+            soundBnkInfoData = cacheLoaders.loaderStreamedFiles(cacheStreamedFilesName);
+        }
+        else if (searchEnum == 1)
+        {
+            // 搜索 SoundBank
+            soundBnkInfoData = cacheLoaders.loaderSoundBanks(cacheSoundBanksName);
+        }
+        else
+        {
+            // 搜索全部
+            soundBnkInfoData = cacheLoaders.loaders(cacheStreamedFilesName, cacheSoundBanksName);
+        }
+
+        // 清除缓存
+        cacheLoaders.clearCache();
+
+        return soundBnkInfoData;
+    }
 }
 
 module.exports = SoundBnkInfoCacheLoader;

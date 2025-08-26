@@ -164,7 +164,7 @@ class SoundBanksInfoJsonLoader
     {
         if (this.__cache)
         {
-            require.cache[this.__cache];
+            // require.cache[this.__cache];
             this.__cache = null;
         }
     }

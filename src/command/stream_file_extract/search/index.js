@@ -32,12 +32,8 @@ const SaverFilename = "SearchSession_" + Tools.generateHashId(8);
 function saverToJson(listStreamedFile)
 {
     const saverPath = pt.join(process.cwd(), SaverFilename + ".json");
-    const data = JSON.stringify(listStreamedFile);
-    const size = Tools.formatBytes(Buffer.byteLength(data, "binary"));
 
-    fs.writeFileSync(saverPath, data, { encoding: "binary", flag: "w" });
-
-    return { size: size.value + size.type, path: saverPath };
+    return Utils.saverLSFJson(listStreamedFile, saverPath);
 }
 
 /**
@@ -47,27 +43,18 @@ function saverToJson(listStreamedFile)
  */
 function saverToLog(listStreamedFile)
 {
-    let bytes = 0;
     const saverPath = pt.join(process.cwd(), SaverFilename + ".log");
-    const fd = fs.openSync(saverPath, "w");
 
-    // 写入内容
-    for (let i = 0; i < listStreamedFile.length; i++)
+    const sr = Utils.saverLSFLog(listStreamedFile, saverPath, (item, i) =>
     {
-        const item = listStreamedFile[i];
         const title = `${i + 1}: [${item.Type}] [${item.BnkFile}] #${item.Id}`;
         const content = "\t-> " + item.ShortName;
-        const data = title + "\r\n" + content + "\r\n";
+        const data = title + "\r\n" + content;
 
-        bytes += Buffer.byteLength(data, "binary");
-        fs.writeSync(fd, data, null, "utf-8");
-    }
+        return data;
+    });
 
-    fs.closeSync(fd);
-
-    let size = Tools.formatBytes(bytes);
-
-    return { size: size.value + size.type, path: saverPath };
+    return sr;
 }
 
 /**
@@ -77,31 +64,9 @@ function saverToLog(listStreamedFile)
  */
 function saverToCsv(listStreamedFile)
 {
-    let bytes = 0;
-    const tableTitle = "Id,ShortName,Type,BnkFile\r\n";
     const saverPath = pt.join(process.cwd(), SaverFilename + ".csv");
-    const fd = fs.openSync(saverPath, "w");
 
-    // 写入表头
-    bytes += Buffer.byteLength(tableTitle, "binary");
-    fs.writeSync(fd, tableTitle, null, "utf-8");
-
-    // 写入内容
-    for (let i = 0; i < listStreamedFile.length; i++)
-    {
-        const item = listStreamedFile[i];
-        const line = `"${item.Id}","${item.ShortName}","${item.Type}","${item.BnkFile}"\r\n`;
-
-        bytes += Buffer.byteLength(line, "binary");
-        fs.writeSync(fd, line, null, "utf-8");
-    }
-
-    fs.closeSync(fd);
-
-    let size = Tools.formatBytes(bytes);
-
-    return { size: size.value + size.type, path: saverPath };
-
+    return Utils.saverLSFCsv(listStreamedFile, saverPath);
 }
 
 /**
@@ -129,32 +94,8 @@ function saverDelegate(result, saver)
  */
 function search(searchName, logger)
 {
-    /** @type {SoundBanksInfoData} */
-    let soundBnkInfoData = null;
-    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
-
-    // 枚举
-    if (OPT.searchEnum == 0)
-    {
-        // 搜索 StreamedFile
-        logger.light("Search >> StreamedFile");
-        soundBnkInfoData = cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
-    }
-    else if (OPT.searchEnum == 1)
-    {
-        // 搜索 SoundBank
-        logger.light("Search >> SoundBank");
-        soundBnkInfoData = cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
-    }
-    else
-    {
-        // 搜索全部
-        logger.light("Search >> All");
-        soundBnkInfoData = cacheLoaders.loaders(DefaultConfig.cacheStreamedFilesName, DefaultConfig.cacheSoundBanksName);
-    }
-
-    // 清除缓存
-    cacheLoaders.clearCache();
+    /** @type {SoundBanksInfoData} 数据对象 */
+    const soundBnkInfoData = SoundBnkInfoCacheLoader.loader(GameSoundBnkInfo, DefaultConfig.cacheStreamedFilesName, DefaultConfig.cacheSoundBanksName, OPT.searchEnum);
 
     // 加载所有失败
     if (soundBnkInfoData instanceof Error)

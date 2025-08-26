@@ -217,6 +217,134 @@ class Utils
 
         return "0";
     }
+
+    /**
+     *  查找数组中所有的重复值
+     *  @template T 数组内容
+     *  @param {Array<T>} arr 需要查找重复值的数组
+     *  @param {(value: T, index: Number, arr: Array<T>) => any} value 返回指定比较的比较内容
+     *  @returns {Array<T>} 查找结果数组
+     */
+    static findDuplicates(arr, value)
+    {
+        const result = [];
+        const seen = new Set();
+
+        for (let index = 0; index < arr.length; index++)
+        {
+            const element = arr[index];
+            let content = value(element, index, arr);
+
+            if (seen.has(content))
+            {
+                result.push(element);
+            }
+            else
+            {
+                seen.add(content);
+            }
+        }
+
+        return result
+    }
+
+    /**
+     *  将 StreamedFile 列表保存为 Json 文件
+     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {String} saverPath 保存路径
+     *  @returns {{size: String, path: String}}
+     *  @throws {Error} 保存失败
+     */
+    static saverLSFJson(listStreamedFile, saverPath)
+    {
+        // 空集合
+        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
+
+        const data = JSON.stringify(listStreamedFile);
+        const size = Tools.formatBytes(Buffer.byteLength(data, "binary"));
+
+        fs.writeFileSync(saverPath, data, { encoding: "binary", flag: "w" });
+
+        return { size: size.value + size.type, path: saverPath };
+    }
+
+    /**
+     *  将 StreamedFile 列表保存为 log 文件
+     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {String} saverPath 保存路径
+     *  @param {(value: StreamedFile, index: Number, arr: Array<StreamedFile>) => String} dcb 写入的内容回调
+     *  @returns {{size: String, path: String}}
+     *  @throws {Error} 保存失败
+     */
+    static saverLSFLog(listStreamedFile, saverPath, dcb)
+    {
+        // 空集合
+        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
+
+        let bytes = 0;
+
+        const fd = fs.openSync(saverPath, "w");
+
+        // 写入内容
+        for (let i = 0; i < listStreamedFile.length; i++)
+        {
+            const item = listStreamedFile[i];
+            const data = dcb(item, i, listStreamedFile) + "\r\n";
+
+            bytes += Buffer.byteLength(data, "binary");
+            fs.writeSync(fd, data, null, "utf-8");
+        }
+
+        fs.closeSync(fd);
+
+        let size = Tools.formatBytes(bytes);
+
+        return { size: size.value + size.type, path: saverPath };
+    }
+
+    /**
+     *  将 StreamedFile 列表保存为 csv 文件
+     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {String} saverPath 保存路径
+     *  @returns {{size: String, path: String}}
+     *  @throws {Error} 保存失败
+     */
+    static saverLSFCsv(listStreamedFile, saverPath)
+    {
+        // 空集合
+        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
+
+        let bytes = 0;
+
+        const keys = Object.keys(listStreamedFile[0]);
+        const keysLen = keys.length - 1;
+        const fd = fs.openSync(saverPath, "w");
+
+        // 写入表头
+        const tableTitle = keys.join(",") + "\r\n";
+        bytes += Buffer.byteLength(tableTitle, "binary");
+        fs.writeSync(fd, tableTitle, null, "utf-8");
+
+        // 写入内容
+        for (let i = 0; i < listStreamedFile.length; i++)
+        {
+            const item = listStreamedFile[i];
+
+            for (let j = 0; j < keys.length; j++)
+            {
+                const value = item[keys[j]];
+                const data = `"${value}"` + (j < keysLen ? "," : "\r\n");
+                bytes += Buffer.byteLength(data, "binary");
+                fs.writeSync(fd, data, null, "utf-8");
+            }
+        }
+
+        fs.closeSync(fd);
+
+        let size = Tools.formatBytes(bytes);
+
+        return { size: size.value + size.type, path: saverPath };
+    }
 }
 
 module.exports = Utils;

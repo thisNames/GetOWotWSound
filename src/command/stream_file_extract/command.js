@@ -22,4 +22,7 @@ const bnkExtract = require("./sound_banks/command");
 // 显示项目所在的目录
 const getProject = require("./get_project/command");
 
-module.exports = [getProject, config, options, wemExtract, bnkExtract, treeShake, search, ori];
+// 查找重复定义的文件
+const duplicate = require("./duplicate/command");
+
+module.exports = [getProject, config, options, wemExtract, bnkExtract, treeShake, search, ori, duplicate];
