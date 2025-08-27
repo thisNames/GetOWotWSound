@@ -21,7 +21,7 @@ const deleteCacheFile = new ParamsMapping("del", {
 /** 树摇 */
 const treeShake = new ParamsMapping("trs", {
     key: "treeshake",
-    description: "将 SoundBnkInfo 中多余的字段统统删除，并生成缓存文件（可提高检索速度）",
+    description: "将 SoundBnkInfo 中多余的字段统统删除，并生成缓存文件（可提高加载速度）",
     count: 0,
     defaults: [],
     children: [clearCacheFile, deleteCacheFile]

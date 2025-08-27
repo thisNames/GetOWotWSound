@@ -11,7 +11,7 @@ const template = {
 /** 字符串 设置生成的文件拓展名 */
 const setExtname = new ParamsMapping("ext", {
     key: "extname",
-    description: "设置生成的文件拓展名 extname = <.ogg>",
+    description: "设置生成的文件拓展名 ext = <.ogg>",
     defaults: [".ogg"],
     ...template
 });
@@ -19,7 +19,7 @@ const setExtname = new ParamsMapping("ext", {
 /** 字符串 生成过滤器 */
 const setFilter = new ParamsMapping("fr", {
     key: "filter",
-    description: "生成过滤器 filter = <[shortNameORId, wotw\\characters]>",
+    description: "设置生成过滤器 fr = <[ID, ShortName]>",
     defaults: [""],
     ...template
 });
@@ -28,7 +28,7 @@ const setFilter = new ParamsMapping("fr", {
 /** 设置 输出路径 */
 const setOutputPath = new ParamsMapping("out", {
     key: "outputPath",
-    description: "设置输出路径 outputPath = <path>",
+    description: "设置输出路径 out = <path>",
     defaults: [DefaultOptions.defOutputPath],
     ...template
 });
@@ -36,7 +36,7 @@ const setOutputPath = new ParamsMapping("out", {
 /** 设置 日志保存路径 */
 const setLogPath = new ParamsMapping("log", {
     key: "logPath",
-    description: "设置日志保存路径 logPath = <path>",
+    description: "设置日志保存路径 log = <path>",
     defaults: [DefaultOptions.defLogPath],
     ...template
 });
@@ -44,7 +44,7 @@ const setLogPath = new ParamsMapping("log", {
 /** 设置 临时文件保存路径 */
 const setTempPath = new ParamsMapping("tmp", {
     key: "tempPath",
-    description: "临时文件保存路径 tempPath = <path>",
+    description: "设置临时文件保存路径 tmp = <path>",
     defaults: [DefaultOptions.defTempPath],
     ...template
 });
@@ -52,15 +52,15 @@ const setTempPath = new ParamsMapping("tmp", {
 /** 设置 异步并发的数量 */
 const setAsyncNumber = new ParamsMapping("an", {
     key: "asyncNumber",
-    description: "设置异步并发数量 asyncNumber = <[2, max_thread]>",
-    defaults: [2],
+    description: "设置异步并发数量 an = <[2, cpu_threads]> 磁盘建议：HDD=2, SATA<=6, NVMe<=12",
+    defaults: [4],
     ...template
 });
 
 /** 启用 异步 */
 const enableAsync = new ParamsMapping("ea", {
     key: "enableAsync",
-    description: "启用异步 enAsync = <[true, t]>",
+    description: "启用异步 ea = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -68,7 +68,7 @@ const enableAsync = new ParamsMapping("ea", {
 /** 启用 生成 ID */
 const enableId = new ParamsMapping("eid", {
     key: "enableId",
-    description: "启用生成ID enableId = <[true, t]>",
+    description: "启用生成ID eid = <[true, t]>",
     defaults: ["t"],
     ...template
 });
@@ -76,7 +76,7 @@ const enableId = new ParamsMapping("eid", {
 /** 启用 分类文件夹 */
 const enableCreateTypeDir = new ParamsMapping("ectd", {
     key: "enableCreateTypeDir",
-    description: "启用创建分类文件夹 enableCreateTypeDir = <[true, t]>",
+    description: "启用创建分类文件夹 ectd = <[true, t]>",
     defaults: ["t"],
     ...template
 });
@@ -84,7 +84,7 @@ const enableCreateTypeDir = new ParamsMapping("ectd", {
 /** 启用 检索忽略大小写 */
 const enableSIgnoreCase = new ParamsMapping("esic", {
     key: "enableSIgnoreCase",
-    description: "启用检索忽略大小写 enableSIgnoreCase = <[true, t]>",
+    description: "启用检索忽略大小写 esic = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -92,7 +92,7 @@ const enableSIgnoreCase = new ParamsMapping("esic", {
 /** 启用 保存搜索结果为 json */
 const enableSSjson = new ParamsMapping("essjson", {
     key: "enableSSjson",
-    description: "启用保存搜索结果为json enableSSjson = <[true, t]>",
+    description: "启用保存搜索结果为json essjson = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -100,7 +100,7 @@ const enableSSjson = new ParamsMapping("essjson", {
 /** 启用 保存搜索结果为 log */
 const enableSSlog = new ParamsMapping("esslog", {
     key: "enableSSlog",
-    description: "启用保存搜索结果为log enableSSlog = <[true, t]>",
+    description: "启用保存搜索结果为log esslog = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -108,7 +108,7 @@ const enableSSlog = new ParamsMapping("esslog", {
 /** 启用 保存搜索结果为 log */
 const enableSScsv = new ParamsMapping("esscsv", {
     key: "enableSScsv",
-    description: "启用保存搜索结果为csv enableSScsv = <[true, t]>",
+    description: "启用保存搜索结果为csv esscsv = <[true, t]>",
     defaults: ["f"],
     ...template
 });
@@ -116,7 +116,7 @@ const enableSScsv = new ParamsMapping("esscsv", {
 /** 枚举 只搜索 StreamedFiles */
 const enumStreamedFile = new ParamsMapping("sw", {
     key: "sstreamfile",
-    description: "只搜索 StreamedFiles searchEnum = 0",
+    description: "只搜索 StreamedFiles, searchEnum = 0",
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
@@ -124,8 +124,8 @@ const enumStreamedFile = new ParamsMapping("sw", {
 
 /** 枚举 只搜索 SoundBanks */
 const enumSoundBank = new ParamsMapping("sb", {
-    key: "sboundfile",
-    description: "只搜索 SoundBanks searchEnum = 1",
+    key: "ssboundfile",
+    description: "只搜索 SoundBanks, searchEnum = 1",
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
