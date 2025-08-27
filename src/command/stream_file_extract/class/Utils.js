@@ -250,7 +250,7 @@ class Utils
 
     /**
      *  将 StreamedFile 列表保存为 Json 文件
-     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
      *  @param {String} saverPath 保存路径
      *  @returns {{size: String, path: String}}
      *  @throws {Error} 保存失败
@@ -270,7 +270,7 @@ class Utils
 
     /**
      *  将 StreamedFile 列表保存为 log 文件
-     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
      *  @param {String} saverPath 保存路径
      *  @param {(value: StreamedFile, index: Number, arr: Array<StreamedFile>) => String} dcb 写入的内容回调
      *  @returns {{size: String, path: String}}
@@ -304,7 +304,7 @@ class Utils
 
     /**
      *  将 StreamedFile 列表保存为 csv 文件
-     *  @param {Array<StreamedFile>} listStreamedFile 
+     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
      *  @param {String} saverPath 保存路径
      *  @returns {{size: String, path: String}}
      *  @throws {Error} 保存失败
