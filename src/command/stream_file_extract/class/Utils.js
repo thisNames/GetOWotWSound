@@ -2,6 +2,8 @@ const fs = require("node:fs");
 const pt = require("node:path");
 
 const Tools = require("../../../class/Tools");
+const FormatNumber = require("../../../class/FormatNumber");
+
 const StreamedFile = require("./StreamedFile");
 const SoundBank = require("./SoundBank");
 
@@ -211,7 +213,7 @@ class Utils
     {
         if (fs.existsSync(filename) && fs.statSync(filename).isFile())
         {
-            const size = Tools.formatBytes(fs.statSync(filename).size);
+            const size = Utils.formatBytes(fs.statSync(filename).size);
             return size.value + size.type;
         }
 
@@ -249,101 +251,14 @@ class Utils
     }
 
     /**
-     *  将 StreamedFile 列表保存为 Json 文件
-     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
-     *  @param {String} saverPath 保存路径
-     *  @returns {{size: String, path: String}}
-     *  @throws {Error} 保存失败
+     *  将字节(byte)转换为最合适的单位（KB、MB、GB）
+     *  @param {number} bytes 字节数
+     *  @param {number} [toFixed=2] 保留几位小数 - 2
+     *  @returns {{value: number, type: "KB" | "MB" | "GB"}}
      */
-    static saverLSFJson(listStreamedFile, saverPath)
+    static formatBytes(bytes, toFixed = 2)
     {
-        // 空集合
-        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
-
-        const data = JSON.stringify(listStreamedFile);
-        const size = Tools.formatBytes(Buffer.byteLength(data, "binary"));
-
-        fs.writeFileSync(saverPath, data, { encoding: "binary", flag: "w" });
-
-        return { size: size.value + size.type, path: saverPath };
-    }
-
-    /**
-     *  将 StreamedFile 列表保存为 log 文件
-     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
-     *  @param {String} saverPath 保存路径
-     *  @param {(value: StreamedFile, index: Number, arr: Array<StreamedFile>) => String} dcb 写入的内容回调
-     *  @returns {{size: String, path: String}}
-     *  @throws {Error} 保存失败
-     */
-    static saverLSFLog(listStreamedFile, saverPath, dcb)
-    {
-        // 空集合
-        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
-
-        let bytes = 0;
-
-        const fd = fs.openSync(saverPath, "w");
-
-        // 写入内容
-        for (let i = 0; i < listStreamedFile.length; i++)
-        {
-            const item = listStreamedFile[i];
-            const data = dcb(item, i, listStreamedFile) + "\r\n";
-
-            bytes += Buffer.byteLength(data, "binary");
-            fs.writeSync(fd, data, null, "utf-8");
-        }
-
-        fs.closeSync(fd);
-
-        let size = Tools.formatBytes(bytes);
-
-        return { size: size.value + size.type, path: saverPath };
-    }
-
-    /**
-     *  将 StreamedFile 列表保存为 csv 文件
-     *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
-     *  @param {String} saverPath 保存路径
-     *  @returns {{size: String, path: String}}
-     *  @throws {Error} 保存失败
-     */
-    static saverLSFCsv(listStreamedFile, saverPath)
-    {
-        // 空集合
-        if (listStreamedFile.length < 1) return { size: "[]", path: "[]" };
-
-        let bytes = 0;
-
-        const keys = Object.keys(listStreamedFile[0]);
-        const keysLen = keys.length - 1;
-        const fd = fs.openSync(saverPath, "w");
-
-        // 写入表头
-        const tableTitle = keys.join(",") + "\r\n";
-        bytes += Buffer.byteLength(tableTitle, "binary");
-        fs.writeSync(fd, tableTitle, null, "utf-8");
-
-        // 写入内容
-        for (let i = 0; i < listStreamedFile.length; i++)
-        {
-            const item = listStreamedFile[i];
-
-            for (let j = 0; j < keys.length; j++)
-            {
-                const value = item[keys[j]];
-                const data = `"${value}"` + (j < keysLen ? "," : "\r\n");
-                bytes += Buffer.byteLength(data, "binary");
-                fs.writeSync(fd, data, null, "utf-8");
-            }
-        }
-
-        fs.closeSync(fd);
-
-        let size = Tools.formatBytes(bytes);
-
-        return { size: size.value + size.type, path: saverPath };
+        return new FormatNumber().formatBytes(bytes, toFixed);
     }
 }
 

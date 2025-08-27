@@ -131,6 +131,33 @@ const enumSoundBank = new ParamsMapping("sb", {
     accordingLevelRepeat: false
 });
 
+/** 枚举 以 Id 查找重复定义的文件 */
+const enumDuplicateId = new ParamsMapping("did", {
+    key: "duplicateId",
+    description: "以 Id 查找重复定义的文件, duplicateEnum = 0",
+    count: 0,
+    defaults: [],
+    accordingLevelRepeat: false
+});
+
+/** 枚举 以 ShortName 查找重复定义的文件 */
+const enumDuplicateShortName = new ParamsMapping("dsn", {
+    key: "duplicateShortName",
+    description: "以 ShortName 查找重复定义的文件, duplicateEnum = 1",
+    count: 0,
+    defaults: [],
+    accordingLevelRepeat: false
+});
+
+/** 枚举 以 Id + ShortName 查找重复定义的文件 */
+const enumDuplicateIdShortName = new ParamsMapping("disn", {
+    key: "duplicateIdShortName",
+    description: "以 Id + ShortName 查找重复定义的文件, duplicateEnum = 2",
+    count: 0,
+    defaults: [],
+    accordingLevelRepeat: false
+});
+
 /** 显示可选项 */
 const options = new ParamsMapping("opt", {
     key: "options",
@@ -152,7 +179,10 @@ const options = new ParamsMapping("opt", {
         enableSSlog,
         enableSScsv,
         enumStreamedFile,
-        enumSoundBank
+        enumSoundBank,
+        enumDuplicateId,
+        enumDuplicateShortName,
+        enumDuplicateIdShortName
     ]
 });
 
@@ -162,6 +192,9 @@ options.addTask("options", () => require("./index").printOptions());
 // 设置枚举
 enumStreamedFile.addTask(options.key + "." + enumStreamedFile.key, () => require("./index").setEnum("searchEnum", 0));
 enumSoundBank.addTask(options.key + "." + enumSoundBank.key, () => require("./index").setEnum("searchEnum", 1));
+enumDuplicateId.addTask(options.key + "." + enumDuplicateId.key, () => require("./index").setEnum("duplicateEnum", 0));
+enumDuplicateShortName.addTask(options.key + "." + enumDuplicateShortName.key, () => require("./index").setEnum("duplicateEnum", 1));
+enumDuplicateIdShortName.addTask(options.key + "." + enumDuplicateIdShortName.key, () => require("./index").setEnum("duplicateEnum", 2));
 
 // 设置路径
 [setOutputPath, setLogPath, setTempPath]

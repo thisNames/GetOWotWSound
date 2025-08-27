@@ -1,4 +1,3 @@
-const fs = require("node:fs");
 const pt = require("node:path");
 
 const LoggerSaver = require("../../../class/LoggerSaver");
@@ -10,80 +9,28 @@ const PagePrinter = require("../class/PagePrinter");
 const SoundBanksInfoData = require("../class/SoundBanksInfoData");
 const StreamedFile = require("../class/StreamedFile");
 const Utils = require("../class/Utils");
+const SaverUtils = require("../class/SaverUtils");
 
 const CFG = require("../config/default_config");
 const OPT = require("../options/options");
 
+const SearchID = Tools.generateHashId(8);
 const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
-const SaverFilename = "SearchSession_" + Tools.generateHashId(8);
+const SaverFilename = "SearchSession_" + SearchID;
 
 /**
- * @description 保存结果
- * @typedef SaverResult
- * @property {Number} size 大小
- * @property {String} path 路径
+ *  保存搜索结果为 log 的数据回调
+ *  @param {StreamedFile} item 流文件对象
+ *  @param {Number} i 索引
+ *  @returns {String}
  */
-
-/**
- *  保存搜索结果为 json
- *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {SaverResult}
- */
-function saverToJson(listStreamedFile)
+function loggerCallback(item, i)
 {
-    const saverPath = pt.join(process.cwd(), SaverFilename + ".json");
+    const title = `${i + 1}: [${item.Type}] [${item.BnkFile}] #${item.Id}`;
+    const content = "\t-> " + item.ShortName;
+    const data = title + "\r\n" + content;
 
-    return Utils.saverLSFJson(listStreamedFile, saverPath);
-}
-
-/**
- *  保存搜索结果为 log
- *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {SaverResult}
- */
-function saverToLog(listStreamedFile)
-{
-    const saverPath = pt.join(process.cwd(), SaverFilename + ".log");
-
-    const sr = Utils.saverLSFLog(listStreamedFile, saverPath, (item, i) =>
-    {
-        const title = `${i + 1}: [${item.Type}] [${item.BnkFile}] #${item.Id}`;
-        const content = "\t-> " + item.ShortName;
-        const data = title + "\r\n" + content;
-
-        return data;
-    });
-
-    return sr;
-}
-
-/**
- *  保存搜索结果为 csv
- *  @param {Array<StreamedFile>} listStreamedFile 流文件对象
- *  @returns {SaverResult}
- */
-function saverToCsv(listStreamedFile)
-{
-    const saverPath = pt.join(process.cwd(), SaverFilename + ".csv");
-
-    return Utils.saverLSFCsv(listStreamedFile, saverPath);
-}
-
-/**
- *  委托保存
- *  @param {Array<StreamedFile>} result 流文件对象
- *  @param {(result: Array<StreamedFile>) => SaverResult} saver 
- *  @returns {SaverResult | Error} 
- */
-function saverDelegate(result, saver)
-{
-    try
-    {
-        return saver(result);
-    } catch (error)
-    {
-        return new Error("SaverDelegate => " + error.message);
-    }
+    return data;
 }
 
 /**
@@ -124,6 +71,47 @@ function search(searchName, logger)
 }
 
 /**
+ *  保存搜索结果
+ *  @param {Array<StreamedFile>} listStreamedFile 流文件对象集合
+ *  @param {LoggerSaver} logger 日志记录器
+ *  @returns {void}
+ */
+function searchSaver(listStreamedFile, logger)
+{
+    /** @type {Array<{name: String, result: SaverResult | Error}>} 保存委托结果 */
+    const drs = [];
+    const filePath = pt.join(process.cwd(), SaverFilename);
+
+    // 保存到 json
+    if (OPT.enableSSjson)
+    {
+        const jsr = SaverUtils.saverLSFDelegate(listStreamedFile, filePath + ".json", SaverUtils.saverLSFJson);
+        drs.push({ name: "json", result: jsr });
+    }
+
+    // 保存到 csv
+    if (OPT.enableSScsv)
+    {
+        const csr = SaverUtils.saverLSFDelegate(listStreamedFile, filePath + ".csv", SaverUtils.saverLSFCsv);
+        drs.push({ name: "csv", result: csr });
+    }
+
+    // 保存到 log
+    if (OPT.enableSSlog)
+    {
+        const lsr = SaverUtils.saverDelegate(SaverUtils.saverLSFLog, listStreamedFile, filePath + ".log", loggerCallback);
+        drs.push({ name: "log", result: lsr });
+    }
+
+    // 格式化输出
+    drs.forEach(item =>
+    {
+        if (item.result instanceof Error) return logger.error(item.name, item.result.message);
+        Utils.formatOutputObject(item.result).forEach(line => logger.info(item.name, line.fKey, "=>", line.value));
+    });
+}
+
+/**
  *  搜索内容
  *  @param {Array<String>} params 参数集合
  *  @returns {void}
@@ -132,8 +120,6 @@ async function main(params)
 {
     const logger = new LoggerSaver();
     const searchName = Utils.trim(params[0]);
-    /** @type {{name: String, result: SaverResult | Error}[]} 保存委托结果 */
-    const delegateResults = [];
 
     // 检查搜索的名称不为空
     if (searchName === "")
@@ -157,19 +143,8 @@ async function main(params)
             .heighLight(content, [searchName], LoggerSaver.LIGHT_YELLOW, LoggerSaver.GRAY);
     });
 
-    // 保存到 json
-    OPT.enableSSjson && delegateResults.push({ name: "json", result: saverDelegate(result, saverToJson) });
-    // 保存到 log
-    OPT.enableSSlog && delegateResults.push({ name: "log", result: saverDelegate(result, saverToLog) });
-    // 保存到 csv
-    OPT.enableSScsv && delegateResults.push({ name: "csv", result: saverDelegate(result, saverToCsv) });
-
-    // 格式化输出
-    delegateResults.forEach(item =>
-    {
-        if (item.result instanceof Error) return logger.error(item.name, item.result.message);
-        Utils.formatOutputObject(item.result).forEach(line => logger.info(item.name, line.fKey, "=>", line.value));
-    });
+    // 保存
+    searchSaver(result, logger);
 }
 
 module.exports = main;

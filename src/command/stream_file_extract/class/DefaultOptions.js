@@ -68,8 +68,11 @@ class DefaultOptions
 
 
         //#region 枚举设置
-        /** @type {Number} [0 - StreamedFiles, 1 - SoundBanks, n - StreamedFiles & SoundBanks] */
+        /** @type {Number} [0 - StreamedFiles, 1 - SoundBanks, 2 - StreamedFiles & SoundBanks] 搜索枚举 */
         this.searchEnum = 2;
+
+        /** @type {Number} [0 - Id, 1 - ShortName, 2 - Id & ShortName] 查找重复的 key 枚举 */
+        this.duplicateEnum = 2;
         //#endregion
     }
 }

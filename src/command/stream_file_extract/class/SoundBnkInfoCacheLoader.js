@@ -109,17 +109,17 @@ class SoundBnkInfoCacheLoader
         // 枚举
         if (searchEnum == 0)
         {
-            // 搜索 StreamedFile
+            // 加载 StreamedFile
             soundBnkInfoData = cacheLoaders.loaderStreamedFiles(cacheStreamedFilesName);
         }
         else if (searchEnum == 1)
         {
-            // 搜索 SoundBank
+            // 加载 SoundBank
             soundBnkInfoData = cacheLoaders.loaderSoundBanks(cacheSoundBanksName);
         }
         else
         {
-            // 搜索全部
+            // 加载全部
             soundBnkInfoData = cacheLoaders.loaders(cacheStreamedFilesName, cacheSoundBanksName);
         }
 

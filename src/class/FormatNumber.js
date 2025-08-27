@@ -3,7 +3,7 @@
  *  适合频繁转换数字（例如字节数等）
  *  @version 0.0.4
  */
-class formatNumber
+class FormatNumber
 {
     /**
      *  @param {number} num 数
@@ -127,4 +127,4 @@ class formatNumber
     }
 }
 
-module.exports = formatNumber;
+module.exports = FormatNumber;
