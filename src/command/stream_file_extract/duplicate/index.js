@@ -20,6 +20,7 @@ const SaverSBKFilename = "DuplicateSoundBanks_" + DuplicateID;
 
 /**
  *  保存重复定义的文件
+ *  @description 保存到 json 和 csv 文件
  *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
  */
 function duplicateSaver(listStreamedFile, filename)

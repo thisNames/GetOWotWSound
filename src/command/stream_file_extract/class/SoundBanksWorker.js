@@ -99,7 +99,7 @@ class SoundBanksWorker extends StreamedFilesWorker
         else
         {
             this.flr.error(et);
-            this.fmc.collect(et, extract.stderr || extract.errorMessage || extract.command);
+            this.fmc.collect(et, extract.errorMessage || extract.stderr || extract.command);
 
             this.counter.bnkExtractFailed++;
         }

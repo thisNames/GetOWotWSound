@@ -65,6 +65,7 @@ function search(searchName, logger)
 
 /**
  *  保存搜索结果
+ *  @description 保存到 json、csv log 文件
  *  @param {Array<StreamedFile>} listStreamedFile 流文件对象集合
  *  @param {LoggerSaver} logger 日志记录器
  *  @returns {void}
@@ -115,21 +116,13 @@ async function main(params)
     const searchName = Utils.trim(params[0]);
 
     // 检查搜索的名称不为空
-    if (searchName === "")
-    {
-        logger.error("必须有一个有效的搜索名");
-        return;
-    }
+    if (searchName === "") return logger.error("必须有一个有效的搜索名");
 
     // 搜索
     const result = search(searchName, logger);
 
     // 空集合
-    if (result.length < 1)
-    {
-        logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
-        return [];
-    }
+    if (!Array.isArray(result) || result.length < 1) return logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
 
     // 等待退出
     const pp = new PagePrinter(result, 2);

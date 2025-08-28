@@ -140,7 +140,7 @@ class StreamedFilesWorker
         else
         {
             this.flr.error(wt);
-            this.fmc.collect(wt, converter.w2gStdout.stderr || converter.w2gStdout.errorMessage || converter.w2gStdout.command);
+            this.fmc.collect(wt, converter.w2gStdout.errorMessage || converter.w2gStdout.stderr || converter.w2gStdout.command);
 
             this.counter.ww2oggFailed++;
         }
@@ -156,7 +156,7 @@ class StreamedFilesWorker
         else
         {
             this.flr.error(rt);
-            this.fmc.collect(rt, converter.revStdout.stderr || converter.revStdout.errorMessage || converter.revStdout.command);
+            this.fmc.collect(rt, converter.revStdout.errorMessage || converter.revStdout.stderr || converter.revStdout.command);
 
             this.counter.revorbFiled++;
         }

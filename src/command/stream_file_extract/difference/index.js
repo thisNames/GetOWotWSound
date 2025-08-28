@@ -35,6 +35,7 @@ function wemToStreamedFiles(listWemId)
 
 /**
  *  保存未定义的 wem 文件
+ *  @description 保存到 json
  *  @param {Array<StreamedFile>} listStreamedFile StreamedFile 对象集合
  */
 function differenceSaver(listStreamedFile)

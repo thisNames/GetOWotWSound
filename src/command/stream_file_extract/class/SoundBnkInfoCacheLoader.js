@@ -34,7 +34,7 @@ class SoundBnkInfoCacheLoader
      * 从缓存目录或者游戏目录加载 StreamedFiles.json 以及 SoundBanks.json 配置
      * @param {String} cacheStreamedFilesName SoundBanksInfo.StreamedFiles 缓存文件名称
      * @param {String} cacheSoundBanksName SoundBanksInfo.SoundBanks 缓存文件名称
-     * @returns { SoundBanksInfoData } SoundBanksInfoData | Error
+     * @returns {SoundBanksInfoData} SoundBanksInfoData | Error
      */
     loaders(cacheStreamedFilesName, cacheSoundBanksName)
     {

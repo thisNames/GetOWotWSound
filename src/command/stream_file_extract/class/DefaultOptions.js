@@ -65,14 +65,14 @@ class DefaultOptions
         /** @type {Boolean} 启用 保存搜索结果为 csv */
         this.enableSScsv = false;
 
+        /** @type {Boolean} 启用 HashId */
+        this.enableHashId = false;
+
         /** @type {Boolean} 启用 生成 ID */
         this.enableId = true;
 
         /** @type {Boolean} 启用 分类文件夹 */
         this.enableCreateTypeDir = true;
-
-        /** @type {Boolean} 启用 HashId */
-        this.enableHashId = true;
         //#endregion
 
 
