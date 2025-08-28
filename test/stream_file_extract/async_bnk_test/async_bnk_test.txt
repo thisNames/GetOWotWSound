@@ -1,0 +1,61 @@
+异步执行: owo -bnk -opt-ehid t -opt-ea t -opt-an 6
+
+operate             => SoundBanks
+total               => 14465
+bnkTotal            => 122
+extname             => .ogg
+filter              =>
+customSFStruct      =>
+customSBKStruct     =>
+outputPath          => E:\Developer\Projects\GetOWotWSound\build
+logPath             => E:\Developer\Projects\GetOWotWSound\build\log
+tempPath            => E:\Developer\Projects\GetOWotWSound\build\temp
+asyncNumber         => 6
+enableAsync         => true
+enableSIgnoreCase   => false
+enableSSjson        => false
+enableSSlog         => false
+enableSScsv         => false
+enableHashId        => true
+enableId            => true
+enableCreateTypeDir => true
+searchEnum          => 2
+duplicateEnum       => 1
+executor            => y/yes
+
+totalSoundBank    => 122
+totalStreamedFile => 14465
+bnkExtractSuccess => 122
+bnkExtractFailed  => 0
+ww2oggSuccess     => 14440
+ww2oggFailed      => 25
+revorbSuccess     => 14440
+revorbFiled       => 25
+bankExtractRate   => 100.00%
+wemConversionRate => 99.83%
+convertTime       => 3.69m
+
+build:
+4.06 GB (4,360,836,579 字节)
+4.14 GB (4,449,804,288 字节)
+43,459 个文件，1,186 个文件夹
+
+build/log:
+18.6 MB (19,511,832 字节)
+18.6 MB (19,521,536 字节)
+4 个文件，0 个文件夹
+
+build/SoundBanks:
+1.49 GB (1,601,433,876 字节)
+1.51 GB (1,630,789,632 字节)
+14,440 个文件，469 个文件夹
+
+build/temp/bnkExtractor:
+979 MB (1,027,181,544 字节)
+0.98 GB (1,057,202,176 字节)
+14,575 个文件，243 个文件夹
+
+build/temp/SoundBanks:
+1.59 GB (1,712,709,327 字节)
+1.62 GB (1,742,290,944 字节)
+14,440 个文件，469 个文件夹
