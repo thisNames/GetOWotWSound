@@ -130,14 +130,14 @@ class Executor
                 if (error)
                 {
                     ert.done = false;
-                    let em = stdout || stderr || error.message || "executorSync error";
+                    let em = stdout || stderr || error.message || "executor error";
                     ert.errorMessage = em.toString();
 
                     return res(ert);
                 }
 
                 ert.done = true;
-                ert.stdout = stdout;
+                ert.stdout = stdout.toString();
 
                 return res(ert);
             });

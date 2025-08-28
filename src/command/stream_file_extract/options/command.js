@@ -139,6 +139,14 @@ const enableSScsv = new ParamsMapping("esscsv", {
     defaults: ["f"],
     ...template
 }).addTask("esscsv", params => require("./index").setBoolean("enableSScsv", params[0]));
+
+/** 启用 HashId */
+const enableHashId = new ParamsMapping("ehid", {
+    key: "enableHashId",
+    description: "启用 HashId, ehid = <[true, t]>",
+    defaults: ["t"],
+    ...template
+}).addTask("ehid", params => require("./index").setBoolean("enableHashId", params[0]));
 //#endregion
 
 
@@ -197,6 +205,7 @@ const options = new ParamsMapping("opt", {
         setCustomSBKStruct,
         enableAsync,
         enableId,
+        enableHashId,
         enableCreateTypeDir,
         enableSIgnoreCase,
         enableSSjson,

@@ -5,6 +5,7 @@ const Executor = require("../../../class/cp/Executor");
 const ExecutorResult = require("../../../class/cp/ExecutorResult");
 const LoggerSaver = require("../../../class/LoggerSaver");
 const MessageCollect = require("../../../class/MessageCollect");
+const Tools = require("../../../class/Tools");
 
 const StreamedFile = require("./StreamedFile");
 const DefaultConfig = require("./DefaultConfig");
@@ -172,13 +173,14 @@ class StreamedFilesWorker
         const result = { input: "", output: "", w2output: "" };
 
         let id = this.options.enableId ? stf.Id + "_" : "";
+        let hid = this.options.enableHashId ? Tools.generateHashId(8) + "_" : "";
         let fname = stf.GetFileName();
         let type = this.options.enableCreateTypeDir ? stf.GetTypeName() : "";
 
-        let oname = id + fname + this.options.extname;
+        let oname = hid + id + fname + this.options.extname;
         let odir = pt.join(this.options.outputPath, stf.Type, type);
 
-        let tname = id + fname + ".w2g.temp";
+        let tname = hid + id + fname + ".w2g.temp";
         let tdir = pt.join(this.options.tempPath, stf.Type, type);
 
         // 创建输出目录

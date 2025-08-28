@@ -70,6 +70,9 @@ class DefaultOptions
 
         /** @type {Boolean} 启用 分类文件夹 */
         this.enableCreateTypeDir = true;
+
+        /** @type {Boolean} 启用 HashId */
+        this.enableHashId = true;
         //#endregion
 
 
