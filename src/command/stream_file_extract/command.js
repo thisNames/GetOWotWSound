@@ -25,4 +25,7 @@ const getProject = require("./get_project/command");
 // 查找重复定义的文件
 const duplicate = require("./duplicate/command");
 
-module.exports = [getProject, config, options, wemExtract, bnkExtract, treeShake, search, ori, duplicate];
+// 查找未定义的文件
+const difference = require("./difference/command");
+
+module.exports = [getProject, config, options, wemExtract, bnkExtract, treeShake, search, ori, duplicate, difference];

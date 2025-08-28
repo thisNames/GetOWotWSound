@@ -1,13 +1,13 @@
 const ParamsMapping = require("../../../class/ParamsMapping");
 
 /** 清除缓存生成的文件 */
-const clearCacheFile = new ParamsMapping("cl", {
+const clearCacheFile = new ParamsMapping("clr", {
     key: "clear",
     description: "清除之前生成的缓存文件（标记为已删除）",
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
-});
+}).addTask("clr", () => require("./index").clearCacheFile());
 
 /** 删除缓存 */
 const deleteCacheFile = new ParamsMapping("del", {
@@ -16,7 +16,7 @@ const deleteCacheFile = new ParamsMapping("del", {
     count: 0,
     defaults: [],
     accordingLevelRepeat: false
-});
+}).addTask("del", () => require("./index").deleteCacheFile());
 
 /** 树摇 */
 const treeShake = new ParamsMapping("trs", {
@@ -25,12 +25,6 @@ const treeShake = new ParamsMapping("trs", {
     count: 0,
     defaults: [],
     children: [clearCacheFile, deleteCacheFile]
-});
-
-// 注册任务
-treeShake.addTask("treeShake", (...args) => require("./index").cacheGenerator(...args));
-clearCacheFile.addTask("treeShake.clear", () => require("./index").clearCacheFile());
-deleteCacheFile.addTask("treeShake.delete", () => require("./index").deleteCacheFile());
+}).addTask("trs", (...args) => require("./index").cacheGenerator(...args));
 
 module.exports = treeShake;
-

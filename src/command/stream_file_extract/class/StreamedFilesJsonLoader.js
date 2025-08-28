@@ -69,7 +69,8 @@ class SoundBanksInfoJsonLoader
         {
             if (this.__cache) return this.__cache;
 
-            this.__cache = require(this.soundBanksInfoJsonFilePath);
+            const dj = fs.readFileSync(this.soundBanksInfoJsonFilePath, { encoding: "utf-8", flag: "r" });
+            this.__cache = JSON.parse(dj);
 
             return this.__cache;
         } catch (error)

@@ -1,3 +1,5 @@
+const fs = require("node:fs");
+
 const StreamedFilesJsonLoader = require("./StreamedFilesJsonLoader");
 const SoundBanksInfoData = require("./SoundBanksInfoData");
 const Utils = require("../class/Utils");
@@ -127,6 +129,48 @@ class SoundBnkInfoCacheLoader
         cacheLoaders.clearCache();
 
         return soundBnkInfoData;
+    }
+
+    /**
+     *  加载自定义的 StreamedFiles.json 文件
+     *  @param {String} filepath 自定义的 StreamedFiles.json 文件路径
+     *  @returns {SoundBanksInfoData | Error}
+     */
+    static loaderCustomSFStruct(filepath)
+    {
+        if (!fs.existsSync(filepath) || !fs.statSync(filepath).isFile()) return new Error(`SoundBnkInfoCacheLoader.static.loaderCustomSFStruct => ${filepath} is not a file`);
+
+        try
+        {
+            const loader = new StreamedFilesJsonLoader(filepath);
+            const listStreamedFile = loader.loaderStreamedFiles();
+
+            return new SoundBanksInfoData(listStreamedFile, []);
+        } catch (error)
+        {
+            return new Error(error.message);
+        }
+    }
+
+    /**
+     *  加载自定义的 SoundBanks.json 文件
+     *  @param {String} filepath 自定义的 SoundBanks.json 文件路径
+     *  @returns {SoundBanksInfoData | Error}
+     */
+    static loaderCustomSBKStruct(filepath)
+    {
+        if (!fs.existsSync(filepath) || !fs.statSync(filepath).isFile()) return new Error(`SoundBnkInfoCacheLoader.static.loaderCustomSBKStruct => ${filepath} is not a file`);
+
+        try
+        {
+            const loader = new StreamedFilesJsonLoader(filepath);
+            const listSoundBank = loader.loaderSoundBanks();
+
+            return new SoundBanksInfoData([], listSoundBank);
+        } catch (error)
+        {
+            return new Error(error.message);
+        }
     }
 }
 

@@ -6,9 +6,6 @@ const duplicate = new ParamsMapping("dpl", {
     count: 0,
     defaults: [],
     description: "查找重复定义的文件",
-});
-
-// 注册任务
-duplicate.addTask("duplicate", (...args) => require("./index")(...args));
+}).addTask("duplicate", (...args) => require("./index")(...args));
 
 module.exports = duplicate;

@@ -9,10 +9,25 @@ const StreamedFilesWorker = require("../class/StreamedFilesWorker");
 const Utils = require("../class/Utils");
 const SoundBnkInfoCacheLoader = require("../class/SoundBnkInfoCacheLoader");
 const Ori = require("../class/Ori");
+const SoundBanksInfoData = require("../class/SoundBanksInfoData");
 
 const CFG = require("../config/default_config");
 const OPT = require("../options/options");
 const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
+
+/**
+ *  加载 StreamedFiles
+ *  @returns {SoundBanksInfoData | Error}
+ */
+function loaderStreamedFiles()
+{
+    const customSFStruct = Utils.trim(OPT.customSFStruct);
+
+    if (customSFStruct) return SoundBnkInfoCacheLoader.loaderCustomSFStruct(customSFStruct);
+
+    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
+    return cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
+}
 
 /**
  *  转换 wem
@@ -20,8 +35,7 @@ const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfo
  */
 async function converter()
 {
-    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
-    const sbInfoData = cacheLoaders.loaderStreamedFiles(DefaultConfig.cacheStreamedFilesName);
+    const sbInfoData = loaderStreamedFiles();
     const worker = new StreamedFilesWorker(CFG, OPT);
     const ori = new Ori();
     const fn = new FormatNumber();

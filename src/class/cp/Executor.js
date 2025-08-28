@@ -107,7 +107,8 @@ class Executor
         } catch (error)
         {
             ert.done = false;
-            ert.errorMessage = error.message;
+            let em = error.stdout || error.stderr || error.message || "executorSync error";
+            ert.errorMessage = em.toString();
         }
 
         return ert;
@@ -128,14 +129,17 @@ class Executor
             {
                 if (error)
                 {
-                    ert.errorMessage = error.message;
-                    ert.stderr = stderr;
+                    ert.done = false;
+                    let em = stdout || stderr || error.message || "executorSync error";
+                    ert.errorMessage = em.toString();
+
+                    return res(ert);
                 }
 
-                ert.done = !error;
+                ert.done = true;
                 ert.stdout = stdout;
 
-                res(ert);
+                return res(ert);
             });
 
             ert.pid = p.pid;

@@ -60,13 +60,6 @@ function search(searchName, logger)
     result = listSoundBank;
     if (listStreamedFile.length > 0) result.push(...listStreamedFile);
 
-    // 空集合
-    if (result.length < 1)
-    {
-        logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
-        return [];
-    }
-
     return result;
 }
 
@@ -130,6 +123,13 @@ async function main(params)
 
     // 搜索
     const result = search(searchName, logger);
+
+    // 空集合
+    if (result.length < 1)
+    {
+        logger.heighLight(`Search ${searchName} is Empty`, [searchName]);
+        return [];
+    }
 
     // 等待退出
     const pp = new PagePrinter(result, 2);

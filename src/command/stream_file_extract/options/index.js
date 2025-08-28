@@ -98,6 +98,11 @@ function setEnum(key, value)
 {
     if (!optionsHashKeyPrompt(key)) return;
 
+    let __value = Number.parseInt(value, 10);
+
+    // 不是数字
+    if (!Number.isFinite(__value)) return;
+
     Reflect.set(OPT, key, value);
 }
 
@@ -115,11 +120,26 @@ function setString(key, value)
     Reflect.set(OPT, key, Utils.trim(value));
 }
 
+/**
+ *  设置文件相关配置
+ *  @param {String} key 属性名称
+ *  @param {String} value 属性值
+ *  @returns {void}
+ */
+function setFilePath(key, value)
+{
+    // 没用这样的属性
+    if (!optionsHashKeyPrompt(key)) return;
+
+    Reflect.set(OPT, key, Utils.fileHandler(Utils.trim(value)));
+}
+
 module.exports = {
     printOptions,
     setPath,
     setNumber,
     setBoolean,
     setEnum,
-    setString
+    setString,
+    setFilePath
 };

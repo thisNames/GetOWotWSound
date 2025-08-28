@@ -6,9 +6,6 @@ const bnkExtract = new ParamsMapping("bnk", {
     count: 0,
     defaults: [],
     description: "提取音乐、音效文件 .bnk => SoundBanks"
-});
-
-// 注册事件
-bnkExtract.addTask("soundfile", (...args) => require("./index")(...args));
+}).addTask("soundfile", (...args) => require("./index")(...args));
 
 module.exports = bnkExtract;

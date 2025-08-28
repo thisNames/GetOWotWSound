@@ -6,10 +6,6 @@ const oriBody = new ParamsMapping("ori", {
     description: "打印一个 ori",
     count: 0,
     defaults: []
-});
-
-
-// 注册任务
-oriBody.addTask("ori", () => require("./index")());
+}).addTask("ori", () => require("./index")());
 
 module.exports = oriBody;

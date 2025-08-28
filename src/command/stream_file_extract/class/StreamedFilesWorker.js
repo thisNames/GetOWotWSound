@@ -154,8 +154,8 @@ class StreamedFilesWorker
         }
         else
         {
-            this.slr.error(rt);
-            this.smc.collect(rt, converter.revStdout.stderr || converter.revStdout.errorMessage || converter.revStdout.command);
+            this.flr.error(rt);
+            this.fmc.collect(rt, converter.revStdout.stderr || converter.revStdout.errorMessage || converter.revStdout.command);
 
             this.counter.revorbFiled++;
         }
@@ -206,7 +206,7 @@ class StreamedFilesWorker
      */
     converterSync(stf, bnkExtDir = "")
     {
-        const result = { w2gStdout: null, revStdout: null };
+        const result = { w2gStdout: {}, revStdout: {} };
         const hp = this.handlerPath(stf, bnkExtDir);
 
         const w2g = new Executor({
@@ -221,7 +221,7 @@ class StreamedFilesWorker
 
         // 执行
         result.w2gStdout = w2g.executorSync();
-        result.revStdout = rev.executorSync();
+        result.revStdout = result.w2gStdout.done ? rev.executorSync() : new ExecutorResult({ done: false, errorMessage: "sync ww2ogg failed" });
 
         return result;
     }
@@ -234,7 +234,7 @@ class StreamedFilesWorker
      */
     async converter(stf, bnkExtDir = "")
     {
-        const result = { w2gStdout: null, revStdout: null };
+        const result = { w2gStdout: {}, revStdout: {} };
         const hp = this.handlerPath(stf, bnkExtDir);
 
         const w2g = new Executor({
@@ -248,7 +248,7 @@ class StreamedFilesWorker
         });
 
         result.w2gStdout = await w2g.executor();
-        result.revStdout = await rev.executor();
+        result.revStdout = result.w2gStdout.done ? await rev.executor() : new ExecutorResult({ done: false, errorMessage: "async ww2ogg failed" });
 
         return Promise.resolve(result);
     }

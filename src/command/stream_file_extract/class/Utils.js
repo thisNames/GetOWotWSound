@@ -78,6 +78,18 @@ class Utils
     }
 
     /**
+     *  处理路径文件
+     *  @param {String} value 路径名称
+     */
+    static fileHandler(value)
+    {
+        // 是否是绝对路径
+        let path = pt.isAbsolute(value) ? value : pt.join(process.cwd(), value);
+
+        return path;
+    }
+
+    /**
      *  创建 StreamedFiles 数据结构
      *  @param {Array<StreamedFile>} listStreamedFile listStreamedFile
      *  @returns {Object}

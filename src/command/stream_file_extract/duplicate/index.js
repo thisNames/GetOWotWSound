@@ -107,9 +107,9 @@ function duplicateForIdAndShortName(soundBnkInfoData)
  */
 function duplicatesDelegate()
 {
-    if (OPT.duplicateEnum == 0) return { key: "Id & ShortName", action: duplicateForIdAndShortName };
-    if (OPT.duplicateEnum == 1) return { key: "Id", action: duplicateForId };
-    return { key: "ShortName", action: duplicateForShortName }
+    if (OPT.duplicateEnum == 0) return { key: "Id", action: duplicateForId };
+    if (OPT.duplicateEnum == 1) return { key: "ShortName", action: duplicateForShortName };
+    return { key: "Id & ShortName", action: duplicateForIdAndShortName };
 }
 
 /**
@@ -134,6 +134,7 @@ function duplicate()
 
     // 输出结果
     Utils.formatOutputObject({
+        searchEnum: OPT.searchEnum,
         key: duplicateAction.key,
         wemRepeat: listStreamedFileRept.length,
         bnkInWemRepeat: listSBStreamedFileRept.length

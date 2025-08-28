@@ -165,6 +165,9 @@ class PagePrinter
      */
     async printer(lineCallBack)
     {
+        // 空
+        if (!Array.isArray(this.listStreamedFile) || this.listStreamedFile.length < 1) return;
+
         // 显示
         while (this.__continue)
         {

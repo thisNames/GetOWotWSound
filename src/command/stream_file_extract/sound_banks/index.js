@@ -15,13 +15,26 @@ const OPT = require("../options/options");
 const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
 
 /**
+ *  加载 SoundBanks
+ *  @returns {SoundBanksInfoData | Error}
+ */
+function loaderSoundBanks()
+{
+    const customSBKStruct = Utils.trim(OPT.customSBKStruct);
+
+    if (customSBKStruct) return SoundBnkInfoCacheLoader.loaderCustomSBKStruct(customSBKStruct);
+
+    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
+    return cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
+}
+
+/**
  *  提取 bnk
  *  @returns {void}
  */
 async function extractor()
 {
-    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
-    const sbInfoData = cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
+    const sbInfoData = loaderSoundBanks();
     const worker = new SoundBanksWorker(CFG, OPT);
     const ori = new Ori();
     const fn = new FormatNumber();

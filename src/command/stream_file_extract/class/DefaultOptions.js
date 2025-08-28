@@ -22,6 +22,12 @@ class DefaultOptions
 
         /** @type {String} 生成过滤器 */
         this.filter = "";
+
+        /** @type {String} 使用自定义的 StreamedFiles.json 结构文件 */
+        this.customSFStruct = "";
+
+        /** @type {String} 使用自定义的 SoundBanks.json 结构文件 */
+        this.customSBKStruct = "";
         //#endregion
 
 
@@ -72,7 +78,7 @@ class DefaultOptions
         this.searchEnum = 2;
 
         /** @type {Number} [0 - Id, 1 - ShortName, 2 - Id & ShortName] 查找重复的 key 枚举 */
-        this.duplicateEnum = 2;
+        this.duplicateEnum = 1;
         //#endregion
     }
 }

@@ -35,7 +35,7 @@ class DefaultConfig
         /** @type {String} revorb.exe */
         this.revorb = pt.join(rt, "revorb-v1.exe");
 
-        /** @type {String} bnkextrbnkextr.exe */
+        /** @type {String} bnkextr.exe */
         this.bnkextr = pt.join(rt, "bnkextr-v2.exe");
     }
 
