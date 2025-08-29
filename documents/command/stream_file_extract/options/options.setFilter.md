@@ -9,6 +9,6 @@
 - 值：ID 或者 名称
 
 ## 文档
-``txt
+```txt
 设置：owo -opt-fr ori
 ```
