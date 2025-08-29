@@ -6,7 +6,7 @@ const help = new ParamsMapping("h", {
     count: -1,
     defaults: [],
     description: "显示帮助，-h [command1 command2 ...] 可查看指定命令的帮助文档",
-    example: "src/command/print_help/example/help.txt",
+    example: "documents/command/print_help/example/help.txt",
     before: true
 });
 
