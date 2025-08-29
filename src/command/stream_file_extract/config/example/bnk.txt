@@ -1,0 +1,2 @@
+提取 .bnk 文件成 .wem 文件工具路径
+示例：owo -cfg-bnk "E:\Developer\Projects\GetOWotWSound\SoundMod\bnkextr-v2.exe" 

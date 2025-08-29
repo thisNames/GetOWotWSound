@@ -1,0 +1,2 @@
+将 .ogg 重编码工具路径
+示例：owo -cfg-rev "E:\Developer\Projects\GetOWotWSound\SoundMod\revorb-v1.exe"

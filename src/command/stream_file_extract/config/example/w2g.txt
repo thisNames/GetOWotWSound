@@ -1,0 +1,2 @@
+将 .wem 转换成 .ogg 工具路径
+示例：owo -cfg-w2g "E:\Developer\Projects\GetOWotWSound\SoundMod\ww2ogg-v0.24.exe"

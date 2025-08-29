@@ -123,11 +123,12 @@ function printHelpDocument(key, helpDocumentPath)
  *  打印参数命令对象模板
  *  @param {String} key 命令
  *  @param {Params} pm pm
+ *  @param {MainRunningMeta} meta meta
  *  @returns {void}
  */
-function printParamsExamples(key, pm)
+function printParamsExamples(key, pm, meta)
 {
-    let helpDocumentPath = pt.join(pt.dirname(pm.modulePath), pm.example + "");
+    let helpDocumentPath = pt.join(meta.dirname || process.argv[1] || process.cwd(), pm.example + "");
 
     let counter = pm.count < 0 ? "不定长参数" : pm.count;
     let defaulter = pm.count <= 0 ? "无" : `[${pm.defaults.join(", ")}]`;
@@ -163,11 +164,12 @@ function printParamsExamples(key, pm)
  *  打印参数命令对象模板
  *  @param {String} key 命令s
  *  @param {Single} single single
+ *  @param {MainRunningMeta} meta meta
  *  @returns {void}
  */
-function printSingleExamples(key, single)
+function printSingleExamples(key, single, meta)
 {
-    let helpDocumentPath = pt.join(pt.dirname(single.modulePath), single.example + "");
+    let helpDocumentPath = pt.join(meta.dirname || process.argv[1] || process.cwd(), single.example + "");
 
     Logger.prompt(`${single.key}: ${single.description} [布尔命令]`).line();
     printHelpDocument(key, helpDocumentPath);
@@ -190,9 +192,9 @@ function printExamples(meta, params)
 
         // 没有找到
         if (!exp) return Logger.error(`没有找到对应的命令[${key}]`);
-        if (exp instanceof Params) return printParamsExamples(key, exp);
+        if (exp instanceof Params) return printParamsExamples(key, exp, meta);
 
-        printSingleExamples(key, exp);
+        printSingleExamples(key, exp, meta);
     });
 }
 
