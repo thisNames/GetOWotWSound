@@ -1,0 +1,8 @@
+SoundBanksInfo 中重复定义的文件数量，Id 相等、ShortName 相对、Id 相等 + ShortName 相对
+示例：owo -dpl
+
+结束：
+searchEnum     => 2 # 搜索方法
+key            => ShortName # 匹配的属性
+wemRepeat      => 151 # StreamedFiles 重复定义数量
+bnkInWemRepeat => 2792 # SoundBanks 重复定义数量

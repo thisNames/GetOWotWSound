@@ -13,6 +13,7 @@ const setExtname = new ParamsMapping("ext", {
     key: "extname",
     description: "设置生成的文件拓展名, ext = <.ogg>",
     defaults: [".ogg"],
+    example: "documents/command/stream_file_extract/options/example/ext.txt",
     ...template
 }).addTask("ext", params => require("./index").setString("extname", params[0]));
 
@@ -21,6 +22,7 @@ const setFilter = new ParamsMapping("fr", {
     key: "filter",
     description: "设置生成过滤器, fr = <[ID, ShortName]>",
     defaults: ["complete"],
+    example: "documents/command/stream_file_extract/options/example/fr.txt",
     ...template
 }).addTask("fr", params => require("./index").setString("filter", params[0]));
 //#endregion
@@ -32,6 +34,7 @@ const setCustomSFStruct = new ParamsMapping("cwem", {
     key: "customSFStruct",
     description: "使用自定义的 StreamedFiles.json 结构文件, cwem = <filepath>",
     defaults: ["myStreamedFiles.json"],
+    example: "documents/command/stream_file_extract/options/example/cwem.txt",
     ...template
 }).addTask("cwem", params => require("./index").setFilePath("customSFStruct", params[0]));
 
@@ -194,6 +197,7 @@ const options = new ParamsMapping("opt", {
     description: "查看默认可选项",
     count: 0,
     defaults: [],
+    example: "documents/command/stream_file_extract/options/example/opt.txt",
     children: [
         setOutputPath,
         setLogPath,
