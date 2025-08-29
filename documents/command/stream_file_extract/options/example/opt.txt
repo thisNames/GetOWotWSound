@@ -1,21 +1,20 @@
-示例：owo -opt
-
-结束：
+使用：owo -opt
+以下是默认的输出：
 extname             = .ogg  # 生成的文件名称后缀
-filter              =       # 生成过滤器
-customSFStruct      =       # 使用自定义的 StreamedFiles.json 结构文件
-customSBKStruct     =       # 使用自定义的 SoundBanks.json 结构文件
-outputPath          = E:\Developer\Projects\GetOWotWSound\build         # 输出目录
-logPath             = E:\Developer\Projects\GetOWotWSound\build\log     # 日志保存目录
-tempPath            = E:\Developer\Projects\GetOWotWSound\build\temp    # 临时文件保存目录
-asyncNumber         = 4     # 异步并发的数量 [2, max_thread]
+filter              =       # 生成过滤器，没有值则表示不启用
+customSFStruct      =       # 使用自定义的 StreamedFiles.json 结构文件，没有值则表示不启用
+customSBKStruct     =       # 使用自定义的 SoundBanks.json 结构文件，没有值则表示不启用
+outputPath          = <项目路径>\build      # 输出目录
+logPath             = <项目路径>\build\log  # 日志保存目录
+tempPath            = <项目路径>\build\temp # 临时文件保存目录
+asyncNumber         = 4     # 异步并发的数量 [2, max_cpu_thread]
 enableAsync         = false # 异步
 enableSIgnoreCase   = false # 检索忽略大小写
 enableSSjson        = false # 保存搜索结果为 json
 enableSSlog         = false # 保存搜索结果为 log
 enableSScsv         = false # 保存搜索结果为 csv
-enableHashId        = false # HashId
-enableId            = true  # 生成 ID
+enableHashId        = false # HashId，可用于保证数量完整性
+enableId            = true  # 生成文件 ID
 enableCreateTypeDir = true  # 分类文件夹
 searchEnum          = 2 # 搜索枚举
-duplicateEnum       = 1 # 查找重复的 key 枚举
+duplicateEnum       = 1 # 查找重复的属性枚举

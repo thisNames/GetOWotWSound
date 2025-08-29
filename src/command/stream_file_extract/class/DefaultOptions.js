@@ -45,7 +45,7 @@ class DefaultOptions
 
         //#region 数值配置
         /** @type {Number} 异步并发的数量 [2, max_thread] */
-        this.asyncNumber = 4;
+        this.asyncNumber = 3;
         //#endregion
 
 
@@ -66,7 +66,7 @@ class DefaultOptions
         this.enableSScsv = false;
 
         /** @type {Boolean} 启用 HashId */
-        this.enableHashId = false;
+        this.enableHashId = true;
 
         /** @type {Boolean} 启用 生成 ID */
         this.enableId = true;

@@ -10,7 +10,7 @@
 
 ## 文档
 ```txt
-示例：owo -gpt
-
-结束：E:\Developer\Projects\GetOWotWSound
+使用：owo -gpt
+输出：
+E:\Developer\Projects\GetOWotWSound
 ```

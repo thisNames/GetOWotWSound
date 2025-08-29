@@ -1,5 +1,7 @@
-SoundBanksInfo 中重复定义的文件数量，Id 相等、ShortName 相对、Id 相等 + ShortName 相对
-示例：owo -dpl
+查找全部：owo -dpl
+查找 wem：owo -dpl -opt-sw
+查找 bnk：owo -dpl -opt-sb
+将结果保存 json、csv：owo -dpl -opt-essjson t -opt-esscsv t
 
 结束：
 searchEnum     => 2 # 搜索方法

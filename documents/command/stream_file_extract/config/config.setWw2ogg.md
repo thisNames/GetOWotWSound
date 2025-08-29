@@ -1,18 +1,20 @@
-# 设置项目配置 ww2ogg（子命令）
+# wem 转换工具
 
 ## 命令
 - `-cfg-w2g`, `-config-ww2ogg` 
 
 ## 描述
-- 设置 SoundMod/ww2ogg-v0.24.exe 工具路径, `ww2ogg = <path>`
+- 设置 SoundMod/ww2ogg-v0.24.exe 工具路径
+- 将 .wem 转换成 .ogg 工具，项目已内置最新版本（一般不去改动）
+- GitHub: https://github.com/hcs64/ww2ogg
+- 类型：字符串
+- 值：工具所在的绝对路径
+
+## 父命令
+- `-cfg`, `-config`, [md](config.md)
 
 ## 文档
 ```txt
-将 .wem 转换成 .ogg 工具路径
-示例：owo -cfg-w2g "E:\Developer\Projects\GetOWotWSound\SoundMod\ww2ogg-v0.24.exe"
+设置：owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe"
+设置并查看：owo -cfg-w2g <absPath> -cfg
 ```
-## 父命令
-- `-cfg`, `-config`, [config.md](config.md)
-
-### 子命令
-- 无

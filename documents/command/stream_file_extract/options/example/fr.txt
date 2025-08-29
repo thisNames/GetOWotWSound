@@ -1,1 +1,1 @@
-示例：owo -opt-fr ori
+设置：owo -opt-fr ori

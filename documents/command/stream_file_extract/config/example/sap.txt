@@ -1,2 +1,2 @@
-游戏资源所在的目录
-示例：owo -cfg-sap "E:\Games\Steam\steamapps\common\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows"
+设置：owo -cfg-sap "E:\Games\Steam\steamapps\common\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows"
+设置并查看：owo -cfg-sap "<你的安装路径>\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows" -cfg

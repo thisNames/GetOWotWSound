@@ -1,1 +1,2 @@
-示例：owo -opt-tmp temp
+设置在当前工作目录：owo -opt-tmp temp
+设置绝对路径：owo -opt-tmp E:\Developer\Projects\GetOWotWSound\build\temp

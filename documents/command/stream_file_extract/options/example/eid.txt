@@ -1,1 +1,1 @@
-示例：owo -opt-eid t
+启用：owo -opt-eid t

@@ -1,1 +1,1 @@
-示例：owo -opt-ext .wav
+设置：owo -opt-ext .wav

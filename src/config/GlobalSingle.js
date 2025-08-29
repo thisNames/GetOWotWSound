@@ -8,7 +8,7 @@ class GlobalSingle
         this.dvp = new Single({
             key: "$D",
             description: "占位符，表示使用默认参数（前提是有）",
-            example: "src/config/example/dvp.txt",
+            example: "documents/config/example/dvp.txt",
             modulePath: __filename
         });
     }

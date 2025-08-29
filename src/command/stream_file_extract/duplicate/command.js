@@ -5,7 +5,7 @@ const duplicate = new ParamsMapping("dpl", {
     key: "duplicate",
     count: 0,
     defaults: [],
-    description: "查找重复定义的文件",
+    description: "查找出 SoundBanksInfo 中重复定义的文件",
     example: "documents/command/stream_file_extract/duplicate/example/dpl.txt"
 }).addTask("duplicate", (...args) => require("./index")(...args));
 

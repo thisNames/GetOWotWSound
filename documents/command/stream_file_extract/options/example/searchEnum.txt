@@ -1,0 +1,2 @@
+只搜索 StreamedFiles：owo -opt-sw
+只搜索 SoundBanks：owo -opt-sb

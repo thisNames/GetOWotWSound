@@ -1,2 +1,2 @@
-还原默认配置
-示例：owo -cfg-def
+使用：owo -cfg-def
+还原后查看配置：owo -cfg-def -cfg
