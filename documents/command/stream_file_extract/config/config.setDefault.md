@@ -12,7 +12,7 @@
 示例：owo -cfg-def
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ## 子命令
 - 无

@@ -12,7 +12,7 @@
 示例：owo -cfg-sap "E:\Games\Steam\steamapps\common\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows"
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ## 子命令
 - 无

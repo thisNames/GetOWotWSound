@@ -12,7 +12,7 @@ ww2ogg-v0.24.exe 工具所需的 packed_codebooks_aoTuV_603.bin 文件路径
 示例：owo -cfg-w2gp "E:\Developer\Projects\GetOWotWSound\SoundMod\packed_codebooks_aoTuV_603.bin"
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ## 子命令
 - 无

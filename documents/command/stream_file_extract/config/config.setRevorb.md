@@ -12,7 +12,7 @@
 示例：owo -cfg-rev "E:\Developer\Projects\GetOWotWSound\SoundMod\revorb-v1.exe"
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ## 子命令
 - 无

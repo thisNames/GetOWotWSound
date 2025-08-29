@@ -12,7 +12,7 @@
 示例：owo -cfg-bnk "E:\Developer\Projects\GetOWotWSound\SoundMod\bnkextr-v2.exe" 
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ## 子命令
 - 无

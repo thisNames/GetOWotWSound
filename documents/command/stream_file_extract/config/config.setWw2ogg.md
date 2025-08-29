@@ -12,7 +12,7 @@
 示例：owo -cfg-w2g "E:\Developer\Projects\GetOWotWSound\SoundMod\ww2ogg-v0.24.exe"
 ```
 ## 父命令
-- `-cfg`, `-config`
+- `-cfg`, `-config`, [config.md](config.md)
 
 ### 子命令
 - 无
