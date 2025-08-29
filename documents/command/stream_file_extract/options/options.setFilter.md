@@ -8,6 +8,9 @@
 - 类型：字符串
 - 值：ID 或者 名称
 
+## 父命令
+- `-opt`, `-options` [md](options.md)
+
 ## 文档
 ```txt
 设置：owo -opt-fr ori
