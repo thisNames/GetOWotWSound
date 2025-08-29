@@ -43,6 +43,7 @@ const setCustomSBKStruct = new ParamsMapping("cbnk", {
     key: "customSBKStruct",
     description: "使用自定义的 SoundBanks.json 结构文件, cbnk = <filepath>",
     defaults: ["mySoundBanks.json"],
+    example: "documents/command/stream_file_extract/options/example/cbnk.txt",
     ...template
 }).addTask("cbnk", params => require("./index").setFilePath("customSBKStruct", params[0]));
 //#endregion
@@ -53,6 +54,7 @@ const setCustomSBKStruct = new ParamsMapping("cbnk", {
 const setOutputPath = new ParamsMapping("out", {
     key: "outputPath",
     description: "设置输出目录, out = <path>",
+    example: "documents/command/stream_file_extract/options/example/out.txt",
     defaults: [DefaultOptions.defOutputPath],
     ...template
 }).addTask("out", params => require("./index").setPath("outputPath", params[0]));
@@ -62,6 +64,7 @@ const setLogPath = new ParamsMapping("log", {
     key: "logPath",
     description: "设置日志保存目录, log = <path>",
     defaults: [DefaultOptions.defLogPath],
+    example: "documents/command/stream_file_extract/options/example/log.txt",
     ...template
 }).addTask("log", params => require("./index").setPath("logPath", params[0]));
 
@@ -70,6 +73,7 @@ const setTempPath = new ParamsMapping("tmp", {
     key: "tempPath",
     description: "设置临时文件保存目录 tmp = <path>",
     defaults: [DefaultOptions.defTempPath],
+    example: "documents/command/stream_file_extract/options/example/tmp.txt",
     ...template
 }).addTask("tmp", params => require("./index").setPath("tempPath", params[0]));
 //#endregion
@@ -81,6 +85,7 @@ const setAsyncNumber = new ParamsMapping("an", {
     key: "asyncNumber",
     description: "设置异步并发数量, an = <[2, cpu_threads]>, HDD=2, SATA<=6, NVMe<=12",
     defaults: [4],
+    example: "documents/command/stream_file_extract/options/example/an.txt",
     ...template
 }).addTask("an", params => require("./index").setNumber("asyncNumber", params[0]));
 //#endregion
@@ -92,6 +97,7 @@ const enableAsync = new ParamsMapping("ea", {
     key: "enableAsync",
     description: "启用异步, ea = <[true, t]>",
     defaults: ["f"],
+    example: "documents/command/stream_file_extract/options/example/ea.txt",
     ...template
 }).addTask("ea", params => require("./index").setBoolean("enableAsync", params[0]));
 
@@ -100,6 +106,7 @@ const enableId = new ParamsMapping("eid", {
     key: "enableId",
     description: "启用ID, eid = <[true, t]>",
     defaults: ["t"],
+    example: "documents/command/stream_file_extract/options/example/eid.txt",
     ...template
 }).addTask("eid", params => require("./index").setBoolean("enableId", params[0]));
 

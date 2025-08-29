@@ -30,5 +30,5 @@
 
 ## 文档
 ```txt
-owo -opt-cwem "myStreamedFiles.json"
+示例 owo -opt-cwem "myStreamedFiles.json"
 ```

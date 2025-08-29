@@ -7,27 +7,27 @@
 - 查看运行时的可选项
 
 ## 子命令
-`-opt-out`, `-options-outputPath`
-`-opt-log`, `-options-logPath`
-`-opt-tmp`, `-options-tempPath`
-`-opt-an`, `-options-asyncNumber`
-`-opt-ext`, `-options-extname`: [options.setExtname.md](options.setExtname.md)
-`-opt-fr`, `-options-filter`: [options.setFilter.md](options.setFilter.md)
-`-opt-cwem`, `-options-customSFStruct`: [options.setCustomSFStruct.md](options.setCustomSFStruct.md)
-`-opt-cbnk`, `-options-customSBKStruct`
-`-opt-ea`, `-options-enableAsync`
-`-opt-eid`, `-options-enableId`
-`-opt-ehid`, `-options-enableHashId`
-`-opt-ectd`, `-options-enableCreateTypeDir`
-`-opt-esic`, `-options-enableSIgnoreCase`
-`-opt-essjson`, `-options-enableSSjson`
-`-opt-esslog`, `-options-enableSSlog`
-`-opt-esscsv`, `-options-enableSScsv`
-`-opt-sw`, `-options-sStreamfile`
-`-opt-sb`, `-options-sSoundBanks`
-`-opt-did`, `-options-dplId`
-`-opt-dsn`, `-options-dplShortName`
-`-opt-didsn`, `-options-dplIdShortName`
+- `-opt-out`, `-options-outputPath`: [options.outputPath.md](options.outputPath.md)
+- `-opt-log`, `-options-logPath`: [options.setLogPath.md](options.setLogPath.md)
+- `-opt-tmp`, `-options-tempPath`: [options.setTempPath.md](options.setTempPath.md)
+- `-opt-an`, `-options-asyncNumber`: [options.setAsyncNumber.md](options.setAsyncNumber.md)
+- `-opt-ext`, `-options-extname`: [options.setExtname.md](options.setExtname.md)
+- `-opt-fr`, `-options-filter`: [options.setFilter.md](options.setFilter.md)
+- `-opt-cwem`, `-options-customSFStruct`: [options.setCustomSFStruct.md](options.setCustomSFStruct.md)
+- `-opt-cbnk`, `-options-customSBKStruct`: [options.setCustomSBKStruct.md](options.setCustomSBKStruct.md)
+- `-opt-ea`, `-options-enableAsync`: [options.enableAsync.md](options.enableAsync.md)
+- `-opt-eid`, `-options-enableId`: [options.enableId.md](options.enableId.md)
+- `-opt-ehid`, `-options-enableHashId`
+- `-opt-ectd`, `-options-enableCreateTypeDir`
+- `-opt-esic`, `-options-enableSIgnoreCase`
+- `-opt-essjson`, `-options-enableSSjson`
+- `-opt-esslog`, `-options-enableSSlog`
+- `-opt-esscsv`, `-options-enableSScsv`
+- `-opt-sw`, `-options-sStreamfile`
+- `-opt-sb`, `-options-sSoundBanks`
+- `-opt-did`, `-options-dplId`
+- `-opt-dsn`, `-options-dplShortName`
+- `-opt-didsn`, `-options-dplIdShortName`
 
 ## 文档
 ```txt
