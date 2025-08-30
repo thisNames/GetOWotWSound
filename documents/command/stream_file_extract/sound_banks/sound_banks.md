@@ -70,7 +70,7 @@ owo -bnk -opt-ehid t # 文件 HashID
 owo -bnk -opt-ectd t # 创建分类文件夹
 ```
 
-- 过滤器检索搜索时，忽略大小写 [md](../options/options.setFilter.md)
+- 过滤器搜索时忽略大小写 [md](../options/options.enableSIgnoreCase.md)
 ```shell
 owo -bnk -opt-fr ori -opt-esic t # 过滤器、忽略大小写
 ```
