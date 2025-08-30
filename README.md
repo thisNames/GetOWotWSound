@@ -45,7 +45,7 @@
 
 ---
 
-## 使用：[wiki.git](wiki.git)
+## 使用：[wiki.md](wiki.md)
 
 ---
 

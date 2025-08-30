@@ -31,55 +31,55 @@ owo -bnk
 ---
 
 ## 主命令
-### -h
+### `-h`
 - 显示帮助
 - [documents/command/print_help/help.md](documents/command/print_help/help.md)
 
-### -v
+### `-v`
 - 显示当前版本
 - [documents/command/print_version/version.md](documents/command/print_version/version.md)
 
-### -gpt
+### `-gpt`
 - 用于查看项目所在路径
 - [documents/command/stream_file_extract/get_project/get_project.md](documents/command/stream_file_extract/get_project/get_project.md)
 
-### -cfg
+### `-cfg`
 - 显示项目的配置
 - [ocuments/command/stream_file_extract/config/config.md](documents/command/stream_file_extract/config/config.md)
 
-### -opt
+### `-opt`
 - 查看运行时的可选项
 - [documents/command/stream_file_extract/options/options.md](documents/command/stream_file_extract/options/options.md)
 
-### -wem
+### `-wem`
 - 提取音频资源文件，从 StreamedFiles 中获取，StreamedFiles ⊆ SoundBanks
 - [documents/command/stream_file_extract/streamed_files/streamed_files.md](documents/command/stream_file_extract/streamed_files/streamed_files.md)
 
-### -bnk
+### `-bnk`
 - 提取音频资源文件，从 SoundBanks 中获取
 - [documents/command/stream_file_extract/sound_banks/sound_banks.md](documents/command/stream_file_extract/sound_banks/sound_banks.md)
 
-### -trs
+### `-trs`
 - 将 SoundBnkInfo 中多余的字段统统删除，并生成缓存文件（可提高加载速度）
 - [documents/command/stream_file_extract/tree_shake/tree_shake.md](documents/command/stream_file_extract/tree_shake/tree_shake.md)
 
-### -s
+### `-s`
 - 搜索 SoundBanksInfo 中定义的文件。默认搜索全部
 - [documents/command/stream_file_extract/search/search.md](documents/command/stream_file_extract/search/search.md)
 
-### -ori
+### `-ori`
 - 在控制台随机打印一个 ori 或者 logo
 - [documents/command/stream_file_extract/ori/ori.md](documents/command/stream_file_extract/ori/ori.md)
 
-### -dpl
+### `-dpl`
 - 查找出 SoundBanksInfo 中重复定义的文件
 - [documents/command/stream_file_extract/duplicate/duplicate.md](documents/command/stream_file_extract/duplicate/duplicate.md)
 
-### -dif
+### `-dif`
 - 查找出 SoundBanksInfo 中未定义的文件
 - [documents/command/stream_file_extract/difference/difference.md](documents/command/stream_file_extract/difference/difference.md)
 
-### $D
+### `$D`
 - 占位符，表示使用默认参数（前提是有）
 - [documents/config/GlobalSingle.md](documents/config/GlobalSingle.md)
 
@@ -95,7 +95,6 @@ owo -bnk
 ### 详细
 - 如需要了解更多，可查看每个命令的帮助文档：[documents](documents)
 ```txt
-[参数命令]
 [-h, -help]: 显示帮助，-h [command1 command2 ...] 可查看指定命令的帮助文档
 [-v, -version]: 显示当前版本
 [-gpt, -project]: 用于查看项目所在路径
@@ -141,6 +140,5 @@ owo -bnk
 [-dpl, -duplicate]: 查找出 SoundBanksInfo 中重复定义的文件
 [-dif, -difference]: 查找出 SoundBanksInfo 中未定义的文件
 
-[布尔命令]
 [$D]: 占位符，表示使用默认参数（前提是有）
 ```
