@@ -13,7 +13,7 @@ owo -cfg-sap "<你的安装路径>\Ori and the Will of the Wisps\oriwotw_Data\St
 ```
 - 查看版本
 ```shell
-owo - v
+owo -v
 ```
 - 显示帮助
 ```shell
