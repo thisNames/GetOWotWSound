@@ -6,6 +6,12 @@
 ## 描述
 - 显示项目的配置
 
+# 使用
+- 查看配置
+```shell
+owo -cfg
+```
+
 ## 子命令
 - `-cfg-sap`, `-config-soundAssetsPath` [md](config.setSoundAssetsPath.md)
 - `-cfg-w2g`, `-config-ww2ogg` [md](config.setWw2ogg.md)
@@ -16,5 +22,5 @@
 
 ## 文档
 ```txt
-使用：owo -cfg
+owo -cfg # 查看配置
 ```

@@ -10,11 +10,22 @@
 - 类型：字符串
 - 值：工具的绝对路径
 
+## 使用
+- 设置
+```shell
+owo -cfg-rev "<项目路径>\SoundMod\revorb-v1.exe"
+```
+
+- 设置并查看配置
+```shell
+owo -cfg-rev <absPath> -cfg
+```
+
 ## 父命令
 - `-cfg`, `-config` [md](config.md)
 
 ## 文档
 ```txt
-设置：owo -cfg-rev "<项目路径>\SoundMod\revorb-v1.exe"
-设置并查看配置：owo -cfg-rev <absPath> -cfg
+owo -cfg-rev "<项目路径>\SoundMod\revorb-v1.exe" # 设置
+owo -cfg-rev <absPath> -cfg # 设置并查看配置
 ```

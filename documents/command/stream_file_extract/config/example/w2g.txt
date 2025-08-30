@@ -1,2 +1,1 @@
-设置：owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe"
-设置并查看：owo -cfg-w2g <absPath> -cfg
+owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe" # 设置

@@ -10,11 +10,18 @@
 - 类型：字符串
 - 值：文件所在的绝对路径
 
+## 使用
+- 设置
+```shell
+owo -cfg-w2gp "<项目路径>\SoundMod\packed_codebooks_aoTuV_603.bin"
+设置并查看：owo -cfg-w2gp <absPath> -cfg
+```
+
 ## 父命令
 - `-cfg`, `-config` [md](config.md)
 
 ## 文档
 ```txt
-设置：owo -cfg-w2gp "<项目路径>\SoundMod\packed_codebooks_aoTuV_603.bin"
-设置并查看：owo -cfg-w2gp <absPath> -cfg
+owo -cfg-w2gp "<项目路径>\SoundMod\packed_codebooks_aoTuV_603.bin"
+设置并查看：owo -cfg-w2gp <absPath> -cfg # 设置
 ```

@@ -1,1 +1,1 @@
-使用：owo -cfg
+owo -cfg # 查看配置

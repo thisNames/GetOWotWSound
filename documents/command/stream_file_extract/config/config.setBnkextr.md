@@ -10,11 +10,23 @@
 - 类型：字符串
 - 值：工具的绝对路径
 
+## 使用
+- 设置
+```shell
+owo -cfg-bnk "<项目路径>\SoundMod\bnkextr-v2.exe"
+```
+
+- 设置并查看配置
+```shell
+owo -cfg-bnk <absPath> -cfg
+```
+
 ## 父命令
 - `-cfg`, `-config` [md](config.md)
 
 ## 文档
 ```txt
-设置：owo -cfg-bnk "<项目路径>\SoundMod\bnkextr-v2.exe"
-设置并查看配置：owo -cfg-bnk <absPath> -cfg
+```shell
+owo -cfg-bnk "<项目路径>\SoundMod\bnkextr-v2.exe" # 设置
+owo -cfg-bnk <absPath> -cfg # 设置并查看配置
 ```

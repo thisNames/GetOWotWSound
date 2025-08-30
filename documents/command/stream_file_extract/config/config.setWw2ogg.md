@@ -10,11 +10,16 @@
 - 类型：字符串
 - 值：工具所在的绝对路径
 
+## 使用
+- 设置
+```shell
+owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe"
+```
+
 ## 父命令
 - `-cfg`, `-config`, [md](config.md)
 
 ## 文档
 ```txt
-设置：owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe"
-设置并查看：owo -cfg-w2g <absPath> -cfg
+owo -cfg-w2g "<项目路径>\SoundMod\ww2ogg-v0.24.exe" # 设置
 ```
