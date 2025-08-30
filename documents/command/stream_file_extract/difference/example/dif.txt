@@ -1,0 +1,8 @@
+搜索全部：owo -dif
+搜索 wem 文件：owo -dif -opt-sw
+搜索 bnk 文件：owo -dif -opt-sb
+将搜索的结果保存 json：owo -dif -opt-essjson t
+
+输出：
+searchEnum   => 2 # 搜索方式
+undefinedWem => 128 # 未定义文件数量

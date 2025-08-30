@@ -1,0 +1,3 @@
+使用：owo -gpt
+输出：
+E:\Developer\Projects\GetOWotWSound

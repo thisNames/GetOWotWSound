@@ -1,0 +1,3 @@
+使用 Id 属性：owo -opt-did
+使用 ShortName 属性：owo -opt-dsn
+使用 Id + ShortName 属性：owo -opt-didsn

@@ -1,0 +1,2 @@
+owo -cfg-rev "<项目路径>\SoundMod\revorb-v1.exe" # 设置
+owo -cfg-rev <absPath> -cfg # 设置并查看配置

@@ -1,0 +1,10 @@
+查找全部：owo -dpl
+查找 wem：owo -dpl -opt-sw
+查找 bnk：owo -dpl -opt-sb
+将结果保存 json、csv：owo -dpl -opt-essjson t -opt-esscsv t
+
+结束：
+searchEnum     => 2 # 搜索方法
+key            => ShortName # 匹配的属性
+wemRepeat      => 151 # StreamedFiles 重复定义数量
+bnkInWemRepeat => 2792 # SoundBanks 重复定义数量

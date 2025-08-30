@@ -1,0 +1,2 @@
+owo -cfg-def # 还原默认配置
+owo -cfg-def -cfg # 还原后查看配置

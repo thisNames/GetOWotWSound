@@ -1,0 +1,2 @@
+设置在当前工作目录：owo -opt-out build
+设置绝对路径：owo -opt-out E:\Developer\Projects\GetOWotWSound\build

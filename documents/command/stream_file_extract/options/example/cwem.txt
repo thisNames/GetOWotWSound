@@ -1,0 +1,2 @@
+设置：owo -opt-cwem mySF.json
+转换 wem 时使用自己的结构文件：owo -wem -opt-cwem mySF.json

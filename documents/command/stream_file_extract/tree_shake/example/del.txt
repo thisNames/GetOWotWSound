@@ -1,0 +1,2 @@
+删除：owo -trs-del
+先清除再删除：owo -trs-clr -trs-del

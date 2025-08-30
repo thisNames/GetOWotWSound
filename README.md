@@ -1,141 +1,174 @@
-# GetOWotWSound
+# GetOWotWSound v3.0.7
 
 <p align="center">
   <img src="img/ori_top.png" width="500">
 </p>
 
-## 简介
-### 工具功能
-- 获取游戏里的音频、音效文件。批量处理 + 分类收集。
+> [一只橙叙原](https://space.bilibili.com/1684627521)、[立秋枫林晚](https://space.bilibili.com/701443748)
 
-### 运行环境
+## 介绍
+- 全称：Get Ori Will of the Wisps Sound
+- 获取游戏音频资源目录内的音频文件（批量）
+- 完全重构此项目，2.0.0 版本的所有功能都已移除，不再受支持
+- 使用 [lks@0.0.7](https://github.com/thisNames/lks) 工具开发，终端操作更灵活、扩展性更高、可随时新增、移除功能
+- 使用异步处理更快速
+
+---
+
+## 主要功能
+- 将 StreamedFile（wem）文件转换成 ogg 文件
+- 将 SoundBank （bnk）文件转换成 ogg 文件
+- 搜索文件
+
+---
+
+## 运行环境
 - 使用 javascript 脚本，nodejs 运行环境。不依赖任何第三方库，仅仅使用原生 node（建议使用 18x lts 版本）。
 
-### 声明
-- 本项目不会有一行删除文件，目录的代码。只会新建目录，生成文件（放心食用）
-> 使用 javascript es6 面向对象。但是我没有对象（悲）
+---
 
-<p align="center">
-  <img src="img/1.jpg" width="330">
-</p>
+## 使用到的三方工具
+### ww2ogg
+- 路径：[SoundMod/ww2ogg-v0.24.exe](SoundMod)
+- 将 .wem 转换成 .ogg 工具，项目已内置最新版本
+- GitHub: https://github.com/hcs64/ww2ogg
 
-- 解压出来的所有资源都属于游戏本身的，不允许进行售卖哦。
+### revorb
+- 路径 [SoundMod/revorb-v1.exe](SoundMod)
+- 将 .wem 转换出来的 .ogg 重编码的工具，项目已内置最新版本
+- GitHub: https://github.com/ItsBranK/ReVorb
+
+### bnkextr
+- 路径：[SoundMod/bnkextr-v2.exe](SoundMod)
+- 用于提取 .bnk 文件成 .wem 文件的工具，项目已内置最新版本
+- GitHub: https://github.com/eXpl0it3r/bnkextr
 
 ---
 
-## 执行逻辑（概要）
-> 读取 SoundbanksInfo.xml 或者 SoundbanksInfo.json（都一样的），因为使用 nodejs，所以选择读取 json 文件，因为 nodejs 内置了 json 解析器
-
-### 获取 ReferencedStreamedFiles 文件（一些音乐、音效）
-- 获取 遍历 StreamedFiles 节点里的 file 对象
-- 每一个 file 对象对应着一个 wem 文件
-1. `Id` 可选项
-1. `Language` 这里没有使用到
-1. `ShortName` 此音频的分类、名称。
-1. `Path` 这里没有使用到
-- 通过 id 获取对应 wem 文件，使用工具 ww2ogg.exe 将 wem 转换成 ogg 格式
-> 转换成 ogg 成功率不是 100%，虽然转换出来了，但是有可能是损坏的
-- 使用 ShortName 使用全类名的方式将文件保存至目标目录
-- 再次通过 revorb.exe 再次执行生成的 ogg 文件，不然会出现音频无法拖动的 bug，但是可以正常播放
+## 使用：[wiki.md](wiki.md)
 
 ---
-### 获取 IncludedMemoryFiles 文件（多数是音效）
-- 遍历 SoundBanks 节点里的 SoundBank 对象
-- 获取到一个 SoundBank，使用 SoundBank.ShortName（唯一的）名称新建目录 `ShortNamePath`
-- 使用 Path 获取对应的 bnk 文件 
-- 使用工具 bnkextr.exe 解压 bnk 文件，将解压出来所有的 wem 文件存放在 `ShortNamePath` 目录下。
-- 获取 `ShortNamePath` 目录所有的 wem 文件，保存至 `wem 数组`。
-- 遍历 IncludedMemoryFiles 数组，以此数组的索引，作为 `wem 数组` 索引（每一个 File）。
-- 使用工具 ww2ogg.exe 将 对应的 wem 转换成 ogg 格式。
-- 转换时以 File.ShortName 进行全类名分类保存
-> wem 文件从 `wem 数组` 中顺序获取
-> bnkextr.exe 解压出来的 wem 文件，在转换成 ogg 时。成功率不会是 100%。转换失败。即不会生成 ogg 文件。也就是 done 为 false
-- 将此转换 ogg 文件，保存至 buildPath 的目录内
-- 通过 revorb.exe 再次执行生成的 ogg 文件，不然会出现音频无法拖动的 bug，但是可以正常播放
-----
-### 实体类映射 Model
-json
 
+## 基本工作原理
+- 从 SoundBanksInfo 中获取文件的定义
+- bnkextr 工具从 bnk 文件中提取 wem 文件
+- ww2ogg 工具将 wem 文件转换成普通的 ogg 文件
+- revorb 将 ogg 文件重新编码
+
+---
+
+## 主要的文件
+- Music & Sound Files
+
+### StreamedFile 文件
+- 类型：wem 文件
+- 定义：所有的定义都在 SoundbanksInfo 中
+- 数量：2425
+- 实际数量：SoundBnkInfo.StreamedFiles 实际定义的数量是 2272
+- json 结构：
 ```json
 {
-    "Id": "77404",
+    "Id": "20302852",
     "Language": "SFX",
-    "ShortName": "a\\b\\c\\name.wav",
-    "Path": "SFX\\a\\b\\c\\name.wav_7BACA535.wem"
+    "ShortName": "wotw\\howlsOrigin\\props\\portalExitHowlsOrigin_002.wav",
+    "Path": "SFX\\wotw\\howlsOrigin\\props\\portalExitHowlsOrigin_002_A02A9068.wem"
 }
 ```
-Or
+#### 操作
+- ww2ogg 工具将 wem 文件转换成普通的 ogg 文件
+- revorb 将 ogg 文件重新编码
 
-xml
-```xml
-<File Id="979792347" Language="SFX">
-    <ShortName>a\\b\\c\\name.wav</ShortName>
-    <Path>a\\b\\c\\name.wav_99B043E3.wem</Path>
-</File>
+### SoundBank
+- 类型：bnk 文件
+- 定义：所有的定义都在 SoundbanksInfo 中（也有自己单独的定义文件）
+- 数量：124
+- 实际可用的 122
+    * `act2grolsPlunge.bnk` => No WEM files discovered to be extracted
+    * `persistent_eventsOnly.bnk` => No WEM files discovered to be extracted
+- json 结构：
+```json
+{
+    "Id": "13348331",
+    "Path": "corruptSpiderling.bnk",
+    "IncludedMemoryFiles": [
+        {
+            "Id": "6516071",
+            "ShortName": "characters\\enemies\\corruptSpiderling\\corruptSpiderlingHitReactionSmall_003.wav",
+            "Type": "SoundBanks",
+            "BnkFile": "corruptSpiderling.bnk"
+        },
+        {
+            "Id": "11777040",
+            "ShortName": "characters\\enemies\\corruptSpiderling\\corruptSpiderlingBodyFall_008.wav",
+            "Type": "SoundBanks",
+            "BnkFile": "corruptSpiderling.bnk"
+        }
+    ]
+}
 ```
+#### 操作
+- bnkextr 工具从 bnk 文件中提取 wem 文件
+- ww2ogg 工具将 wem 文件转换成普通的 ogg 文件
+- revorb 将 ogg 文件重新编码
+
+### SoundBank 定义文件 .json
+- 数量：126
+#### SoundbanksInfo.json
+- 包含所有 wem、bnk 的定义文件
+- +1
+#### PluginInfo.json
+- 只是插件管理的定义文件（不是重点）
+- +1
+#### 剩余的 .json
+- 每个单独 bnk 的定义文件
+- +124
+
+### SoundBank 定义文件 .xml
+- 数量：126
+#### SoundbanksInfo.xml
+- 包含所有 wem、bnk 的定义文件
+- +1
+#### PluginInfo.xml
+- 只是插件管理的定义文件（不是重点）
+- +1
+#### 剩余的 .xml
+- 每个单独 bnk 的定义文件
+- +124
 
 ---
 
-## 说明
-- 通过工具（ww2ogg.exe）将本地的 wem 文件转换成 ogg 文件时，所有文件基本全部成功。重名的文件，也想保留的话建议把 `id` 打开，否则直接覆盖。
-- 但是如果是 bnk 文件解压出来的 wem 文件，再通过工具（ww2ogg.exe）将 wem 文件转换成 ogg 文件时成功率不是 100% 的。也就是说不会生成 ogg 文件（未解决）
-
-### 此项目使用到的工具
-1. `bnkextr.exe` 将 bnk 文件解压成 wem 文件。下载：https://github.com/eXpl0it3r/bnkextr/releases
-2. SoundMod 下载：http://www.mediafire.com/file/en3m7mctkfedeju/soundMod.zip/file
-    -  `SoundMod/tools/ww2ogg.exe`
-    -  `SoundMod/tools/revorb.exe` 
-    -  `SoundMod/tools/packed_codebooks_aoTuV_603.bin`
-3. 以防万一，已将工具内置项目中了，位于 `SoundMod` 目录中
-
-### 运行配置说明
-数值参数都移植至命令参数，配置文件中只包含静态配置（v2.0.0）
-
-### 详细看 [wiki.md](https://github.com/thisNames/GetOWotWSound/blob/master/wiki.md) 、[wiki](https://github.com/thisNames/GetOWotWSound/wiki)
-### 简单使用教程视频：https://www.bilibili.com/video/BV1RSCxY2Euj
+## 生成说明
+### 名称
+```text
+00000000_6516071_WaterDropsMultiLight_003.wav
+```
+### 可看成：A_B_C
+#### A
+- 随机生成的 8 位哈希 ID，用于保证输出数量的完整性
+#### B
+- SoundBanksInfo 定义的文件 ID
+- 游戏音频资源目录里的文件名称（一般存在）。`id.wem`
+- 不存在就是在 bnk 文件里
+#### C
+- 就是文件的名称了
+- 以 SoundBanksInfo 定义的为准
 
 ---
-## 结束 END
-- 同步运行，也就是一个一个文件解析分类，只有上一个完成，才会执行下一个。虽然慢了点，毕竟文件太多了（所有的运行完毕会生成 20000 左右文件），实测大概需要 1000000 ms 左右（bnk）。400000 ~ 500000 ms（wem）。
-- 主要的耗时任务就是将 bnk 解压和将 wem 转换成 ogg 文件。
-- 也有可能是我的电脑比较垃圾（悲）
 
-1. 疯狂写`注释`，`注`到昏撅
-1. 疯狂`debug`，`d`到昏撅
-1. 疯狂调试`日志`，日……`志`到昏撅
+## 备注
+### 声明
+- 提取出来的所有资源都属于游戏本身，严禁倒卖
+- GetOWotWSound 不生产资源，只是资源的搬运工
+### 运行
+- 全屏 cmd 运行
+- cmd 运行选中，如果被选中就会卡住暂停，只需要回车一下即可（windows cmd 特性属于了）
+### 问题
+- 关于有一些音频文件播放失败
+- 显示文件已损坏，`未解决`，可能是解码工具不能正确解码导致
+### 最后
+- 本工具获取到所有的音频、音效文件。不包含游戏内的 100%。因为也不知游戏里有多少。（不包含 100%，也包含大部分了）
+- 不同平台的游戏，可能出来的音频文件数量不一样。（但是基本大差不差）
 
 <p align="center">
- <img src="img/mua_.png" width="330">
+  <img src="img/ori_b.png" width="500">
 </p>
-
-###### 觉得有用的记得点点 `Star` !!!
->(脸红.jpg) 
-
----
-
-## [O - R - I](https://www.orithegame.com/)
-```text
-⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  " ' O ' ''
-⠀⠀⠀⠀⠀⣷⣀⠀⠀⠀⠀⠀⣤⡀⠲⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢻⣿⣿⣤⡀⠀⠀⠀⣛⣿⣾⣿⣿⣶⣶⣦⣤⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣇⢇⢀⣴⣿⣿⣿⣿⣤⠊⣿⣦⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠙⢿⣯⣧⣷⢷⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣤⣿⣧⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⡿⠉⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣤⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⣤⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠒⠿⢿⣿⣿⠿⠿⠛⠉⢀⣤⣤⣶⣿⣿⣿⣿⣯⠁⠀⠀⢀⣾⣿⣷⢆⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣿⣿⣿⣿⣿⣿⣯⣾⠋⠿⣷⣤⣤⣿⣿⣷⣷⣧⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⢏⣿⣿⣿⣿⣦⢄⢈⢻⣿⣿⣿⡿⠁⠀⠀
-⠀⠀⠀⠀⠀⠀⢠⢔⠸⣿⣿⣿⣿⣿⡀⢫⣿⣿⣿⣿⣎⣇⠇⠛⠋⠁⠀⠀⠀⠀
-⠀⠀⠀⢀⢆⠃⠀⠀⠀⠻⣟⣿⣿⠛⠁⢀⣠⣾⣿⣿⣟⣧⢀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢠⣏⠀⠀⠀⠀⠀⠀⠀⠈⠀⢀⣤⣾⣿⠟⠋⢀⣯⠓⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢸⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⠁⠀⠀⠀⢻⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠻⣷⣦⣆⣦⣦⣦⣦⣶⣶⣮⣯⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⢹⡿⣿⣶⠀⠀⢀⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⢈⣿⣿ ⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⣠⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⠛⠀             
------------------------------------
-----------------------
------------
----
-```

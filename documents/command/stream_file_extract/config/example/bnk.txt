@@ -1,0 +1,2 @@
+owo -cfg-bnk "<项目路径>\SoundMod\bnkextr-v2.exe" # 设置
+owo -cfg-bnk <absPath> -cfg # 设置并查看配置

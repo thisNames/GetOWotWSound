@@ -1,0 +1,60 @@
+异步执行: owo -wem -opt-ehid t -opt-ea t -opt-an 6
+
+operate             => StreamedFiles
+total               => 2272
+extname             => .ogg
+filter              =>
+customSFStruct      =>
+customSBKStruct     =>
+outputPath          => E:\Developer\Projects\GetOWotWSound\build
+logPath             => E:\Developer\Projects\GetOWotWSound\build\log
+tempPath            => E:\Developer\Projects\GetOWotWSound\build\temp
+asyncNumber         => 6
+enableAsync         => true
+enableSIgnoreCase   => false
+enableSSjson        => false
+enableSSlog         => false
+enableSScsv         => false
+enableHashId        => true
+enableId            => true
+enableCreateTypeDir => true
+searchEnum          => 2
+duplicateEnum       => 1
+executor            => y/yes
+
+totalSoundBank    => 0
+totalStreamedFile => 2272
+bnkExtractSuccess => 0
+bnkExtractFailed  => 0
+ww2oggSuccess     => 2272
+ww2oggFailed      => 0
+revorbSuccess     => 2272
+revorbFiled       => 0
+bankExtractRate   => 0%
+wemConversionRate => 100.00%
+convertTime       => 37.45s
+
+build:
+2.09 GB (2,246,101,346 字节)
+2.09 GB (2,255,388,672 字节)
+4,548 个文件，286 个文件夹
+
+build/log:
+2.95 MB (3,097,997 字节)
+2.96 MB (3,104,768 字节)
+4 个文件，0 个文件夹
+
+build/StreamedFiles:
+1.02 GB (1,100,610,168 字节)
+1.02 GB (1,105,207,296 字节)
+2,272 个文件，141 个文件夹
+
+build/temp:
+1.06 GB (1,142,393,181 字节)
+1.06 GB (1,147,076,608 字节)
+2,272 个文件，142 个文件夹
+
+build/temp/StreamedFiles:
+1.06 GB (1,142,393,181 字节)
+1.06 GB (1,147,076,608 字节)
+2,272 个文件，141 个文件夹

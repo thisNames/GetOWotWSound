@@ -1,0 +1,2 @@
+设置：owo -opt-an 6
+启用异步并设置并发数：owo -opt-ea t -opt-an 6

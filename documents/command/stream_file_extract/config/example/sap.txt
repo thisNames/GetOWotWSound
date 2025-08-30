@@ -1,0 +1,1 @@
+owo -cfg-sap "<你的安装路径>\Ori and the Will of the Wisps\oriwotw_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows" # 设置

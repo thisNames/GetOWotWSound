@@ -1,0 +1,2 @@
+设置在当前工作目录：owo -opt-log log
+设置绝对路径：owo -opt-log E:\Developer\Projects\GetOWotWSound\build\log

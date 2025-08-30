@@ -1,0 +1,2 @@
+设置：owo -opt-cbnk mySBK.json
+提取 bnk 时使用自己的结构文件：owo -bnk -opt-cbnk mySBK.json

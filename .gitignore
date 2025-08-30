@@ -7,3 +7,6 @@ node_modules
 **/*.xml
 **/*.json
 **/*.log
+**/*.temp
+**/*.csv
+**/*.wav

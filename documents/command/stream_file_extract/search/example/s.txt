@@ -1,0 +1,4 @@
+搜索全部：owo -s complete
+搜索 wem：owo -s complete -opt-sw
+搜索 bnk：owo -s complete -opt-sb
+保存搜索结果：owo -s complete -opt-essjson t -opt-esslog t -opt-esscsv t

@@ -1,0 +1,97 @@
+const pt = require("node:path");
+
+const Logger = require("../../../class/Logger");
+const Tools = require("../../../class/Tools");
+const FormatNumber = require("../../../class/FormatNumber");
+
+const DefaultConfig = require("../class/DefaultConfig");
+const SoundBanksWorker = require("../class/SoundBanksWorker");
+const Utils = require("../class/Utils");
+const SoundBnkInfoCacheLoader = require("../class/SoundBnkInfoCacheLoader");
+const Ori = require("../class/Ori");
+
+const CFG = require("../config/default_config");
+const OPT = require("../options/options");
+const GameSoundBnkInfo = pt.join(CFG.soundAssetsPath, DefaultConfig.soundBnkInfoName);
+
+/**
+ *  加载 SoundBanks
+ *  @returns {SoundBanksInfoData | Error}
+ */
+function loaderSoundBanks()
+{
+    const customSBKStruct = Utils.trim(OPT.customSBKStruct);
+
+    if (customSBKStruct) return SoundBnkInfoCacheLoader.loaderCustomSBKStruct(customSBKStruct);
+
+    const cacheLoaders = new SoundBnkInfoCacheLoader(GameSoundBnkInfo);
+    return cacheLoaders.loaderSoundBanks(DefaultConfig.cacheSoundBanksName);
+}
+
+/**
+ *  提取 bnk
+ *  @returns {void}
+ */
+async function extractor()
+{
+    const sbInfoData = loaderSoundBanks();
+    const worker = new SoundBanksWorker(CFG, OPT);
+    const ori = new Ori();
+    const fn = new FormatNumber();
+
+    const prompts = ["y", "yes"];
+    const filter = Utils.trim(OPT.filter);
+
+    // 加载所有失败
+    if (sbInfoData instanceof Error) return Logger.error(sbInfoData.message);
+
+    // 使用过滤器
+    const listSoundBank = filter === "" ? sbInfoData.listSoundBank : sbInfoData.filterSoundBank(filter, OPT.enableSIgnoreCase);
+    const total = sbInfoData.counterListSoundBank(listSoundBank);
+
+    // 格式化输出配置
+    Utils.formatOutputObject({
+        operate: "SoundBanks",
+        total: total,
+        bnkTotal: listSoundBank.length,
+        ...OPT,
+        executor: prompts.join("/")
+    }).forEach(line => Logger.info(line.fKey, "=>", line.value));
+
+    // 输出
+    const input = await Tools.terminalInput().catch(m => m + "");
+    if (!prompts.includes(input)) return Logger.warn("Cancel");
+
+    // 开始执行
+    const startTime = Date.now();
+    const title = OPT.enableAsync ? "AsyncSBK" : "SyncSBK";
+
+    ori.printer();
+    Logger.info(title);
+
+    try
+    {
+        worker.init(title);
+        worker.setPreTotal(total);
+
+        // 执行
+        await worker.bnkExtractor(listSoundBank);
+
+        // 关闭
+        worker.loggerEnd();
+    } catch (error)
+    {
+        Logger.error(error.message);
+    }
+
+    // 格式换输出统计
+    const time = fn.formatTimeMinute(Date.now() - startTime);
+    Utils.formatOutputObject({
+        ...worker.counter,
+        bankExtractRate: worker.counter.SoundBankExtractRate(),
+        wemConversionRate: worker.counter.StreamedFileConversionRate(),
+        convertTime: time.value + time.type
+    }).forEach(line => Logger.info(line.fKey, "=>", line.value));
+}
+
+module.exports = extractor;
